@@ -1,0 +1,34 @@
+
+# PATH=/home/gmo/mingw32msvc/bin:$PATH make -f Makefile.mingw
+
+MINGW_DIR = /home/gmo/mingw32msvc
+
+SDL_CFLAGS = `$(MINGW_DIR)/bin/sdl-config --cflags`
+SDL_LIBS = `$(MINGW_DIR)/bin/sdl-config --static-libs`
+
+CXX = i586-mingw32msvc-g++
+STRIP = i586-mingw32msvc-strip
+CXXFLAGS := -O -Wall -MMD $(SDL_CFLAGS) -I$(MINGW_DIR)/include
+LDFLAGS := -L$(MINGW_DIR)/lib
+
+OBJS = file.o disasm.o funcs.o game.o memory.o mixer.o real.o script.o segment_exe.o stub.o traps.o
+DEPS = $(OBJS:.o=.d)
+
+all: game.exe igor.dll
+
+igor.dll: igor.so
+	$(STRIP) -o $@ $^
+
+igor.so: $(OBJS)
+	$(CXX) $(LDFLAGS) -shared -o $@ $^ -static -lvorbisidec -logg -lz
+
+game.exe: game
+	$(STRIP) -o $@ $^
+
+game: gl_texture.o main.o
+	$(CXX) $(LDFLAGS) -o $@ $^ -lopengl32 -static $(SDL_LIBS)
+
+clean:
+	rm -f *.o *.d
+
+-include $(DEPS) main.d

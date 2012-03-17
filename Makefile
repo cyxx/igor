@@ -1,0 +1,13 @@
+
+CXXFLAGS += -g -MMD -Wall `sdl-config --cflags`
+
+OBJS = file.o disasm.o funcs.o gl_texture.o game.o main.o memory.o mixer.o real.o script.o segment_exe.o stub.o traps.o
+DEPS = $(OBJS:.o=.d)
+
+igor: $(OBJS)
+	$(CXX) -o $@ $^ `sdl-config --libs` -lvorbisidec -lz -lGL
+
+clean:
+	rm -f *.d *.o
+
+-include $(DEPS)
