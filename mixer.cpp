@@ -68,7 +68,7 @@ struct MixerChannel_Voc : MixerChannel {
 		_size |= _f.readByte() << 16;
 		_fileOffset += _size + 4;
 		switch (code) {
-		case 1: {
+		case 1: { // pcm data
 				const int rate = 1000000 / (256 - _f.readByte());
 				_sfrac.inc = (rate << Frac::kBits) / _rate;
 				const int codec = _f.readByte();
@@ -82,9 +82,9 @@ struct MixerChannel_Voc : MixerChannel {
 				_sbuf = 0;
 			}
 			break;
-		case 5: // string
+		case 5: // comment, skip to next code
 			_f.seek(_fileOffset);
-			break;
+			return readCode();
 		default:
 			fprintf(stderr, "WARNING: unhandled .voc code %d\n", code);
 			return 0;
@@ -146,9 +146,9 @@ struct MixerChannel_Vorbis : MixerChannel {
 		memset(&_ovf, 0, sizeof(_ovf));
 		ov_callbacks ovcb;
 		memset(&ovcb, 0, sizeof(ovcb));
-		ovcb.read_func  = VorbisFile::readHelper;
-		ovcb.seek_func  = VorbisFile::seekHelper;
-		ovcb.tell_func  = VorbisFile::tellHelper;
+		ovcb.read_func = VorbisFile::readHelper;
+		ovcb.seek_func = VorbisFile::seekHelper;
+		ovcb.tell_func = VorbisFile::tellHelper;
 		if (ov_open_callbacks(&_f, &_ovf, 0, 0, ovcb) < 0) {
 			fprintf(stderr, "WARNING: invalid .ogg input file\n");
 			return false;
