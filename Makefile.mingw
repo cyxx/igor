@@ -25,7 +25,7 @@ igor.so: $(OBJS)
 game.exe: game
 	$(STRIP) -o $@ $^
 
-game: gl_texture.o main.o
+game: gl_cursor.o gl_texture.o main.o
 	$(CXX) $(LDFLAGS) -o $@ $^ -lopengl32 -static $(SDL_LIBS)
 
 clean:

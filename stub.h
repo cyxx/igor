@@ -15,6 +15,7 @@ struct StubBackBuffer {
 	int w, h;
 	uint8_t *ptr; // w*h
 	uint8_t *pal; // 256*3
+	bool *cursor;
 };
 
 enum {

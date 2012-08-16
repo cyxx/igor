@@ -47,6 +47,7 @@ struct GameStub_Igor : GameStub {
 		buf.h = 200;
 		buf.ptr = (uint8_t *)_g->_mem._vga;
 		buf.pal = _g->_palBuf;
+		buf.cursor = &_g->_cursorVisible;
 		return buf;
 	}
 	virtual StubMixProc getMixProc(int rate, int fmt, void (*lock)(int)) {

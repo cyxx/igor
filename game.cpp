@@ -40,6 +40,7 @@ Game::Game(const char *dataPath)
 	_yield = -1;
 	_yMinCursor = 0;
 	_yMaxCursor = 199;
+	_cursorVisible = false;
 	_pollSoundPlaying = false;
 }
 

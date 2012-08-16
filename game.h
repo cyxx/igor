@@ -82,6 +82,7 @@ struct Game {
 	int _input;
 	int _yield;
 	int _yMinCursor, _yMaxCursor;
+	bool _cursorVisible;
 	bool _pollSoundPlaying;
 
 	Game(const char *dataPath);

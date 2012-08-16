@@ -12,6 +12,7 @@
 #include <string.h>
 #include <assert.h>
 #include <sys/time.h>
+#include "gl_cursor.h"
 #include "gl_texture.h"
 #include "stub.h"
 
@@ -160,6 +161,12 @@ static void drawGL(Texture &tex) {
 	}
 }
 
+static void drawCursor(Cursor &c) {
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	c.draw();
+}
+
 int main(int argc, char *argv[]) {
 	GetStub_impl gs;
 	GameStub *stub = gs.getGameStub();
@@ -175,7 +182,7 @@ int main(int argc, char *argv[]) {
 	}
 	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
 	setupAudio(stub);
-	SDL_ShowCursor(SDL_ENABLE);
+	SDL_ShowCursor(SDL_DISABLE);
 	SDL_WM_SetCaption(g_caption, 0);
 	StubBackBuffer buf = stub->getBackBuffer();
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
@@ -184,6 +191,10 @@ int main(int argc, char *argv[]) {
 	SDL_SetVideoMode(g_w, g_h, 0, SDL_OPENGL | SDL_RESIZABLE);
 	g_u = buf.w / (float)g_w;
 	g_v = buf.h / (float)g_h;
+	Cursor cursor;
+	cursor.initCursors();
+	cursor.setPosition(g_w / 2, g_h / 2);
+	cursor.setScale(g_u, g_v);
 	Texture tex;
 	Texture::init();
 	while (stub->doTick() == 0) {
@@ -199,9 +210,11 @@ int main(int argc, char *argv[]) {
 				SDL_SetVideoMode(g_w, g_h, 0, SDL_OPENGL | SDL_RESIZABLE);
 				g_u = buf.w / (float)g_w;
 				g_v = buf.h / (float)g_h;
+				cursor.setScale(g_u, g_v);
 				break;
 			case SDL_MOUSEMOTION:
 				stub->queueMousePos((int)(ev.motion.x * g_u), (int)(ev.motion.y * g_v));
+				cursor.setPosition(ev.motion.x, ev.motion.y);
 				break;
 			case SDL_MOUSEBUTTONDOWN:
 				queueMouseButton(stub, ev.button.button, 1);
@@ -223,6 +236,9 @@ int main(int argc, char *argv[]) {
 		tex.setPalette(buf.pal);
 		tex.uploadData(buf.ptr, buf.w, buf.h);
 		drawGL(tex);
+		if (*buf.cursor) {
+			drawCursor(cursor);
+		}
 		SDL_GL_SwapBuffers();
 		SDL_Delay(10);
 	}

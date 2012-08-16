@@ -74,11 +74,13 @@ void Game::trap_quitGame(int argc, int *argv) {
 void Game::trap_showCursor(int argc, int *argv) {
 	_mem._dataSeg[0x3209] = 1;
 	_mem._dataSeg[0xEAB9] = 1;
+	_cursorVisible = true;
 }
 
 void Game::trap_hideCursor(int argc, int *argv) {
 	_mem._dataSeg[0x3209] = 0;
 	_mem._dataSeg[0xEAB9] = 0;
+	_cursorVisible = false;
 }
 
 void Game::trap_setPalette_208_32(int argc, int *argv) {
