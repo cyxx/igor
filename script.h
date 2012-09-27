@@ -103,7 +103,7 @@ struct Script {
 	int operand(int b, const uint8_t *code, int pos, uint16_t &value);
 	void enter(int pos, uint32_t addr);
 	int leave(int count);
-	bool condition(const uint8_t *cond);
+	bool condition(bool no, char cmp, bool zero);
 	int arith(uint16_t op1, uint16_t op2, int op);
 	void lodstr(int w);
 	void movstr(int w);

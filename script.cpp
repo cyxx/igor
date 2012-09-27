@@ -149,9 +149,9 @@ int Script::leave(int count) {
 	return _calls[_callsCount].pos;
 }
 
-bool Script::condition(const uint8_t *cond) {
+bool Script::condition(bool no, char cmp, bool zero) {
 	bool res = false;
-	switch (cond[1]) {
+	switch (cmp) {
 	case 'a':
 		res = (_f & k_jb) == 0;
 		break;
@@ -171,16 +171,16 @@ bool Script::condition(const uint8_t *cond) {
 		res = false;
 		break;
 	default:
-		fprintf(stderr, "Script::condition() unimplemented cond '%d %c %d'\n", cond[0], cond[1], cond[2]);
+		fprintf(stderr, "Script::condition() unimplemented cond '%d %c %d'\n", no, cmp, zero);
 		exit(1);
 	}
-	if (cond[2] && !res) {
+	if (zero && !res) {
 		res = (_f & k_zf) != 0;
 	}
-	if (!cond[2] && res) {
+	if (!zero && res) {
 		res = (_f & k_zf) == 0;
 	}
-	if (cond[0] != 0) {
+	if (no) {
 		res = !res;
 	}
 	return res;
@@ -534,7 +534,7 @@ if (_debug) fprintf(stdout, "op_test(%d,%d) _f %d\n", opL, opR, _f);
 		break;
 	case op_jmp2: {
 			const int16_t offset = READ_LE_UINT16(code + pos + 5);
-			if (condition(code + pos + 2)) {
+			if (condition(code[pos + 2] != 0, code[pos + 3], code[pos + 4] != 0)) {
 				return pos + offset;
 			}
 		}
