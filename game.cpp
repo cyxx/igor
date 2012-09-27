@@ -734,37 +734,6 @@ const CodeOffset *Game::getCodeOffset(const uint32_t addr, const CodeOffset *off
 	return (const CodeOffset *)bsearch(&co, offsets, offsetsCount, sizeof(CodeOffset), compareCodeOffset);
 }
 
-static struct {
-	const uint16_t seg, ptr;
-	int argc;
-	const char *name;
-} _debugFuncs[] = {
-	{ 0, 0, 0, 0 }
-};
-
-void Game::dumpCall() {
-	for (int i = 0; _debugFuncs[i].name; ++i) {
-		const uint32_t tmp = (_debugFuncs[i].seg << 16) | _debugFuncs[i].ptr;
-		if (tmp == _script._callSegPtr) {
-			fprintf(stdout, "DEBUG %s( ", _debugFuncs[i].name);
-			int offset = _script.sp() + (_debugFuncs[i].argc - 1) * 2;
-		        for (int j = 0; j < _debugFuncs[i].argc; ) {
-				int arg = READ_LE_UINT16(_mem._stack + offset);
-				if (arg == STACK_SEG) {
-					offset -= 2;
-					++j;
-					arg = _mem.readUint16(arg, READ_LE_UINT16(_mem._stack + offset));
-				}
-				fprintf(stdout, "%d ", arg);
-				offset -= 2;
-				++j;
-			}
-			fprintf(stdout, "\n");
-			break;
-		}
-	}
-}
-
 struct Func {
 	const uint16_t seg, ptr;
 	void (Game::*proc)();
@@ -787,7 +756,6 @@ void Game::call() {
 	}
 	if (_debug) {
 		fprintf(stdout, "call to cseg%03d:%04X type %d\n", _script._callSegPtr >> 16, _script._callSegPtr & 0xFFFF, offset->type);
-		dumpCall();
 	}
 	switch (offset->type) {
 	case kCode_main:

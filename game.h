@@ -109,7 +109,6 @@ struct Game {
 	void loadAnimData(int num);
 	void runFuncCode(int seg, int ptr);
 	void runTrap(int num);
-	void dumpCall();
 	const CodeOffset *findCodeOffset(uint32_t addr, const CodeOffset *offsets, int offsetsCount) const;
 	void sortCodeOffsets(CodeOffset *offsets, int offsetsCount);
 	const CodeOffset *getCodeOffset(uint32_t addr, const CodeOffset *offsets, int offsetsCount) const;
