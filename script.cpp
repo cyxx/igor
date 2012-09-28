@@ -342,17 +342,16 @@ if (_debug) {
 	case op_xor:
 	case op_shl:
 	case op_shr: {
-			int res;
 			uint16_t opL = 0, opR;
 			const int pos2 = operand(b, code, pos + 2, opR);
 			if (opcode == op_mov) {
-				res = opR;
+				assign(b, code, pos2, opR);
 			} else {
 				operand(b, code, pos2, opL);
-				res = arith(opL, opR, opcode);
+				const int res = arith(opL, opR, opcode);
+				assign(b, code, pos2, res);
+				setflags(res, opL, opR);
 			}
-			assign(b, code, pos2, res);
-			setflags(res, opL, opR);
 		}
 		break;
 	case op_mul:
