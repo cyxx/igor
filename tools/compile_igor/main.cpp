@@ -17,7 +17,7 @@ static int _instructionsSize;
 
 #define MAX_FUNCS 256
 
-static uint32_t _funcs[MAX_FUNCS];
+static uint32_t _funcs[MAX_FUNCS], _endfuncs[MAX_FUNCS];
 static int _funcsCount;
 
 #define MAX_DUP_FUNCS 4096
@@ -1273,6 +1273,9 @@ static void compileCode(const char *path, int num) {
 				assert(_funcsCount < MAX_FUNCS);
 				_funcs[_funcsCount] = _instructionsCount;
 				++_funcsCount;
+			} else if (strncmp(buf + 2, "endfunc", 7) == 0) {
+				assert(_funcsCount > 0 && _funcsCount < MAX_FUNCS);
+				_endfuncs[_funcsCount - 1] = _instructionsCount;
 			}
 			continue;
 		}
