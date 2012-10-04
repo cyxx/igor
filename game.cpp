@@ -11,10 +11,11 @@
 #include "game.h"
 #include "real.h"
 
-#define VERSION 0
+static const int kSaveVersion = 0;
+static const int kTextVersion = 1;
 
 static const bool _debug = false;
-static const bool _usePatchBin = false;
+static const bool _useTxtBin = true;
 static const bool _sortCodeOffsets = true;
 
 Game::Game(const char *dataPath)
@@ -26,8 +27,8 @@ Game::Game(const char *dataPath)
 	_partOffsetsCount = 0;
 	memset(_mainOffsets, 0, sizeof(_mainOffsets));
 	_mainOffsetsCount = 0;
-	memset(_patchOffsets, 0, sizeof(_patchOffsets));
-	_patchOffsetsCount = 0;
+	memset(_textOffsets, 0, sizeof(_textOffsets));
+	_textOffsetsCount = 0;
 	_randSeed = time(0);
 	_codePos = 0;
 	_codeSize = 0;
@@ -98,7 +99,7 @@ void Game::loadState(int num) {
 	if (f.open(name, ".", "rb")) {
 		fprintf(stdout, "Loading state %d\n", num);
 		const int version = f.readUint32LE();
-		if (version == VERSION) {
+		if (version == kSaveVersion) {
 			f.read(_mem._dataSeg, sizeof(_mem._dataSeg));
 			f.read(_mem._vga, 64000);
 			trap_setPalette_208_32(0, 0);
@@ -113,7 +114,7 @@ void Game::saveState(int num) {
 	File f;
 	if (f.open(name, ".", "wb")) {
 		fprintf(stdout, "Saving state %d\n", num);
-		f.writeUint32LE(VERSION);
+		f.writeUint32LE(kSaveVersion);
 		f.write(_mem._dataSeg, sizeof(_mem._dataSeg));
 		f.write(_mem._vga, 64000);
 	}
@@ -184,24 +185,27 @@ void Game::loadInit() {
 		}
 	}
 	_codeSize = size;
-	if (_usePatchBin) {
-		int num = 1;
-		while (1) {
-			char buf[16];
-			snprintf(buf, sizeof(buf), "patch%03d.bin", num);
-			if (!_patch.open(buf, _dataPath, "rb")) {
-				break;
+	if (_useTxtBin) {
+		static const char *txtLang = "en";
+		char buf[16];
+		snprintf(buf, sizeof(buf), "txt_%s.bin", txtLang);
+		if (_txt.open(buf, _dataPath, "rb")) {
+			const int version = _txt.readUint32LE();
+			if (version == kTextVersion) {
+				int offset = 4 + 8 * 4;
+				_txt.seek(offset);
+				_textOffsetsCount = _txt.readUint16LE();
+				offset += 2;
+				assert(_textOffsetsCount < MAX_TEXT_OFFSETS);
+				for (int i = 0; i < _textOffsetsCount; ++i) {
+					_textOffsets[i].seg = _txt.readUint16LE();
+					_textOffsets[i].ptr = _txt.readUint16LE();
+					offset += 4;
+					_textOffsets[i].offset = offset;
+					offset += 8 * 2;
+					_txt.seek(offset);
+				}
 			}
-			_patch.readUint32LE();
-			_patchOffsetsCount = _patch.readUint32LE();
-			assert(_patchOffsetsCount <= MAX_PATCH_OFFSETS);
-			for (int i = 0; i < _patchOffsetsCount; ++i) {
-				_patchOffsets[i].seg = _patch.readUint16LE();
-				_patchOffsets[i].ptr = _patch.readUint16LE();
-				_patchOffsets[i].offset = _patch.readUint32LE();
-				_patchOffsets[i].size = _patch.readUint32LE();
-			}
-			++num;
 		}
 	}
 }
@@ -235,26 +239,31 @@ void Game::loadIgorFrames() {
 void Game::loadVerbs() {
 	static const struct {
 		uint16_t x;
-		const char *name;
+		const char *nameSp;
+		const char *nameEn;
 	} verbs[] = {
-		{  21, "Hablar" },
-		{  67, "Coger"  },
-		{ 113, "Mirar"  },
-		{ 159, "Usar"   },
-		{ 205, "Abrir"  },
-		{ 251, "Cerrar" },
-		{ 297, "Dar"    },
-		{ 0, 0 }
+		{  21, "Hablar", "Talk"  },
+		{  67, "Coger",  "Take"  },
+		{ 113, "Mirar",  "Look"  },
+		{ 159, "Usar",   "Use"   },
+		{ 205, "Abrir",  "Open"  },
+		{ 251, "Cerrar", "Close" },
+		{ 297, "Dar",    "Give"  },
+		{ 0, 0, 0 }
 	};
 	uint8_t *p = (uint8_t *)_mem._vga + 156 * 320;
 	readData(p, 219, 0x1E0, 3840);
-	for (int i = 0; verbs[i].name; ++i) {
+	for (int i = 0; verbs[i].x != 0; ++i) {
 		_script.push(verbs[i].x);
 		_script.push(156);
 		_script.push(0xFFF2);
-		const int count = strlen(verbs[i].name);
+		const char *name = verbs[i].nameSp;
+		if (_useTxtBin && _textOffsetsCount != 0) {
+			name = verbs[i].nameEn;
+		}
+		const int count = strlen(name);
 		_mem._dataSeg[16] = count;
-		memcpy(_mem._dataSeg + 17, verbs[i].name, count);
+		memcpy(_mem._dataSeg + 17, name, count);
 		_script.push(_script._segs[3]);
 		_script.push(16);
 		_script.push(0xA000);
@@ -274,27 +283,40 @@ static void dumpPascalString(const uint8_t *str) {
 }
 
 void Game::loadTexts() {
+	static const struct {
+		int offset;
+		int count;
+		int len;
+	} offsets[] = {
+		{      0,   3,  7 * 2 },
+		{   0x2A,  35, 31 * 2 },
+		{  0x8BA, 250, 51 * 2 },
+		{ 0x6CA4,   9, 12 * 2 },
+		{     -1,   0,      0 }
+	};
 	uint8_t *p = (uint8_t *)_mem.getPtr(DATA_SEG, 0x5EE6);
-	readPatchData(p, 219, 0x10E0, 28028);
-	for (int i = 0; i < 28028; ++i) {
-		p[i] -= 0x6D;
+	if (_useTxtBin && _textOffsetsCount != 0) {
+		for (int j = 0; offsets[j].offset != -1; ++j) {
+			_txt.seek(4 + 8 * j);
+			const int count = seekTextHelper();
+			uint8_t *src = p + offsets[j].offset;
+			for (int i = 0; i < count; ++i) {
+				readText(src, offsets[j].len);
+			}
+		}
+	} else {
+		readData(p, 219, 0x10E0, 28028);
+		for (int i = 0; i < 28028; ++i) {
+			p[i] -= 0x6D;
+		}
 	}
 	if (_debug) {
-		const uint8_t *src = p;
-		for (int i = 0; i < 3; ++i, src += 7 * 2) {
-			dumpPascalString(src);
-		}
-		src = &p[0x2A];
-		for (int i = 0; i < 35; ++i, src += 31 * 2) {
-			dumpPascalString(src);
-		}
-		src = &p[0x8BA];
-		for (int i = 0; i < 250; ++i, src += 51 * 2) {
-			dumpPascalString(src);
-		}
-		src = &p[0x6CA4];
-		for (int i = 0; i < 9; ++i, src += 12 * 2) {
-			dumpPascalString(src);
+		for (int j = 0; offsets[j].offset != -1; ++j) {
+			const uint8_t *src = p + offsets[j].offset;
+			for (int i = 0; i < offsets[j].count; ++i) {
+				dumpPascalString(src);
+				src += offsets[j].len;
+			}
 		}
 	}
 }
@@ -412,23 +434,6 @@ static void decodeRoomString(File &f, uint8_t *dst, int sz) {
 	}
 }
 
-void Game::readPatchData(void *dst, int seg, int ptr, int size) {
-	if (_patchOffsetsCount != 0) {
-		for (int i = 0; i < _patchOffsetsCount; ++i) {
-			if (_patchOffsets[i].seg == seg && _patchOffsets[i].ptr == ptr) {
-				_patch.seek(_patchOffsets[i].offset);
-fprintf(stdout, "patch cseg%03d:%04X size %d,%d\n", seg, ptr, size, _patchOffsets[i].size);
-				if (_patchOffsets[i].size < size) {
-					size = _patchOffsets[i].size;
-				}
-				_patch.read(dst, size);
-				return;
-			}
-		}
-	}
-	readData(dst, seg, ptr, size);
-}
-
 void Game::readData(void *dst, int seg, int ptr, int size) {
 	_exe._f.seek(_exe.getSegmentInfo(seg)->offset + ptr);
 	_exe._f.read(dst, size);
@@ -436,6 +441,37 @@ void Game::readData(void *dst, int seg, int ptr, int size) {
 
 void Game::seekData(int seg, int ptr) {
 	_exe._f.seek(_exe.getSegmentInfo(seg)->offset + ptr);
+}
+
+int Game::seekTextHelper() {
+	const int count = _txt.readUint16LE();
+	_txt.readUint16LE(); // size
+	const uint32_t offset = _txt.readUint32LE();
+	_txt.seek(offset);
+	return count;
+}
+
+int Game::seekRoomText(int seg, int ptr, int index) {
+	for (int i = 0; i < _textOffsetsCount; ++i) {
+		if (_textOffsets[i].seg == seg && _textOffsets[i].ptr == ptr) {
+			_txt.seek(_textOffsets[i].offset + index * 8);
+			return seekTextHelper();
+		}
+	}
+	fprintf(stderr, "Unable to find txt cseg%03d:%04X\n", seg, ptr);
+	return 0;
+}
+
+void Game::readText(uint8_t *dst, int pitch) {
+	const int index = _txt.readByte();
+	const int len = _txt.readByte();
+	dst += pitch * index;
+	dst[0] = len;
+	_txt.read(dst + 1, len);
+	if (_debug) {
+		fprintf(stdout, "Game::readText() index %d len %d\n", index, len);
+		dumpPascalString(dst);
+	}
 }
 
 void Game::loadRoomData(int num) {
@@ -511,14 +547,18 @@ void Game::loadRoomData(int num) {
 	// txt
 	size = READ_LE_UINT16(ptr + 4);
 	if (size != 0) {
-		seekData(READ_LE_UINT16(ptr), READ_LE_UINT16(ptr + 2));
+		int txtseg = READ_LE_UINT16(ptr);
+		int txtptr = READ_LE_UINT16(ptr + 2);
+		seekData(txtseg, txtptr);
 		const bool skipObjectNames = (size & 0x8000) != 0;
 		size &= ~0x8000;
 		if (skipObjectNames) {
 			fprintf(stderr, "WARNING: Skipping room object names\n");
 		} else {
 			_exe._f.read(_mem.getPtr(DATA_SEG, 0xD966), 320);
+			txtptr += 320;
 			_exe._f.read(_mem.getPtr(DATA_SEG, 0xDAA6), 432);
+			txtptr += 432;
 			uint8_t *_roomObjectNames = (uint8_t *)_mem.getPtr(DATA_SEG, 0xCC62);
 			for (int i = 0; i < 20; ++i) {
 				_roomObjectNames[i * 62] = 0;
@@ -539,6 +579,12 @@ void Game::loadRoomData(int num) {
 					}
 				}
 				code = _exe._f.readByte();
+			}
+			if (_useTxtBin && _textOffsetsCount != 0) {
+				const int count = seekRoomText(txtseg, txtptr, 0);
+				for (int i = 0; i < count; ++i) {
+					readText(_roomObjectNames, 62);
+				}
 			}
 		}
 		uint8_t *_globalDialogueTexts = (uint8_t *)_mem.getPtr(DATA_SEG, 0x67A0);
@@ -561,6 +607,12 @@ void Game::loadRoomData(int num) {
 				}
 			}
 			code = _exe._f.readByte();
+		}
+		if (_useTxtBin && _textOffsetsCount != 0) {
+			const int count = seekRoomText(txtseg, txtptr, 1);
+			for (int i = 0; i < count; ++i) {
+				readText(_globalDialogueTexts, 102);
+			}
 		}
 	}
 }

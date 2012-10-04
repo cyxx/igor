@@ -38,10 +38,9 @@ struct CodeOffset {
 	}
 };
 
-struct PatchOffset {
+struct TextOffset {
 	uint16_t seg, ptr;
 	uint32_t offset;
-	int size;
 };
 
 enum {
@@ -52,13 +51,13 @@ enum {
 
 #define MAX_PART_OFFSETS 256
 #define MAX_MAIN_OFFSETS 384
-#define MAX_PATCH_OFFSETS 128
+#define MAX_TEXT_OFFSETS 128
 
 struct Game {
 
 	bool _quit;
 	SegmentExecutable _exe;
-	File _patch;
+	File _txt;
 	const char *_dataPath;
 	Memory _mem;
 	Mixer _mix;
@@ -69,8 +68,8 @@ struct Game {
 	int _partOffsetsCount;
 	CodeOffset _mainOffsets[MAX_MAIN_OFFSETS];
 	int _mainOffsetsCount;
-	PatchOffset _patchOffsets[MAX_PATCH_OFFSETS];
-	int _patchOffsetsCount;
+	TextOffset _textOffsets[MAX_TEXT_OFFSETS];
+	int _textOffsetsCount;
 	int _codePos, _codeSize;
 	int _mainPos;
 	int _partPos;
@@ -102,9 +101,11 @@ struct Game {
 	void unloadPart();
 	void loadPart(int num);
 	void registerTraps();
-	void readPatchData(void *dst, int seg, int ptr, int size);
 	void readData(void *dst, int seg, int ptr, int size);
 	void seekData(int seg, int ptr);
+	int seekTextHelper();
+	int seekRoomText(int seg, int ptr, int index);
+	void readText(uint8_t *dst, int pitch);
 	void loadRoomData(int num);
 	void loadAnimData(int num);
 	void runFuncCode(int seg, int ptr);

@@ -1,7 +1,5 @@
 
-# PATH=/home/gmo/mingw32msvc/bin:$PATH make -f Makefile.mingw
-
-MINGW_DIR = /home/gmo/mingw32msvc
+MINGW_DIR = /opt/mingw32msvc
 
 SDL_CFLAGS = `$(MINGW_DIR)/bin/sdl-config --cflags`
 SDL_LIBS = `$(MINGW_DIR)/bin/sdl-config --static-libs`
