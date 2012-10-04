@@ -1007,9 +1007,8 @@ static void fixUpCode() {
 			}
 		}
 		if (j == 4) {
-			static const uint8_t pat0[] = { op_mov | 0x80, t_imm, 8, 0, t_reg, 0, 'w' };
 			static const uint8_t pat3[] = { op_int, t_imm, 0x33, 0 };
-			if (memcmp(insn[0].code, pat0, sizeof(pat0)) == 0 && memcmp(insn[3].code, pat3, sizeof(pat3)) == 0) {
+			if (memcmp(insn[3].code, pat3, sizeof(pat3)) == 0) {
 				fprintf(stdout, "Fixing 'set_mouse_vertical_range' at 0x%06X (cseg%02d:%04X)\n", insn[0].addr, insn[0].seg, insn[0].ptr);
 				emit_nop(insn[0]);
 				const int y1 = insn[1].code[2] + (insn[1].code[3] << 8);
@@ -1017,6 +1016,33 @@ static void fixUpCode() {
 				const int y2 = insn[2].code[2] + (insn[2].code[3] << 8);
 				emit_pushimm(insn[2], y2);
 				emit_call(insn[3], 999, trap_setMouseRange);
+				i += 4;
+				continue;
+			}
+		}
+		++i;
+	}
+	// lds.w     r2.w, s2:r5.w+6
+	// mov.b     r0.b.l, s2:r5.w+10
+	// mov.w     r0.b.h, 0x25
+	// int       0x21
+	static const uint8_t ops_fix11[] = { op_lds, op_mov, op_mov, op_int };
+	i = 0;
+	while (i < _instructionsCount) {
+		Instruction *insn = &_instructionsBuf[i];
+		int j = 0;
+		for (; j < 4; ++j) {
+			if ((insn[j].code[0] & 0x7F) != ops_fix11[j]) {
+				break;
+			}
+		}
+		if (j == 4) {
+			static const uint8_t pat3[] = { op_int, t_imm, 0x21, 0 };
+			if (memcmp(insn[3].code, pat3, sizeof(pat3)) == 0) {
+				fprintf(stdout, "Fixing 'int 0x21' at 0x%06X (cseg%02d:%04X)\n", insn[0].addr, insn[0].seg, insn[0].ptr);
+				for (j = 0; j < 4; ++j) {
+					emit_nop(insn[j]);
+				}
 				i += 4;
 				continue;
 			}
