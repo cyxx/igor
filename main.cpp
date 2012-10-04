@@ -197,13 +197,14 @@ int main(int argc, char *argv[]) {
 	cursor.setScale(g_u, g_v);
 	Texture tex;
 	Texture::init();
+	bool quit = false;
 	while (stub->doTick() == 0) {
 		SDL_Event ev;
 		while (SDL_PollEvent(&ev)) {
 			switch (ev.type) {
 			case SDL_QUIT:
-				stub->quit();
-				return 0;
+				quit = true;
+				break;
 			case SDL_VIDEORESIZE:
 				g_w = ev.resize.w;
 				g_h = ev.resize.h;
@@ -232,6 +233,9 @@ int main(int argc, char *argv[]) {
 				break;
 			}
 		}
+		if (quit) {
+			break;
+		}
 		stub->draw();
 		tex.setPalette(buf.pal);
 		tex.uploadData(buf.ptr, buf.w, buf.h);
@@ -242,5 +246,8 @@ int main(int argc, char *argv[]) {
 		SDL_GL_SwapBuffers();
 		SDL_Delay(10);
 	}
+	SDL_PauseAudio(1);
+	stub->quit();
+	SDL_Quit();
 	return 0;
 }
