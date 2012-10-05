@@ -137,6 +137,7 @@ struct Game {
 	void trap_setPaletteRange(int argc, int *argv);
 	void trap_setPalette(int argc, int *argv);
 	void trap_quitGame(int argc, int *argv);
+	void trap_setCursorPos(int argc, int *argv);
 	void trap_showCursor(int argc, int *argv);
 	void trap_hideCursor(int argc, int *argv);
 	void trap_setPalette_208_32(int argc, int *argv);

@@ -651,6 +651,7 @@ static const Trap _traps[] = {
 	{ 221, 0x2315, &Game::trap_setPaletteRange, "ii", 2 },
 	{ 221, 0x21DA, &Game::trap_setPalette, "", 0 },
 	{ 221, 0x273B, &Game::trap_quitGame, "", 0 },
+	{ 221, 0x2813, &Game::trap_setCursorPos, "", 0 },
 	{ 222, 0x2264, &Game::trap_showCursor, "", 0 },
 	{ 222, 0x229F, &Game::trap_hideCursor, "", 0 },
 	{ 228, 0x0002, &Game::trap_setPalette_208_32, "", 0 },

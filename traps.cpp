@@ -71,6 +71,9 @@ void Game::trap_quitGame(int argc, int *argv) {
 	_quit = true;
 }
 
+void Game::trap_setCursorPos(int argc, int *argv) {
+}
+
 void Game::trap_showCursor(int argc, int *argv) {
 	_mem._dataSeg[0x3209] = 1;
 	_mem._dataSeg[0xEAB9] = 1;
