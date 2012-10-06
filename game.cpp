@@ -886,18 +886,14 @@ void Game::setMousePos(int x, int y) {
 }
 
 void Game::setMouseButton(int num, int pressed) {
+	if (num != 0) {
+		return;
+	}
 	if (pressed == 1) {
-		switch (num) {
-		case 0:
-			_mem._dataSeg[0xEAB4] = 1;
-			break;
-		case 1:
-			_mem._dataSeg[0xEAB5] = 1;
-			break;
-		}
-		_input |= 1 << num;
+		_mem._dataSeg[0xEAB4] = 1;
+		_input = 1;
 	} else {
-		_input &= ~(1 << num);
+		_input = 0;
 	}
 }
 
