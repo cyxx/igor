@@ -109,7 +109,7 @@ struct Script {
 	void movstr(int w);
 	void stostr(int w);
 	void dump();
-	void setflags(int res, uint16_t opL, uint16_t opR);
+	void setflags(int b, int res, uint16_t opL, uint16_t opR);
 	int executeOpcode(const uint8_t *code, int pos);
 };
 

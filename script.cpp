@@ -271,7 +271,11 @@ void Script::dump() {
 	fprintf(stdout, "_f=0x%02X\n", _f);
 }
 
-void Script::setflags(int res, uint16_t opL, uint16_t opR) {
+void Script::setflags(int b, int res, uint16_t opL, uint16_t opR) {
+	if (b) {
+		opL <<= 8;
+		opR <<= 8;
+	}
 	_f = 0;
 	if (res == 0) {
 		_f |= k_zf;
@@ -350,7 +354,7 @@ if (_debug) {
 				operand(b, code, pos2, opL);
 				const int res = arith(opL, opR, opcode);
 				assign(b, code, pos2, res);
-				setflags(res, opL, opR);
+				setflags(b, res, opL, opR);
 			}
 		}
 		break;
@@ -423,8 +427,8 @@ if (_debug) {
 			const int pos2 = operand(b, code, pos + 2, opR);
 			operand(b, code, pos2, opL);
 			const int res = opL - opR;
-			setflags(res, opL, opR);
-if (_debug) fprintf(stdout, "op_cmp(%d,%d) _f %d\n", opL, opR, _f);
+			setflags(b, res, opL, opR);
+if (_debug) fprintf(stdout, "op_cmp(%d,%d) _f %d byte %d\n", opL, opR, _f, b);
 		}
 		break;
 	case op_test: {
@@ -432,7 +436,7 @@ if (_debug) fprintf(stdout, "op_cmp(%d,%d) _f %d\n", opL, opR, _f);
 			const int pos2 = operand(b, code, pos + 2, opR);
 			operand(b, code, pos2, opL);
 			const int res = opL & opR;
-			setflags(res, opL, opR);
+			setflags(b, res, opL, opR);
 if (_debug) fprintf(stdout, "op_test(%d,%d) _f %d\n", opL, opR, _f);
 		}
 		break;
