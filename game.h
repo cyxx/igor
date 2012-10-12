@@ -123,6 +123,7 @@ struct Game {
 
 	void cheat_exitMaze();
 
+	void clearPalette();
 	void sub_209_0002();
 	void sub_221_273B();
 	void sub_224_0002(int seg, int ptr);

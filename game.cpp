@@ -70,7 +70,7 @@ void Game::init(int num) {
 	loadIgorFrames();
 	loadVerbs();
 	loadTexts();
-	runFuncCode(221, 0x21FA); // setup_default_palette
+	clearPalette();
 	runFuncCode(222, 0x3C2B); // set_main_actions
 	fixUpData();
 	_mem.setPart(num);
@@ -487,7 +487,6 @@ void Game::loadRoomData(int num) {
 			_exe._f.read(pal, 0x240);
 			memcpy(pal + 0x240, _mem.getPtr(DATA_SEG, 0xEA5E), 0x30);
 		} else {
-			size &= ~0x8000;
 			_exe._f.read(pal, size);
 		}
 	}

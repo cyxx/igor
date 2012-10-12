@@ -38,7 +38,7 @@ Only higher level functions (palette, display, inputs) have been
 rewritten (these are referred as 'traps' in the source code).
 
 Current issues and missing features :
-- blitting and palette issues with Igor sprite
+- blitting issues with Igor sprite
 - no ending credits (parts 91 to 97)
 
 Contact:

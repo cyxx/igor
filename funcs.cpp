@@ -4,6 +4,14 @@
 #include "game.h"
 #include "memory.h"
 
+void Game::clearPalette() { // sub_221_21FA
+	memset(_mem._dataSeg + 0xE45E, 0, 255 * 3);
+	for (int i = 0; i < 3; ++i) {
+		_mem._dataSeg[0xE45E + 255 * 3 + i] = 0x3F;
+	}
+	trap_setPalette(0, 0);
+}
+
 void Game::sub_209_0002() {
 	uint8_t buf[206 * 13];
 	readData(buf, 209, 0x13BE, sizeof(buf));
