@@ -35,7 +35,9 @@ struct MixerChannel_Voc : MixerChannel {
 		_f.seek(offset);
 		uint8_t buf[26];
 		_f.read(buf, sizeof(buf));
-		assert(memcmp(buf, "Creative Voice File", 19) == 0);
+		if (memcmp(buf, "Creative Voice File", 19) != 0) {
+			return false;
+		}
 		const int size = READ_LE_UINT16(buf + 20);
 		assert(size == sizeof(buf));
 		_fileOffset = offset + sizeof(buf);
