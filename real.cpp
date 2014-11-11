@@ -33,7 +33,7 @@ static float readReal(uint16_t a, uint16_t b, uint16_t c) {
 		const float f = decodeReal(a, b, c);
 		return f;
 	}
-	const uint8_t p[] = { b & 255, b >> 8, c & 255, c >> 8 };
+	const uint8_t p[] = { uint8_t(b & 255), uint8_t(b >> 8), uint8_t(c & 255), uint8_t(c >> 8) };
 	float f;
 	memcpy(&f, p, sizeof(uint32_t));
 	return f;

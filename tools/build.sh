@@ -1,10 +1,15 @@
 #!/bin/sh
+set -x
 
 cd decode_igor
+mkdir -p assets/
+mkdir -p code/
+mkdir -p dump/
 ./decode_igor ../../__/data_sp_cdrom ../spa_cd_funcs.txt
 cd ..
 
 cd compile_igor
+mkdir -p out/
 rm -f *.bin
 ./compile_igor --main ../decode_igor/code/001_08B7.asm ../decode_igor/code/222_2A6A.asm
 while read part seg ptr comment; do
