@@ -65,7 +65,7 @@ int Script::assign(int b, const uint8_t *code, int pos, uint16_t value) {
 		break;
 	default:
 		if ((mask & t_seg) == 0) {
-			fprintf(stderr, "Script::assign() invalid operand mask %d\n", mask);
+			snprintf(g_err, sizeof__g_err, "Script::assign() invalid operand mask %d\n", mask);
 			exit(1);
 		}
 		i = code[pos++];
@@ -100,7 +100,7 @@ int Script::operand(int b, const uint8_t *code, int pos, uint16_t &value) {
 		break;
 	default:
 		if ((mask & t_seg) == 0) {
-			fprintf(stderr, "Script::operand() invalid operand mask %d\n", mask);
+			snprintf(g_err, sizeof__g_err, "Script::operand() invalid operand mask %d\n", mask);
 			exit(1);
 		}
 		i = code[pos++];
@@ -129,7 +129,7 @@ if (_debug) fprintf(stdout, "Script::pop value %d offset %d\n", value, sp() );
 
 void Script::enter(int pos, uint32_t addr) {
 	if (_callsCount >= MAX_CALL_STACK) {
-		fprintf(stderr, "Script::enter() calls count overflow\n");
+		snprintf(g_err, sizeof__g_err, "Script::enter() calls count overflow\n");
 		exit(1);
 	}
 	_regs[reg_sp].val.w -= _callLocals;
@@ -171,7 +171,7 @@ bool Script::condition(bool no, char cmp, bool zero) {
 		res = false;
 		break;
 	default:
-		fprintf(stderr, "Script::condition() unimplemented cond '%d %c %d'\n", no, cmp, zero);
+		snprintf(g_err, sizeof__g_err, "Script::condition() unimplemented cond '%d %c %d'\n", no, cmp, zero);
 		exit(1);
 	}
 	if (zero && !res) {
@@ -220,7 +220,7 @@ int Script::arith(uint16_t valL, uint16_t valR, int op) {
 		res = valL >> valR;
 		break;
 	default:
-		fprintf(stderr, "Script::arith() unimplemented op %d\n", op);
+		snprintf(g_err, sizeof__g_err, "Script::arith() unimplemented op %d\n", op);
 		exit(1);
 	}
 	return res;
@@ -363,7 +363,7 @@ if (_debug) {
 			uint16_t opL;
 			const int pos2 = operand(b, code, pos + 2, opL);
 			if (code[pos2] != t_reg) {
-				fprintf(stderr, "invalid op_mul/op_div mask %d\n", code[pos2]);
+				snprintf(g_err, sizeof__g_err, "invalid op_mul/op_div mask %d\n", code[pos2]);
 				exit(1);
 			}
 			const int i = code[pos2 + 1];
@@ -379,7 +379,7 @@ if (_debug) {
 				break;
 			case op_div:
 				if (opL == 0) {
-					fprintf(stderr, "op_div by 0");
+					snprintf(g_err, sizeof__g_err, "op_div by 0");
 					exit(1);
 				}
 				if (b) {
@@ -408,7 +408,7 @@ if (_debug) {
 				break;
 			case op_div2:
 				if (opL == 0) {
-					fprintf(stderr, "op_div2 by 0");
+					snprintf(g_err, sizeof__g_err, "op_div2 by 0");
 					exit(1);
 				}
 				if (b) {
@@ -453,7 +453,7 @@ if (_debug) fprintf(stdout, "op_test(%d,%d) _f %d\n", opL, opR, _f);
 	case op_lds: {
 			static const int segs[] = { seg_es, seg_ds };
 			if ((code[pos + 2] & t_seg) == 0) {
-				fprintf(stderr, "invalid op_les mask %d\n", code[pos + 2]);
+				snprintf(g_err, sizeof__g_err, "invalid op_les mask %d\n", code[pos + 2]);
 				exit(1);
 			}
 			const int i = code[pos + 3];
@@ -466,7 +466,7 @@ if (_debug) fprintf(stdout, "op_test(%d,%d) _f %d\n", opL, opR, _f);
 		break;
 	case op_lea: {
 			if ((code[pos + 2] & t_seg) == 0) {
-				fprintf(stderr, "invalid op_lea mask %d\n", code[pos + 2]);
+				snprintf(g_err, sizeof__g_err, "invalid op_lea mask %d\n", code[pos + 2]);
 				exit(1);
 			}
 			uint16_t offset;
@@ -522,7 +522,7 @@ if (_debug) fprintf(stdout, "op_test(%d,%d) _f %d\n", opL, opR, _f);
 				strOp = &Script::stostr;
 				break;
 			default:
-				fprintf(stderr, "unhandled op_str '%c'\n", code[pos + 2]);
+				snprintf(g_err, sizeof__g_err, "unhandled op_str '%c'\n", code[pos + 2]);
 				exit(1);
 			}
 			if (!repeat) {
@@ -544,7 +544,7 @@ if (_debug) fprintf(stdout, "op_test(%d,%d) _f %d\n", opL, opR, _f);
 		break;
 	case op_call2: {
 			if ((code[pos + 2] & t_seg) == 0) {
-				fprintf(stderr, "invalid op_call2 mask %d\n", code[pos + 2]);
+				snprintf(g_err, sizeof__g_err, "invalid op_call2 mask %d\n", code[pos + 2]);
 				exit(1);
 			}
 			const int i = code[pos + 3];
@@ -563,7 +563,7 @@ if (_debug) fprintf(stdout, "op_call2 %d:%x locals %d %d:%x\n", _segs[i], ptr, _
 		}
 		break;
 	default:
-		fprintf(stderr, "Script::executeOpcode() unimplemented opcode %d\n", opcode);
+		snprintf(g_err, sizeof__g_err, "Script::executeOpcode() unimplemented opcode %d\n", opcode);
 		exit(1);
 	}
 	return pos + 1 + size;

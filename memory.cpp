@@ -107,7 +107,7 @@ if (_debug) fprintf(stdout, "Memory::getPtr seg %d offset %04X\n", seg, offset);
 			return (uint8_t *)_ptrs[seg - 256] + offset;
 		}
 	}
-	fprintf(stderr, "Unimplemented Memory::getPtr %d 0x%X\n", seg, offset);
+	snprintf(g_err, sizeof__g_err, "Unimplemented Memory::getPtr %d 0x%X", seg, offset);
 	exit(1);
 	return 0;
 }
