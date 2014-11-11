@@ -188,6 +188,7 @@ int main(int argc, char *argv[]) {
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	g_w = buf.w * 2;
 	g_h = buf.h * 2;
+	g_h = g_w * 3 / 4;
 	SDL_SetVideoMode(g_w, g_h, 0, SDL_OPENGL | SDL_RESIZABLE);
 	g_u = buf.w / (float)g_w;
 	g_v = buf.h / (float)g_h;
