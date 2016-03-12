@@ -17,6 +17,7 @@ struct Texture {
 
 	void uploadData(const uint8_t *data, int w, int h);
 	void setPalette(const uint8_t *data);
+	void draw(int w, int h);
 
 	static void init();
 };

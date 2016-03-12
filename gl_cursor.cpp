@@ -1,5 +1,9 @@
 
+#ifdef USE_GLES
+#include <GLES/gl.h>
+#else
 #include <SDL_opengl.h>
+#endif
 #include <string.h>
 #include "gl_cursor.h"
 
@@ -73,7 +77,7 @@ void Cursor::setScale(float sx, float sy) {
 
 void Cursor::draw() {
 	if (_tex != (GLuint)-1) {
-		glColor3f(1., 1., 1.);
+		glColor4f(1., 1., 1., 1.);
 		glBindTexture(GL_TEXTURE_2D, _tex);
 		const int x1 = _xPos - 8 * _xScale;
 		const int x2 = _xPos + 8 * _xScale;
@@ -83,6 +87,23 @@ void Cursor::draw() {
 		const float u2 = (_currentCursor + 1) / (float)MAX_CURSORS;
 		const float v1 = 0.;
 		const float v2 = 1.;
+#ifdef USE_GLES
+		const GLfloat vertices[] = {
+			x1, y2, 0,
+			x1, y1, 0,
+			x2, y1, 0,
+			x2, y2, 0
+		};
+		const GLfloat uv[] = {
+			u1, v1,
+			u1, v2,
+			u2, v2,
+			u2, v1
+		};
+		glVertexPointer(3, GL_FLOAT, 0, vertices);
+		glTexCoordPointer(2, GL_FLOAT, 0, uv);
+		glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+#else
 		glBegin(GL_QUADS);
 			glTexCoord2f(u1, v1);
 			glVertex2i(x1, y1);
@@ -93,6 +114,7 @@ void Cursor::draw() {
 			glTexCoord2f(u1, v2);
 			glVertex2i(x1, y2);
 		glEnd();
+#endif
 	}
 	++_drawCounter;
 	if (_drawCounter == 8) {

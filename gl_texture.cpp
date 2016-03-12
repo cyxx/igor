@@ -3,7 +3,11 @@
  * Copyright (C) 2007-2011 Gregory Montoir (cyx@users.sourceforge.net)
  */
 
+#ifdef USE_GLES
+#include <GLES/gl.h>
+#else
 #include <SDL_opengl.h>
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -96,4 +100,49 @@ void Texture::setPalette(const uint8_t *data) {
 //		r = g = b = i;
 		_8to565[i] = ((r >> 3) << 11) | ((g >> 2) << 5) | (b >> 3);
 	}
+}
+
+#ifndef USE_GLES
+static void emitQuadTex(int x1, int y1, int x2, int y2, GLfloat u1, GLfloat v1, GLfloat u2, GLfloat v2) {
+	glBegin(GL_QUADS);
+		glTexCoord2f(u1, v1);
+		glVertex2i(x1, y1);
+		glTexCoord2f(u2, v1);
+		glVertex2i(x2, y1);
+		glTexCoord2f(u2, v2);
+		glVertex2i(x2, y2);
+		glTexCoord2f(u1, v2);
+		glVertex2i(x1, y2);
+	glEnd();
+}
+#endif
+
+void Texture::draw(int w, int h) {
+	const int x1 = 0;
+	const int y1 = 0;
+	const int x2 = x1 + w;
+	const int y2 = y1 + h;
+	const float u1 = 0.;
+	const float v1 = 0.;
+	const float u2 = _u;
+	const float v2 = _v;
+#ifdef USE_GLES
+	const GLfloat vertices[] = {
+		x1, y2, 0,
+		x1, y1, 0,
+		x2, y1, 0,
+		x2, y2, 0
+	};
+	const GLfloat uv[] = {
+		u1, v1,
+		u1, v2,
+		u2, v2,
+		u2, v1
+	};
+	glVertexPointer(3, GL_FLOAT, 0, vertices);
+	glTexCoordPointer(2, GL_FLOAT, 0, uv);
+	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+#else
+	emitQuadTex(x1, y1, x2, y2, u1, v1, u2, v2);
+#endif
 }
