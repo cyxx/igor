@@ -50,6 +50,11 @@ struct GameStub_Igor : GameStub {
 		buf.cursor = &_g->_cursorVisible;
 		return buf;
 	}
+#ifdef USE_MIXER_IMPL
+	virtual void setMixerImpl(MixerImpl *m) {
+		_g->_mix._impl = m;
+	}
+#else
 	virtual StubMixProc getMixProc(int rate, int fmt, void (*lock)(int)) {
 		StubMixProc mix;
 		memset(&mix, 0, sizeof(mix));
@@ -59,6 +64,7 @@ struct GameStub_Igor : GameStub {
 		_g->_mix._lock = lock;
 		return mix;
 	}
+#endif
 	virtual void queueMousePos(int x, int y) {
 		_g->setMousePos(x, y);
 	}

@@ -6,10 +6,18 @@
 #ifndef STUB_H__
 #define STUB_H__
 
+#ifdef USE_MIXER_IMPL
+
+struct MixerImpl;
+
+#else
+
 struct StubMixProc {
 	void (*proc)(void *data, uint8_t *buf, int size);
 	void *data;
 };
+
+#endif
 
 struct StubBackBuffer {
 	int w, h;
@@ -32,7 +40,11 @@ struct GameStub {
 	virtual int init(int argc, const char *argv[], char *errBuf) = 0;
 	virtual void quit() = 0;
 	virtual StubBackBuffer getBackBuffer() = 0;
+#ifdef USE_MIXER_IMPL
+	virtual void setMixerImpl(MixerImpl *) = 0;
+#else
 	virtual StubMixProc getMixProc(int rate, int fmt, void (*lock)(int)) = 0;
+#endif
 	virtual void queueMousePos(int x, int y) = 0;
 	virtual void queueKey(int keycode, int pressed) = 0;
 	virtual int doTick() = 0;

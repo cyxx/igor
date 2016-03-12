@@ -86,6 +86,7 @@ static void lockAudio(int lock) {
 }
 
 static void setupAudio(GameStub *stub) {
+#ifndef USE_MIXER_IMPL
 	SDL_AudioSpec desired;
 	memset(&desired, 0, sizeof(desired));
 	desired.freq = 22050;
@@ -100,6 +101,7 @@ static void setupAudio(GameStub *stub) {
 			SDL_PauseAudio(0);
 		}
 	}
+#endif
 }
 
 static void queueMouseButton(GameStub *stub, int button, int pressed) {
@@ -133,19 +135,6 @@ static void queueKey(GameStub *stub, int key, int pressed) {
 	}
 }
 
-static void emitQuadTex(int x1, int y1, int x2, int y2, GLfloat u1, GLfloat v1, GLfloat u2, GLfloat v2) {
-	glBegin(GL_QUADS);
-		glTexCoord2f(u1, v1);
-		glVertex2i(x1, y1);
-		glTexCoord2f(u2, v1);
-		glVertex2i(x2, y1);
-		glTexCoord2f(u2, v2);
-		glVertex2i(x2, y2);
-		glTexCoord2f(u1, v2);
-		glVertex2i(x1, y2);
-	glEnd();
-}
-
 static void drawGL(Texture &tex) {
 	glEnable(GL_TEXTURE_2D);
 	glViewport(0, 0, g_w, g_h);
@@ -157,7 +146,7 @@ static void drawGL(Texture &tex) {
 	glClear(GL_COLOR_BUFFER_BIT);
 	if (tex._id != (GLuint)-1) {
 		glBindTexture(GL_TEXTURE_2D, tex._id);
-		emitQuadTex(0, 0, g_w, g_h, 0, 0, tex._u, tex._v);
+		tex.draw(g_w, g_h);
 	}
 }
 
