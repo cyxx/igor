@@ -17,11 +17,13 @@ static double decodeReal(uint16_t a, uint16_t b, uint16_t c) {
 		return 0.;
 	}
 	const int sign = ((c & 0x8000) != 0) ? -1 : 1;
-	const int mbits[] = { a >> 8, b & 0xFF, b >> 8, c & 0xFF, (c >> 8) & 0x7F };
+	const int mbits[] = { (c >> 8) & 0x7F, c & 0xFF, b >> 8, b & 0xFF, a >> 8 };
 	double m = 1.;
-	for (int i = 0; i < 5; ++i) {
-		m += mbits[i] / (double)(1 << (7 + i * 8));
-	}
+	m += mbits[0] / 128.;
+	m += mbits[1] / 32768.;
+	m += mbits[2] / 8388608.;
+	m += mbits[3] / 2147483648.;
+	m += mbits[4] / 549755813888.;
 	const int e = (a & 0xFF) - 129;
 	return sign * ldexp(m, e);
 }
