@@ -1,13 +1,12 @@
 
-MINGW_DIR = /opt/mingw32msvc
+SDL_CFLAGS := `$(MINGW_DIR)/bin/sdl-config --cflags`
+SDL_LIBS   := `$(MINGW_DIR)/bin/sdl-config --static-libs`
 
-SDL_CFLAGS = `$(MINGW_DIR)/bin/sdl-config --cflags`
-SDL_LIBS = `$(MINGW_DIR)/bin/sdl-config --static-libs`
+CXX   := i686-w64-mingw32-g++
+STRIP := i686-w64-mingw32-strip
 
-CXX = i586-mingw32msvc-g++
-STRIP = i586-mingw32msvc-strip
 CXXFLAGS := -O -Wall -MMD $(SDL_CFLAGS) -I$(MINGW_DIR)/include
-LDFLAGS := -L$(MINGW_DIR)/lib
+LDFLAGS  := -L$(MINGW_DIR)/lib
 
 OBJS = file.o disasm.o funcs.o game.o memory.o mixer.o real.o script.o segment_exe.o stub.o traps.o
 DEPS = $(OBJS:.o=.d)
@@ -16,12 +15,14 @@ all: game.exe igor.dll
 
 igor.dll: igor.so
 	$(STRIP) -o $@ $^
+	upx -9 $@
 
 igor.so: $(OBJS)
 	$(CXX) $(LDFLAGS) -shared -o $@ $^ -static -lvorbisidec -logg -lz
 
 game.exe: game
 	$(STRIP) -o $@ $^
+	upx -9 $@
 
 game: gl_cursor.o gl_texture.o main.o
 	$(CXX) $(LDFLAGS) -o $@ $^ -lopengl32 -static $(SDL_LIBS)

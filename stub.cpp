@@ -5,7 +5,7 @@
 
 #ifdef _WIN32
 #include <windows.h>
-#define DYNLIB_SYMBOL DECLSPEC_EXPORT
+#define DYNLIB_SYMBOL __declspec(dllexport)
 #else
 #define DYNLIB_SYMBOL
 #endif
