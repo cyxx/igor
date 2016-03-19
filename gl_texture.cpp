@@ -36,6 +36,7 @@ Texture::Texture() {
 	_id = -1;
 	memset(_8to565, 0, sizeof(_8to565));
 	_buf = 0;
+	_buf2 = 0;
 }
 
 Texture::~Texture() {
@@ -43,6 +44,7 @@ Texture::~Texture() {
 		glDeleteTextures(1, &_id);
 	}
 	free(_buf);
+	free(_buf2);
 }
 
 static int roundPow2(int sz) {
@@ -71,21 +73,37 @@ void Texture::uploadData(const uint8_t *data, int w, int h) {
 	if (!_buf) {
 		_w = _npotTex ? w : roundPow2(w);
 		_h = _npotTex ? h : roundPow2(h);
-		_buf = (uint16_t *)malloc(_w * _h * sizeof(uint16_t));
+		_buf = (uint16_t *)calloc(_w * _h, sizeof(uint16_t));
 		if (!_buf) {
 			return;
 		}
+		_buf2 = (uint16_t *)calloc(_w * _h, sizeof(uint16_t));
 		_u = w / (float)_w;
 		_v = h / (float)_h;
+		convertTexture(data, w, h, _8to565, _buf, _w);
+		if (_buf2) {
+			memcpy(_buf2, _buf, _w * _h * sizeof(uint16_t));
+		}
 		glGenTextures(1, &_id);
 		glBindTexture(GL_TEXTURE_2D, _id);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		convertTexture(data, w, h, _8to565, _buf, _w);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, _w, _h, 0, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, _buf);
 	} else {
-		glBindTexture(GL_TEXTURE_2D, _id);
 		convertTexture(data, w, h, _8to565, _buf, _w);
+		glBindTexture(GL_TEXTURE_2D, _id);
+		if (_buf2) {
+			static const int H = 8;
+			assert((h & (H - 1)) == 0);
+			for (int y = 0; y < h; y += H) {
+				const int offset = y * _w;
+				if (memcmp(_buf + offset, _buf2 + offset, _w * H * sizeof(uint16_t)) != 0) {
+					glTexSubImage2D(GL_TEXTURE_2D, 0, 0, y, _w, H, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, _buf + offset);
+				}
+			}
+			memcpy(_buf2, _buf, _w * _h * sizeof(uint16_t));
+			return;
+		}
 		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, _w, _h, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, _buf);
 	}
 }

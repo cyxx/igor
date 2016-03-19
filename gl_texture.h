@@ -11,6 +11,7 @@ struct Texture {
 	GLfloat _u, _v;
 	uint16_t _8to565[256];
 	uint16_t *_buf;
+	uint16_t *_buf2;
 
 	Texture();
 	~Texture();
