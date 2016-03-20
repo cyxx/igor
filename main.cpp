@@ -163,10 +163,11 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 	atexit(onExit);
-	const char *opts[2];
+	const char *opts[3];
 	opts[0] = (argc >= 2) ? argv[1] : ".";
 	opts[1] = (argc >= 3) ? argv[2] : 0;
-	if (stub->init(2, opts, g_errBuf) != 0) {
+	opts[2] = (argc >= 4) ? argv[3] : ".";
+	if (stub->init(3, opts, g_errBuf) != 0) {
 		return 1;
 	}
 	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);

@@ -59,6 +59,7 @@ struct Game {
 	SegmentExecutable _exe;
 	File _txt;
 	const char *_dataPath;
+	const char *_savePath;
 	Memory _mem;
 	Mixer _mix;
 	Script _script;
@@ -85,7 +86,7 @@ struct Game {
 	bool _cursorVisible;
 	bool _pollSoundPlaying;
 
-	Game(const char *dataPath);
+	Game(const char *dataPath, const char *savePath);
 	~Game();
 
 	void init(int num);

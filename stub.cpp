@@ -23,11 +23,11 @@ struct GameStub_Igor : GameStub {
 	Game *_g;
 
 	virtual int init(int argc, const char *argv[], char *errBuf) {
-		if (argc < 2) {
+		if (argc < 3) {
 			return -1;
 		}
 		g_err = errBuf;
-		_g = new Game(argv[0]);
+		_g = new Game(argv[0], argv[2]);
 		if (argv[1]) {
 			const int part = atoi(argv[1]);
 			_g->init(part);

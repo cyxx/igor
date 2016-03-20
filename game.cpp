@@ -18,8 +18,8 @@ static const bool _debug = false;
 static const bool _useTxtBin = true;
 static const bool _sortCodeOffsets = true;
 
-Game::Game(const char *dataPath)
-	: _dataPath(dataPath), _mix(dataPath) {
+Game::Game(const char *dataPath, const char *savePath)
+	: _dataPath(dataPath), _savePath(savePath), _mix(dataPath) {
 	_quit = false;
 	memset(_buffers, 0, sizeof(_buffers));
 	_trapsCount = 0;
@@ -97,7 +97,7 @@ void Game::loadState(int num) {
 	char name[32];
 	snprintf(name, sizeof(name), "igor.s%02d", num);
 	File f;
-	if (f.open(name, ".", "rb")) {
+	if (f.open(name, _savePath, "rb")) {
 		fprintf(stdout, "Loading state %d\n", num);
 		const int version = f.readUint32LE();
 		if (version == kSaveVersion) {
@@ -113,7 +113,7 @@ void Game::saveState(int num) {
 	char name[32];
 	snprintf(name, sizeof(name), "igor.s%02d", num);
 	File f;
-	if (f.open(name, ".", "wb")) {
+	if (f.open(name, _savePath, "wb")) {
 		fprintf(stdout, "Saving state %d\n", num);
 		f.writeUint32LE(kSaveVersion);
 		f.write(_mem._dataSeg, sizeof(_mem._dataSeg));
