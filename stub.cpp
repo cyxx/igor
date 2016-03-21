@@ -32,7 +32,7 @@ struct GameStub_Igor : GameStub {
 			const int part = atoi(argv[1]);
 			_g->init(part);
 		} else {
-			_g->init(900);
+			_g->init(850); // cutscene introduction
 			_g->loadState(0);
 		}
 		return 0;
