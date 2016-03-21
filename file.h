@@ -22,10 +22,10 @@ struct File_impl {
 };
 
 struct File {
-	File();
-	~File();
-
 	File_impl *_impl;
+
+	File() : _impl(0) {}
+	~File();
 
 	bool open(const char *filename, const char *path, const char *mode = "rb");
 	void close();

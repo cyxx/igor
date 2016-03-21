@@ -7,9 +7,9 @@
 #include <sys/param.h>
 #include "file.h"
 
-struct stdFile : File_impl {
+struct StdioFile_impl : File_impl {
 	FILE *_fp;
-	stdFile() : _fp(0) {}
+	StdioFile_impl() : _fp(0) {}
 	bool open(const char *path, const char *mode) {
 		_ioErr = false;
 		_fp = fopen(path, mode);
@@ -58,17 +58,23 @@ struct stdFile : File_impl {
 	}
 };
 
-File::File() {
-	_impl = new stdFile;
-}
-
 File::~File() {
-	_impl->close();
 	delete _impl;
 }
 
 bool File::open(const char *filename, const char *path, const char *mode) {
-	_impl->close();
+	if (_impl) {
+		_impl->close();
+	}
+#ifdef USE_ASSET_FILEIMPL
+	if (mode[0] == 'r') {
+		extern File_impl *create_AssetFile_impl();
+		_impl = create_AssetFile_impl();
+	}
+#endif
+	if (!_impl) {
+		_impl = new StdioFile_impl;
+	}
 	char filepath[MAXPATHLEN];
 	snprintf(filepath, sizeof(filepath), "%s/%s", path, filename);
 	return _impl->open(filepath, mode);
