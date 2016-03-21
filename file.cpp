@@ -3,19 +3,9 @@
  * Copyright (C) 2007-2011 Gregory Montoir (cyx@users.sourceforge.net)
  */
 
+#include <stdio.h>
+#include <sys/param.h>
 #include "file.h"
-
-struct File_impl {
-	bool _ioErr;
-	File_impl() : _ioErr(false) {}
-	virtual ~File_impl() {}
-	virtual bool open(const char *path, const char *mode) = 0;
-	virtual void close() = 0;
-	virtual uint32_t size() = 0;
-	virtual void seek(int off) = 0;
-	virtual int read(void *ptr, uint32_t len) = 0;
-	virtual int write(void *ptr, uint32_t len) = 0;
-};
 
 struct stdFile : File_impl {
 	FILE *_fp;
@@ -79,7 +69,7 @@ File::~File() {
 
 bool File::open(const char *filename, const char *path, const char *mode) {
 	_impl->close();
-	char filepath[512];
+	char filepath[MAXPATHLEN];
 	snprintf(filepath, sizeof(filepath), "%s/%s", path, filename);
 	return _impl->open(filepath, mode);
 }

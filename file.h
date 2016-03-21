@@ -6,10 +6,20 @@
 #ifndef FILE_H__
 #define FILE_H__
 
-#include <stdio.h>
 #include <stdint.h>
 
-struct File_impl;
+struct File_impl {
+	bool _ioErr;
+	File_impl() : _ioErr(false) {}
+
+	virtual ~File_impl() {}
+	virtual bool open(const char *path, const char *mode) = 0;
+	virtual void close() = 0;
+	virtual uint32_t size() = 0;
+	virtual void seek(int off) = 0;
+	virtual int read(void *ptr, uint32_t len) = 0;
+	virtual int write(void *ptr, uint32_t len) = 0;
+};
 
 struct File {
 	File();
