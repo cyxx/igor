@@ -48,6 +48,7 @@ Game::Game(const char *dataPath, const char *savePath)
 }
 
 Game::~Game() {
+	_txt.close();
 }
 
 void Game::init(int num) {

@@ -17,6 +17,7 @@ SegmentExecutable::SegmentExecutable() {
 }
 
 SegmentExecutable::~SegmentExecutable() {
+	_f.close();
 	_segmentsCount = 0;
 	free(_segments);
 	_segments = 0;

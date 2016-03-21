@@ -30,6 +30,10 @@ struct MixerChannel_Voc : MixerChannel {
 	Frac _sfrac;
 	uint8_t _sbuf;
 
+	~MixerChannel_Voc() {
+		_f.close();
+	}
+
 	virtual bool load(int rate, uint32_t offset) {
 		_rate = rate;
 		_f.seek(offset);
@@ -139,6 +143,7 @@ struct MixerChannel_Vorbis : MixerChannel {
 	int16_t _sbuf[2];
 
 	~MixerChannel_Vorbis() {
+		_f.close();
 		if (_ovf.datasource) {
 			ov_clear(&_ovf);
 		}
