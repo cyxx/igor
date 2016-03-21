@@ -67,7 +67,7 @@ bool File::open(const char *filename, const char *path, const char *mode) {
 		_impl->close();
 	}
 #ifdef USE_ASSET_FILEIMPL
-	if (mode[0] == 'r') {
+	if (mode[0] == 'r' && !path[0]) {
 		extern File_impl *create_AssetFile_impl();
 		_impl = create_AssetFile_impl();
 	}
