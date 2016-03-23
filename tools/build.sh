@@ -23,9 +23,3 @@ cd ..
 rm -f igor.bin
 ./make_igor/make_igor decode_igor/dump/ compile_igor/out/
 mv igor.bin ..
-
-rm -f txt*bin
-cd patch_igor
-./patch_igor ../../__/data_en/IGOR.DAT
-mv txt*bin ../..
-cd ..
