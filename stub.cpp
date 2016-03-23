@@ -30,11 +30,13 @@ struct GameStub_Igor : GameStub {
 		_g = new Game(argv[0], argv[2]);
 		if (argv[1]) {
 			const int part = atoi(argv[1]);
-			_g->init(part);
-		} else {
-			_g->init(850); // cutscene introduction
-			_g->loadState(0);
+			if (part != 0) {
+				_g->init(part);
+				return 0;
+			}
 		}
+		_g->init(850); // cutscene introduction
+		_g->loadState(0);
 		return 0;
 	}
 	virtual void quit() {
