@@ -37,6 +37,7 @@ Game::Game(const char *dataPath)
 	_partNum = 0;
 	memset(_palBuf, 0, sizeof(_palBuf));
 	_palNum = -1;
+	_palDirty = true;
 	_input = 0;
 	_yield = -1;
 	_yMinCursor = 0;
@@ -852,6 +853,7 @@ void Game::out() {
 		assert(_palNum >= 0 && _palNum < 256 * 3);
 		_palBuf[_palNum] = _script._out.value & 255;
 		++_palNum;
+		_palDirty = true;
 		break;
 	}
 }

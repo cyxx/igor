@@ -227,7 +227,10 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 		stub->draw();
-		tex.setPalette(buf.pal);
+		if (*buf.palDirty) {
+			tex.setPalette(buf.palPtr);
+			*buf.palDirty = false;
+		}
 		tex.uploadData(buf.ptr, buf.w, buf.h);
 		drawGL(tex);
 		if (*buf.cursor) {

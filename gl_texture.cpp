@@ -8,6 +8,7 @@
 #else
 #include <SDL_opengl.h>
 #endif
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -56,9 +57,10 @@ static int roundPow2(int sz) {
 }
 
 static void convertTexture(const uint8_t *src, int w, int h, const uint16_t *clut, uint16_t *dst, int dstPitch) {
+	assert((w & 1) == 0);
 	for (int y = 0; y < h; ++y) {
-		for (int x = 0; x < w; ++x) {
-			dst[x] = clut[src[x]];
+		for (int x = 0; x < w; x += 2) {
+			*(uint32_t *)&dst[x] = clut[src[x]] | (clut[src[x + 1]] << 16);
 		}
 		dst += dstPitch;
 		src += w;

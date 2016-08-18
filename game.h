@@ -76,6 +76,7 @@ struct Game {
 	int _partNum;
 	uint8_t _palBuf[256 * 3];
 	int _palNum;
+	bool _palDirty;
 	uint8_t _sBuf[256];
 	uint32_t _randSeed;
 	int _input;

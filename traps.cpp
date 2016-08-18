@@ -59,11 +59,13 @@ void Game::trap_setPaletteRange(int argc, int *argv) {
 	const int end = argv[1] & 255;
 	assert(start >= 0 && start <= end && end < 256);
 	memcpy(_palBuf + start * 3, _mem._dataSeg + 0xE45E + start * 3, (end - start + 1) * 3);
+	_palDirty = true;
 	_script._waitTicks = 1;
 }
 
 void Game::trap_setPalette(int argc, int *argv) {
 	memcpy(_palBuf, _mem._dataSeg + 0xE45E, 256 * 3);
+	_palDirty = true;
 	_script._waitTicks = 1;
 }
 
@@ -242,6 +244,7 @@ void Game::trap_setPaletteColor(int argc, int *argv) {
 		_palBuf[num + i] = argv[1 + i];
 	}
 	_palNum = num + 3;
+	_palDirty = true;
 }
 
 void Game::trap_loadImageData(int argc, int *argv) {

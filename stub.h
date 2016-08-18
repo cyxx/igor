@@ -22,7 +22,8 @@ struct StubMixProc {
 struct StubBackBuffer {
 	int w, h;
 	uint8_t *ptr; // w*h
-	uint8_t *pal; // 256*3
+	uint8_t *palPtr; // 256*3
+	bool *palDirty;
 	bool *cursor;
 };
 
