@@ -11,9 +11,9 @@
 #include "util.h"
 #include "voc.h"
 
-static const bool _dumpCode = true;
-static const bool _dumpAssets = false;
-static const bool _dumpStrings = false;
+static bool _dumpCode = true;
+static bool _dumpAssets = false;
+static bool _dumpStrings = false;
 
 static uint8_t _bufSeg[1 << 16];
 
@@ -425,6 +425,17 @@ static void dumpStrings(int seg, uint8_t *buf, int size, int offset) {
 }
 
 int main(int argc, char *argv[]) {
+	while (argc >= 2) {
+		if (strcmp(argv[1], "-dump-assets") == 0) {
+			_dumpAssets = true;
+		} else if (strcmp(argv[1], "-dump-strings") == 0) {
+			_dumpStrings = true;
+		} else {
+			break;
+		}
+		++argv;
+		--argc;
+	}
 	if (argc >= 2) {
 		File f;
 		if (f.open("IGOR.FSD", argv[1])) {
@@ -489,18 +500,18 @@ int main(int argc, char *argv[]) {
 		const int dataSeg = 231;
 		int size = seg_exe.readSegment(dataSeg, _bufSeg);
 		dumpBin("dseg.231", _bufSeg, size);
-#if 0
-		// code
-		dumpCode(seg_exe, seg_exe._startCS, 0x8B7, 0xFA3);
-		// SET_MAIN_ACTIONS
-		dumpCode(seg_exe, 222, 0x3C2B, 0x3FC5);
-		// actions
-		dumpCode(seg_exe, 222, 0x2A6A, 0x3C2A);
-		// startup logos - part_90
-		dumpCodeRec(seg_exe,   9, 0x3CC2, 0x3EE7);
-		// introduction sequence - part_85
-		dumpCodeRec(seg_exe, 209, 0x0DA4, 0x13BD);
-#endif
+		if (0) {
+			// code
+			dumpCode(seg_exe, seg_exe._startCS, 0x8B7, 0xFA3);
+			// SET_MAIN_ACTIONS
+			dumpCode(seg_exe, 222, 0x3C2B, 0x3FC5);
+			// actions
+			dumpCode(seg_exe, 222, 0x2A6A, 0x3C2A);
+			// startup logos - part_90
+			dumpCodeRec(seg_exe,   9, 0x3CC2, 0x3EE7);
+			// introduction sequence - part_85
+			dumpCodeRec(seg_exe, 209, 0x0DA4, 0x13BD);
+		}
 		if (_dumpCode) {
 			// main + parts
 			dumpMainParts(seg_exe, seg_exe._startCS, 0x8B7, 0xFA3);
