@@ -7,9 +7,6 @@
 #include "overlay_exe.h"
 #include "room.h"
 #include "segment_exe.h"
-extern "C" {
-#include "sha1.h"
-}
 #include "symbols.h"
 #include "util.h"
 #include "voc.h"
@@ -413,18 +410,6 @@ static void dumpStrings(int seg, uint8_t *buf, int size, int offset) {
 		const int ptr1 = start - buf;
 		const int ptr2 = p - buf;
 		fprintf(out, "cseg%03d:%04X-%04X %08X (%3d,%3d) ", seg, ptr1, ptr2, offset + ptr1, count1, count2);
-if (0) {
-		static const int hashLen = 16;
-		assert(start >= buf + hashLen);
-		SHA1_CTX hash;
-		SHA1Init(&hash);
-		SHA1Update(&hash, start - hashLen, hashLen);
-		uint8_t digest[SHA_DIGEST_LENGTH];
-		SHA1Final(digest, &hash);
-		for (int i = 0; i < SHA_DIGEST_LENGTH; ++i) {
-			fprintf(out, "%X%X", digest[i] >> 4, digest[i] & 15);
-		}
-}
 		if (str2 || str) {
 			const int len = str2 ? str2[-1] : str[-1];
 			fprintf(out, "%3d:'", len);
