@@ -36,7 +36,7 @@ void OverlayExecutable::parse() {
 		uint8_t hdr[32];
 		_exe.read(hdr, sizeof(hdr));
 		if (isPascalStub(hdr, stub)) {
-			fprintf(stdout, "stub %d offset 0x%X size %d entries %d (overlay offset 0x%x)\n", _stubsCount, stub.offset, stub.size, stub.count, _exe.tell());
+			fprintf(stdout, "stub %d offset 0x%X size %d (rel %d) entries %d (overlay offset 0x%x)\n", _stubsCount, stub.offset, stub.size, stub.relsize, stub.count, _exe.tell());
 			assert(_stubsCount < MAX_PASCAL_STUBS);
 			_stubs[_stubsCount] = stub;
 			++_stubsCount;

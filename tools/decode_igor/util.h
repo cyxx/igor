@@ -2,6 +2,12 @@
 #ifndef UTIL_H__
 #define UTIL_H__
 
+enum ExecutableType {
+	kUnknownExe,
+	kSegmentExe,
+	kOverlayExe
+};
+
 static inline uint16_t READ_LE_UINT16(const uint8_t *b) {
 	return b[0] | (b[1] << 8);
 }

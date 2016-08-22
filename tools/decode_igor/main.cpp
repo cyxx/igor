@@ -15,6 +15,8 @@ static bool _dumpCode = true;
 static bool _dumpAssets = false;
 static bool _dumpStrings = false;
 
+static ExecutableType _exeType = kUnknownExe;
+
 static uint8_t _bufSeg[1 << 16];
 
 static void dumpBin(const char *name, const uint8_t *data, int dataSize) {
@@ -320,6 +322,15 @@ static void dumpSound(File& f) {
 static void dumpRoom(int num, uint8_t *code, int size) {
 	const uint8_t *end = code + size - 2;
 	while (end >= code) {
+		if (_exeType == kOverlayExe) {
+			if (end[0] == 0x5D && end[1] == 0xCB) { // pop bp, retf
+				const int offset = end + 2 - code;
+				if (size - offset == 64768) {
+					dumpRoomImage(num, code + offset, size);
+				}
+				break;
+			}
+		}
 		if (end[0] == 0xC9 && (end[1] == 0xCB || end[1] == 0xCA)) { // leave, retf
 			int offset = end + 2 - code;
 			if (end[1] == 0xCA) {
@@ -437,6 +448,7 @@ int main(int argc, char *argv[]) {
 		File f;
 		if (f.open("IGOR.FSD", argv[1])) {
 			// floppy version, non-segmented exe
+			_exeType = kOverlayExe;
 			OverlayExecutable ovl_exe;
 			ovl_exe._exe.open("IGOR.EXE", argv[1]);
 			ovl_exe._dat.open("IGOR.DAT", argv[1]);
@@ -458,6 +470,7 @@ int main(int argc, char *argv[]) {
 			}
 			return 0;
 		}
+		_exeType = kSegmentExe;
 		SegmentExecutable seg_exe("IGOR.EXE", argv[1]);
 		seg_exe.parseSegmentsInfo();
 		if (_dumpStrings) {

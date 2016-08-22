@@ -154,3 +154,15 @@ void decodeRoomData(int num, const uint8_t *src, int size) {
 		}
 	}
 }
+
+void dumpRoomImage(int num, const uint8_t *src, int size) {
+	const int h = (size - 768) / 320;
+	char name[32];
+	snprintf(name, sizeof(name), "assets/room%03d.tga", num);
+	TgaFile *tga = tgaOpen(name, 320, h, 24);
+	if (tga) {
+		tgaSetLookupColorTable(tga, src);
+		tgaWritePixelsData(tga, src + 768, 320 * h);
+		tgaClose(tga);
+	}
+}
