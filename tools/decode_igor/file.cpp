@@ -9,7 +9,7 @@ struct File_impl {
 	virtual bool open(const char *path, const char *mode) = 0;
 	virtual void close() = 0;
 	virtual uint32_t size() = 0;
-	virtual void seek(int off) = 0;
+	virtual void seek(int off, int whence) = 0;
 	virtual int tell() = 0;
 	virtual int read(void *ptr, uint32_t len) = 0;
 	virtual int write(const void *ptr, uint32_t len) = 0;
@@ -39,9 +39,9 @@ struct stdFile : File_impl {
 		}
 		return sz;
 	}
-	void seek(int32_t off) {
+	void seek(int32_t off, int whence) {
 		if (_fp) {
-			fseek(_fp, off, SEEK_SET);
+			fseek(_fp, off, whence);
 		}
 	}
 	int tell() {
@@ -100,8 +100,8 @@ uint32_t File::size() {
 	return _impl->size();
 }
 
-void File::seek(int32_t off) {
-	_impl->seek(off);
+void File::seek(int32_t off, int whence) {
+	_impl->seek(off, whence);
 }
 
 int File::tell() {

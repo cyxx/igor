@@ -10,6 +10,7 @@ struct PascalStub {
 	uint32_t offset;
 	uint16_t size, relsize;
 	uint16_t count;
+	uint16_t prevstub;
 };
 
 struct OverlayExecutable {

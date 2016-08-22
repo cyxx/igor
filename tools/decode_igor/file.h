@@ -17,7 +17,7 @@ struct File {
 	void close();
 	bool ioErr() const;
 	uint32_t size();
-	void seek(int off);
+	void seek(int off, int whence = SEEK_SET);
 	int tell();
 	int read(void *ptr, uint32_t len);
 	uint8_t readByte();

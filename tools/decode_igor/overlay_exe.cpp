@@ -10,10 +10,8 @@ static bool isPascalStub(const uint8_t *hdr, PascalStub &stub) {
 		stub.size = READ_LE_UINT16(hdr + 8);
 		stub.relsize = READ_LE_UINT16(hdr + 10);
 		stub.count = READ_LE_UINT16(hdr + 12);
-//		+ 14 // prevstub
-		if (stub.offset < 16 * 1024 * 1024 && stub.size != 0) {
-			return true;
-		}
+		stub.prevstub = READ_LE_UINT16(hdr + 14);
+		return stub.size != 0;
 	}
 	return false;
 }
@@ -29,26 +27,23 @@ void OverlayExecutable::parse() {
 	for (int i = 0; i < relocationSize; ++i) {
 		const int ptr = _exe.readUint16LE();
 		const int seg = _exe.readUint16LE();
-//		printf("segment 0x%X %d\n", seg, ptr);
+//		fprintf(stdout, "relocation 0x%04X:0x%04X\n", seg, ptr);
 	}
 	PascalStub stub;
 	_exe.seek(0x19F0);
-	int counter = 0;
-	int i = 0;
-	while (counter < 16) {
-		uint8_t hdr[16];
+	_stubsCount = 0;
+	while (!_exe.ioErr()) {
+		uint8_t hdr[32];
 		_exe.read(hdr, sizeof(hdr));
 		if (isPascalStub(hdr, stub)) {
-//			fprintf(stdout, "stub %d offset 0x%X size %d\n", i, stub.offset, stub.size);
-			assert(i < MAX_PASCAL_STUBS);
-			_stubs[i] = stub;
-			++i;
-			counter = 0;
-			continue;
+			fprintf(stdout, "stub %d offset 0x%X size %d entries %d (overlay offset 0x%x)\n", _stubsCount, stub.offset, stub.size, stub.count, _exe.tell());
+			assert(_stubsCount < MAX_PASCAL_STUBS);
+			_stubs[_stubsCount] = stub;
+			++_stubsCount;
+			const int jmpSize = ((stub.count * 5) + 15) & ~15;
+			_exe.seek(jmpSize, SEEK_CUR);
 		}
-		++counter;
 	}
-	_stubsCount = i;
 }
 
 int OverlayExecutable::readSegment(int num, uint8_t *data) {
