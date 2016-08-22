@@ -77,12 +77,18 @@ static void decodeMask(const uint8_t *src, uint8_t *dst) {
 	}
 }
 
+static const int kMinRoomDataSize = 320 * 144 + 320 + 432;
+
 void decodeRoomData(int num, const uint8_t *src, int size) {
 	char name[32];
-	if (size < 320 * 144 + 320 + 432) {
+	if (size < kMinRoomDataSize) {
+		fprintf(stdout, "skipping room %d: size is too small %d\n", num, size);
 		return;
 	}
-if (num == 10 || num == 12 || num == 15 || num == 146) return;
+	if (num == 10 || num == 12 || num == 15 || num == 146) {
+		fprintf(stdout, "skipping room %d: no assets\n", num);
+		return;
+	}
 	const uint8_t *end = src + size;
 	// .WLK
 	src += 320 + 432; // _walkXScaleRoom + _walkYScaleRoom
@@ -124,6 +130,7 @@ if (num == 10 || num == 12 || num == 15 || num == 146) return;
 	snprintf(name, sizeof(name), "room%03d.txt", num);
 	File f;
 	if (!f.open(name, "assets", "w")) {
+		fprintf(stderr, "Unable to open '%s'\n", name);
 		return;
 	}
 	static const int indexes[] = { -1, 200 };
