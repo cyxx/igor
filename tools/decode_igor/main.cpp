@@ -328,10 +328,7 @@ static void dumpRoom(int num, uint8_t *code, int size) {
 			char name[16];
 			snprintf(name, sizeof(name), "room.%03d", num);
 			fprintf(stdout, "Room %d size %d\n", num, size - offset);
-			File out;
-			if (out.open(name, "dump", "wb")) {
-				out.write(code + offset, size - offset);
-			}
+			dumpBin(name, code + offset, size - offset);
 			decodeRoomData(num, code + offset, size - offset);
 			break;
 		}
@@ -447,6 +444,11 @@ int main(int argc, char *argv[]) {
 			for (int i = 0; i < ovl_exe._stubsCount; ++i) {
 				const int seg = i;
 				const int size = ovl_exe.readSegment(seg, _bufSeg);
+				if (1) {
+					char name[16];
+					snprintf(name, sizeof(name), "stub.%03d", i);
+					dumpBin(name, _bufSeg, size);
+				}
 				if (_dumpAssets) {
 					dumpRoom(seg, _bufSeg, size);
 				}
