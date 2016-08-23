@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
+#include "detection.h"
 #include "file.h"
 #include "insn_x86.h"
 #include "overlay_exe.h"
@@ -15,6 +16,7 @@ static bool _dumpCode = true;
 static bool _dumpAssets = false;
 static bool _dumpStrings = false;
 
+static GameVersion _gameVersion;
 static ExecutableType _exeType = kUnknownExe;
 
 static uint8_t _bufSeg[1 << 16];
@@ -445,6 +447,7 @@ int main(int argc, char *argv[]) {
 		--argc;
 	}
 	if (argc >= 2) {
+		_gameVersion = (GameVersion)detectGameVersion(argv[1]);
 		File f;
 		if (f.open("IGOR.FSD", argv[1])) {
 			// floppy version, non-segmented exe
