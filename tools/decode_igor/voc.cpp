@@ -7,7 +7,9 @@
 #include "util.h"
 #include "voc.h"
 
-static uint8_t _pcmBuf[8 << 16];
+#define MB(x) ((x) << 20)
+
+static uint8_t _pcmBuf[MB(1)];
 static int _pcmRate, _pcmSize;
 
 static void writeWavPcm(File &f) {
@@ -32,10 +34,20 @@ static void writeWavPcm(File &f) {
 
 static int fixRate(int rate) {
 	static const int rates[] = {
+		38461, 22050,
+		35714, 22050,
+		30303, 22050,
 		22222, 22050,
+		20833, 22050,
+		16393, 11025,
+		15384, 11025,
 		11111, 11025,
 		10989, 11025,
+		 9900, 11025,
 		 8000,  8000,
+		 7936,  8000,
+		 5494,  8000,
+		 4587,  8000,
 		0, 0
 	};
 	for (int i = 0; rates[i]; i += 2) {
@@ -50,6 +62,7 @@ static int fixRate(int rate) {
 
 static void decodeCode_1(File &f, int size) {
 	const int div = 256 - f.readByte();
+	assert(div != 0);
 	_pcmRate = 1000000 / div;
 	const int codec = f.readByte();
 	assert(codec == 0);
@@ -57,6 +70,15 @@ static void decodeCode_1(File &f, int size) {
 	assert(_pcmSize + size <= sizeof(_pcmBuf));
 	f.read(_pcmBuf + _pcmSize, size);
 	_pcmSize += size;
+}
+
+static void decodeCode_3(File &f, int size) {
+	const int samples = f.readUint16LE() + 1;
+	const int div = 256 - f.readByte();
+	assert(div != 0);
+	assert(_pcmSize + samples <= sizeof(_pcmBuf));
+	memset(_pcmBuf + _pcmSize, 0, samples);
+	_pcmSize += samples;
 }
 
 static void decodeCode_5(File &f, int size) {
@@ -86,7 +108,7 @@ void decodeVoc(const char *name, const char *path) {
 	while (!f.ioErr() && !end) {
 		const uint8_t code = f.readByte();
 		int size = f.readUint16LE();
-		size |= ((int)f.readByte()) << 24;
+		size |= (f.readByte() << 16);
 		switch (code) {
 		case 0:
 			end = true;
@@ -94,8 +116,15 @@ void decodeVoc(const char *name, const char *path) {
 		case 1:
 			decodeCode_1(f, size);
 			break;
-		case 5:
+		case 3: // silence
+			decodeCode_3(f, size);
+			break;
+		case 5: // comment
 			decodeCode_5(f, size);
+			break;
+		case 6: // repeat start
+		case 7: // repeat end
+			f.seek(size, SEEK_CUR);
 			break;
 		default:
 			fprintf(stderr, "Unhandled voc code %d size %d\n", code, size);

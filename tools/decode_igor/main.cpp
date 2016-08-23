@@ -471,6 +471,12 @@ int main(int argc, char *argv[]) {
 					dumpStrings(seg, _bufSeg, size, ovl_exe._stubs[seg].offset);
 				}
 			}
+			if (_dumpAssets) {
+				// sound
+				if (f.open("IGOR.FSD", argv[1])) {
+					dumpSound(f);
+				}
+			}
 			return 0;
 		}
 		_exeType = kSegmentExe;
