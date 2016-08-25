@@ -416,20 +416,7 @@ static void dumpStrings(int seg, uint8_t *buf, int size, int offset) {
 			++cur;
 			continue;
 		}
-		FILE *out = stdout;
-		const int ptr1 = start - buf;
-		const int ptr2 = p - buf;
-		fprintf(out, "cseg%03d:%04X-%04X %08X (%3d,%3d) ", seg, ptr1, ptr2, offset + ptr1, count1, count2);
-		if (str2 || str) {
-			const int len = str2 ? str2[-1] : str[-1];
-			fprintf(out, "%3d:'", len);
-			char strBuf[256];
-			decodeRoomString(str2 ? str2 : str, strBuf, len);
-			for (int i = 0; i < len; ++i) {
-				fprintf(out, "%c", strBuf[i]);
-			}
-		}
-		fprintf(out, "'\n");
+		dumpRoomString(seg, start, end);
 		cur = p;
 	}
 }
@@ -482,14 +469,6 @@ int main(int argc, char *argv[]) {
 		_exeType = kSegmentExe;
 		SegmentExecutable seg_exe("IGOR.EXE", argv[1]);
 		seg_exe.parseSegmentsInfo();
-		if (_dumpStrings) {
-			for (int i = 0; i < seg_exe._segmentsCount; ++i) {
-				const int seg = i + 1;
-				const int size = seg_exe.readSegment(seg, _bufSeg);
-				dumpStrings(seg, _bufSeg, size, seg_exe.getSegmentInfo(seg)->offset);
-			}
-			return 0;
-		}
 		if (argc >= 3) {
 			Symbols syms;
 			syms.load(argv[2]);
@@ -553,6 +532,13 @@ int main(int argc, char *argv[]) {
 				const int seg = i + 1;
 				size = seg_exe.readSegment(seg, _bufSeg);
 				dumpRoom(seg, _bufSeg, size);
+			}
+		}
+		if (_dumpStrings) {
+			for (int i = 0; i < seg_exe._segmentsCount; ++i) {
+				const int seg = i + 1;
+				const int size = seg_exe.readSegment(seg, _bufSeg);
+				dumpStrings(seg, _bufSeg, size, seg_exe.getSegmentInfo(seg)->offset);
 			}
 		}
 	}

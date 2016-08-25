@@ -127,6 +127,11 @@ void decodeRoomData(int num, const uint8_t *src, int size) {
 	tgaWritePixelsData(tga, bmp[0], 320 * 144);
 	tgaClose(tga);
 	// dump texts
+	dumpRoomString(num, txt, end);
+}
+
+void dumpRoomString(int num, const uint8_t *txt, const uint8_t *end) {
+	char name[32];
 	snprintf(name, sizeof(name), "room%03d.txt", num);
 	File f;
 	if (!f.open(name, "assets", "w")) {
@@ -137,7 +142,7 @@ void decodeRoomData(int num, const uint8_t *src, int size) {
 	for (int i = 0; i < 2; ++i) {
 		uint8_t code = *txt++;
 		int index = indexes[i];
-		while (code != 0xF6) {
+		while (code != 0xF6 && txt < end) {
 			if (code == 0xF4) {
 				++index;
 			}
