@@ -14,6 +14,7 @@ static const struct {
 	{ 0x3f35ad61, kDemo100, kOverlayExe, "Shareware v1.00" },
 	{ 0xf96e56f1, kDemo110, kOverlayExe, "Shareware v1.10" },
 	{ 0xaa10bf7c, kEngFloppy, kOverlayExe, "English Floppy" },
+	{ 0x4c4d83e5, kSpaCd, kSegmentExe, "Spanish CDROM" },
 	{ -1, 0, 0 }
 };
 
