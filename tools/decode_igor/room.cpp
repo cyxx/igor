@@ -145,6 +145,9 @@ void dumpRoomString(int num, const uint8_t *txt, const uint8_t *end) {
 		while (code != 0xF6 && txt < end) {
 			if (code == 0xF4) {
 				++index;
+			} else if (code == 0xF5) {
+			} else {
+				break;
 			}
 			int len = *txt++;
 			if (len != 0) {
