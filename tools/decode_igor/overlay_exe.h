@@ -19,6 +19,7 @@ struct OverlayExecutable {
 	File _dat;
 	PascalStub _stubs[MAX_PASCAL_STUBS];
 	int _stubsCount;
+	int _exeOffset;
 
 	void parse();
 	int readSegment(int num, uint8_t *data);

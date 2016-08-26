@@ -19,6 +19,7 @@ static bool isPascalStub(const uint8_t *hdr, PascalStub &stub) {
 void OverlayExecutable::parse() {
 	uint8_t buf[0x1C];
 	_exe.read(buf, sizeof(buf));
+	const int paragraphs = READ_LE_UINT16(buf + 8);
 	_startIP = READ_LE_UINT16(buf + 0x14);
 	_startCS = READ_LE_UINT16(buf + 0x16);
 	const int relocationSize = READ_LE_UINT16(buf + 6);
@@ -29,6 +30,7 @@ void OverlayExecutable::parse() {
 		const int seg = _exe.readUint16LE();
 //		fprintf(stdout, "relocation 0x%04X:0x%04X\n", seg, ptr);
 	}
+	assert(paragraphs * 16 == _exe.tell());
 	PascalStub stub;
 	_exe.seek(0x19F0);
 	_stubsCount = 0;
@@ -44,9 +46,17 @@ void OverlayExecutable::parse() {
 			_exe.seek(jmpSize, SEEK_CUR);
 		}
 	}
+	_exeOffset = _exe.tell();
 }
 
 int OverlayExecutable::readSegment(int num, uint8_t *data) {
+	if (num == 0) {
+		const int segSize = _exe.size() - _exeOffset;
+		_exe.seek(_exeOffset);
+		_exe.read(data, segSize);
+		return segSize;
+	}
+	--num;
 	assert(num < _stubsCount);
 	_dat.seek(_stubs[num].offset);
 	_dat.read(data, _stubs[num].size);

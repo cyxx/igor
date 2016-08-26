@@ -349,7 +349,7 @@ static void dumpRoom(int num, uint8_t *code, int size) {
 	}
 }
 
-static void dumpStrings(int seg, uint8_t *buf, int size, int offset) {
+static void dumpStrings(int seg, uint8_t *buf, int size) {
 	static const uint8_t codes[] = { 0xF4, 0, 0xF5, 0 };
 	const uint8_t *end = buf + size;
 	const uint8_t *cur = buf;
@@ -443,7 +443,7 @@ int main(int argc, char *argv[]) {
 			ovl_exe._exe.open("IGOR.EXE", argv[1]);
 			ovl_exe._dat.open("IGOR.DAT", argv[1]);
 			ovl_exe.parse();
-			for (int i = 0; i < ovl_exe._stubsCount; ++i) {
+			for (int i = 0; i <= ovl_exe._stubsCount; ++i) {
 				const int seg = i;
 				const int size = ovl_exe.readSegment(seg, _bufSeg);
 				if (1) {
@@ -455,7 +455,7 @@ int main(int argc, char *argv[]) {
 					dumpRoom(seg, _bufSeg, size);
 				}
 				if (_dumpStrings) {
-					dumpStrings(seg, _bufSeg, size, ovl_exe._stubs[seg].offset);
+					dumpStrings(seg, _bufSeg, size);
 				}
 			}
 			if (_dumpAssets) {
@@ -538,7 +538,7 @@ int main(int argc, char *argv[]) {
 			for (int i = 0; i < seg_exe._segmentsCount; ++i) {
 				const int seg = i + 1;
 				const int size = seg_exe.readSegment(seg, _bufSeg);
-				dumpStrings(seg, _bufSeg, size, seg_exe.getSegmentInfo(seg)->offset);
+				dumpStrings(seg, _bufSeg, size);
 			}
 		}
 	}
