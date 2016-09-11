@@ -20,7 +20,7 @@ Audio tracks can be encoded as 22 Khz Vorbis files :
 
 The game can be started with :
 
-    ./igor <data directory> <part number>
+    ./igor <data directory> <part number> <save directory> <language>
 
 - If data directory is empty, current directory is used ('.').
 - If part is not specified, it defaults to startup logos (900).

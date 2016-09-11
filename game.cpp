@@ -16,7 +16,6 @@ static const int kSaveVersion = 0;
 static const int kTextVersion = 1;
 
 static const bool _debug = false;
-static const bool _useIgorTxt = true;
 static const bool _sortCodeOffsets = true;
 
 Game::Game(const char *dataPath, const char *savePath)
@@ -43,6 +42,7 @@ Game::Game(const char *dataPath, const char *savePath)
 	_yMaxCursor = 199;
 	_cursorVisible = false;
 	_pollSoundPlaying = false;
+	_useIgorTxt = false;
 }
 
 Game::~Game() {
@@ -76,6 +76,10 @@ void Game::init(int num) {
 	_mem.setPart(num);
 	trap_setPalette_208_32(0, 0);
 	_codePos = _mainPos;
+}
+
+void Game::useTxt(const char *language) {
+	_useIgorTxt = _txt.load(_dataPath, language);
 }
 
 void Game::fixUpData() {
@@ -185,9 +189,6 @@ void Game::loadInit() {
 		}
 	}
 	_codeSize = size;
-	if (_useIgorTxt) {
-		_txt.load(_dataPath, "english");
-	}
 }
 
 void Game::loadInventoryFrames() {
@@ -301,7 +302,7 @@ void Game::loadTexts() {
 			p[i] -= 0x6D;
 		}
 	}
-	if (_debug||1) {
+	if (_debug) {
 		for (int j = 0; offsets[j].offset != -1; ++j) {
 			const uint8_t *src = p + offsets[j].offset;
 			for (int i = 0; i < offsets[j].count; ++i) {

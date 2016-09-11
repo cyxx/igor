@@ -28,6 +28,9 @@ struct GameStub_Igor : GameStub {
 		}
 		g_err = errBuf;
 		_g = new Game(argv[0], argv[2]);
+		if (argv[3]) {
+			_g->useTxt(argv[3]);
+		}
 		if (argv[1]) {
 			const int part = atoi(argv[1]);
 			if (part != 0) {

@@ -83,11 +83,13 @@ struct Game {
 	int _yMinCursor, _yMaxCursor;
 	bool _cursorVisible;
 	bool _pollSoundPlaying;
+	bool _useIgorTxt;
 
 	Game(const char *dataPath, const char *savePath);
 	~Game();
 
 	void init(int num);
+	void useTxt(const char *language);
 	void fixUpData();
 	void loadState(int num);
 	void saveState(int num);
