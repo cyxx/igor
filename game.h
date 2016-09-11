@@ -10,6 +10,7 @@
 #include "mixer.h"
 #include "script.h"
 #include "segment_exe.h"
+#include "text.h"
 #include "util.h"
 
 enum {
@@ -51,13 +52,12 @@ enum {
 
 #define MAX_PART_OFFSETS 256
 #define MAX_MAIN_OFFSETS 384
-#define MAX_TEXT_OFFSETS 128
 
 struct Game {
 
 	bool _quit;
 	SegmentExecutable _exe;
-	File _txt;
+	TextData _txt;
 	const char *_dataPath;
 	const char *_savePath;
 	Memory _mem;
@@ -69,8 +69,6 @@ struct Game {
 	int _partOffsetsCount;
 	CodeOffset _mainOffsets[MAX_MAIN_OFFSETS];
 	int _mainOffsetsCount;
-	TextOffset _textOffsets[MAX_TEXT_OFFSETS];
-	int _textOffsetsCount;
 	int _codePos, _codeSize;
 	int _mainPos;
 	int _partPos;
@@ -105,9 +103,6 @@ struct Game {
 	void registerTraps();
 	void readData(void *dst, int seg, int ptr, int size);
 	void seekData(int seg, int ptr);
-	int seekTextHelper();
-	int seekRoomText(int seg, int ptr, int index);
-	void readText(uint8_t *dst, int pitch);
 	void loadRoomData(int num);
 	void loadAnimData(int num);
 	void runFuncCode(int seg, int ptr);

@@ -1,0 +1,3388 @@
+#
+# Igor: Objetivo Uikokahonia
+#
+
+@prepositions
+# 001:  con
+001:  with
+# 002:  a
+002:  to
+@end
+
+@items
+# 001:  boomerang
+001:  boomerang
+# 002:  cartera
+002:  wallet
+# 003:  paraca\xa1das
+003:  parachute
+# 004:  entradas
+004:  tickets
+# 005:  compacto
+005:  CD
+# 006:  despertador
+006:  alarm clock
+# 007:  cazamariposas
+007:  butterfly net
+# 008:  caja de cerillas
+008:  matchbox
+# 009:  martillo
+009:  hammer
+# 010:  pico
+010:  pick
+# 011:  dinamita
+011:  dynamite
+# 012:  horquilla
+012:  bobby pin
+# 013:  libro
+013:  book
+# 014:  disfraz de mono
+014:  monkey costume
+# 015:  peri\xa2dico
+015:  newspaper
+# 016:  llavero
+016:  keyring
+# 017:  hamburguesa mordisqueada
+017:  bited hamburguer
+# 018:  babosa
+018:  slug
+# 019:  foto
+019:  photo
+# 020:  probeta
+020:  flask
+# 021:  nota de Philip
+021:  Philip%s note
+# 022:  carpeta de Caroline
+022:  Caroline%s folder
+# 023:  botella de whisky
+023:  bottle of whisky
+# 024:  lagarto
+024:  lizard
+# 025:  estatuilla
+025:  statuette
+# 026:  cohete
+026:  firecracker
+# 027:  resina
+027:  resin
+# 028:  pergamino
+028:  vellum
+# 029:  contrase\xa4a
+029:  password
+# 030:  bol\xa1grafo
+030:  pen
+# 031:  libro de astronom\xa1a
+031:  astronomy book
+# 032:  nota
+032:  note
+# 033:  flor
+033:  flower
+# 034:  jarr\xa2n
+034:  vase
+@end
+
+@responses
+# 001: \xadHola!
+001: Hi!
+# 002: \xa8C\xa2mo va todo?
+002: How is everything?
+# 003: \xa8Qu\x82 tal?
+003: How are you?
+# 004: No le conozco.
+004: I don%t know him.
+# 005: No la conozco.
+005: I don%t know her.
+# 006: No puedo cogerlo.
+006: I can%t get it.
+# 007: Ya lo tengo.
+007: I already have it.
+# 008: Imposible.
+008: Impossible.
+# 009: Pesa demasiado.
+009: It weighs too much.
+# 010: Es demasiado grande.
+010: It%s too big.
+# 011: No va a funcionar.
+011: It%s not going to work.
+# 012: No parece funcionar.
+012: It doesn%t seem to work.
+# 013: No creo que vaya a funcionar.
+013: I don%t think it%s going to work.
+# 014: No, mejor no.
+014: No, better not.
+# 015: No tiene sentido.
+015: That doesn%t make sense.
+# 016: No parece que se abra.
+016: It doesn%t seem to open.
+# 017: No puede abrirse.
+017: It can%t be opened.
+# 018: Ya est\xa0 abierto.
+018: It%s already opened.
+# 019: Ya est\xa0 abierta.
+019: It%s already opened.
+# 020: No parece que se cierre.
+020: It doesn%t seem to close.
+# 021: No puede cerrarse.
+021: It can%t be closed.
+# 022: Ya est\xa0 cerrado.
+022: It%s already closed.
+# 023: Ya est\xa0 cerrada.
+023: It%s already closed.
+# 024: No lo quiere.
+024: He doesn%t want it.
+# 025: No lo quiere.
+025: She doesn%t want it.
+# 026: No, es m\xa1o.
+026: No, it%s mine.
+# 027: Paso.
+027: I%ll pass.
+# 028: No se mueve.
+028: It doesn%t move.
+# 029: No creo que sea una buena idea.
+029: I don%t think that%s a good idea.
+# 030: Nada interesante.
+030: Nothing interesting.
+# 031: Todav\xa1a no lo tengo.
+031: I don%t have it yet.
+# 051: Es un souvenir de Australia,
+051: It%s a souvenir from Australia.
+# 052: llevamos juntos toda la vida.
+052: We%ve been together all of our lives.
+# 053: Tengo de todo menos dinero.
+053: I have everything but money.
+# 054: No parece estar en muy buen estado.
+054: It doesn%t seem to be in very good state.
+# 055: Estuve seis horas en la cola
+055: I spent six hours in line
+# 056: para comprar estas dos entradas
+056: in order to buy these two tickets
+# 057: para el concierto de T.P.L.
+057: for the T.P.L. concert.
+# 058: Es lo \xa3ltimo de T.P.L.
+058: It%s the latest album by T.P.L.
+# 059: Es odioso.
+059: It%s hateful.
+# 060: Me despierta todas las ma\xa4anas.
+060: It wakes me up every morning.
+# 061: Me pregunto qu\x82 podr\x82 cazar con esto.
+061: I wonder what I can hunt with this.
+# 062: Seguro que le encuentro alguna utilidad.
+062: I%m sure that I can find some use for this.
+# 063: Vaya chisme, \xadc\xa2mo pesa!
+063: What a gadget, it weighs a lot!
+# 064: Viejo pero resistente.
+064: Old but strong.
+# 065: Purita dinamita.
+065: Pure dynamite.
+# 066: Se la habr\xa0 olvidado alguna chica.
+066: Some girl must have forgotten it.
+# 067: "El Interior De Uno Mismo",
+067: "The Inner Self",
+# 068: por Enrique R. Atienzar.
+068: by Enrique R. Atienzar.
+# 069: Es de mi talla.
+069: It%s my size.
+# 070: S\xa2lo pone "60-090".
+070: It only says "60-090".
+# 071: Est\xa0 ra\xa1da... \xadqu\x82 asco!
+071: It%s rotten... How disgusting!
+# 072: No es muy habladora.
+072: It%s not very talkative.
+# 073: Parece muy cari\xa4osa.
+073: It seems very affectionate.
+# 074: \xadHey!, est\xa0 hueco...
+074: Hey!, it%s hollow...
+# 075: ...y hay un llavero dentro.
+075: ...and there%s a keyring inside.
+# 076: Est\xa0 hueco.
+076: It%s hollow.
+# 077: Escoc\x82s de doce a\xa4os.
+077: 12 year old scotch whisky.
+# 078: Est\xa0 vac\xa1a.
+078: It%s empty.
+# 079: Est\xa0 llena de agua.
+079: It%s full of water.
+# 080: Se cre\xa1a muy listo este lagarto...
+080: This lizard thought he was clever...
+# 081: ...pero no hay bicho que se me resista.
+081: ...but there%s no reptile that can resist me.
+# 082: No hay nada como una buena alimentaci\xa2n.
+082: There%s nothing like healthy food.
+# 083: A cierto personaje no le va
+083: A certain person is not going to like
+# 084: a gustar nada.
+084: this, not at all.
+# 085: Est\xa0 llena de aburridos apuntes.
+085: It%s full of boring notes.
+# 086: 85352. Apuesto a que es la combinaci\xa2n
+086: 85352. I bet that it%s the combination
+# 087: de la taquilla del chulo de Philip.
+087: to Philip%s locker.
+# 088: Muy pegajosa.
+088: Very sticky.
+# 089: Parece potente,
+089: It seems powerful,
+# 090: seguro que llega bastante arriba.
+090: and I%m sure that it will reach the sky.
+# 092: Dice:
+092: It reads:
+# 093: "Laura, re\xa3nete conmigo en el laboratorio
+093: Laura, I want to meet you
+# 094: despu\x82s de clase.
+094: in the laboratory after class.
+# 095: Tu adorado Philip."
+095: Your admirer Philip.
+# 096: Es una de esas c\xa0maras instant\xa0neas.
+096: It%s one of those instant snapshot cameras.
+# 097: "Ven al laboratorio a \xa3ltima hora
+097: Come to the laboratory at the end of the day
+# 098: para terminar el experimento."
+098: to finish the experiment.
+# 099: Qu\x82 extra\xa4o... est\xa0 en blanco.
+099: How strange!, there%s nothing written on it.
+# 100: Creo que est\xa0 en lat\xa1n.
+100: I think it%s latin,
+# 101: Pero no entiendo lo que pone.
+101: but I don%t know what it means.
+# 140: Esto parece interesante:
+140: This seems interesting:
+# 141: las coordenadas de la galaxia MJ-78 son:
+141: the coordinates of the galaxy MJ-78 are:
+# 142: declinaci\xa2n=74,
+142: declinacion=74,
+# 143: ascensi\xa2n recta=207.
+143: straight ascension=207.
+# 144: "EL COMADREJA ATACA DE NUEVO".
+144: "THE WEASEL STRIKES AGAIN".
+# 145: "El gran Dosicua", la famos\xa1sima estatuilla
+145: "The Great Dosicua", the famous statuette
+# 146: del museo Frankenheller
+146: from the Frankenheller museum
+# 147: fue robada la pasada noche...
+147: was stolen last night...
+# 148: ...una vez m\xa0s, el dibujo de una comadreja
+148: ...once more, the mark of a weasel reveals,
+# 149: delata sin duda al autor de los hechos.
+149: without a doubt, the identity of the thief.
+# 150: Sustanciosa recompensa para la persona
+150: There is a substancial reward for the person
+# 151: que consiga recuperarla.
+151: who recovers it.
+# 152: "ESTRELLA DESCUBIERTA EN LA GALAXIA MJ-78".
+152: "STAR DISCOVERED IN GALAXY MJ-78".
+# 153: El descubrimiento es una enorme fuente
+153: This discovery is an enormous source
+# 154: de informaci\xa2n para todos
+154: of information for all
+# 155: los cient\xa1ficos.
+155: scientists.
+# 156: Parece fuerte, esto pone en trance a cualquiera.
+156: It%s so powerful it could put anyone in a trance.
+# 157: Es muy rara, su valor debe ser enorme.
+157: It%s very rare. It must be priceless.
+# 158: No puedo evitarlo, \xadme encanta la pasta!.
+158: I can%t resist it, I love big bucks!
+# 159: "No llegues tarde, hijo. Mam\xa0 te espera".
+159: "Don%t come home late. Mom is waiting for you".
+# 160: Es de tinta azul.
+160: It%s a blue ink pen.
+# 161: No es un buen momento.
+161: Now it%s not a good time.
+# 162: Es transparente.
+162: It%s transparent.
+# 163: Tiene dentro la flor ex\xa2tica.
+163: It has an exotic flower inside.
+# 164: Est\xa0 lleno de luci\x82rnagas.
+164: It%s full of lightning bugs.
+# 165: Nunca hab\xa1a visto otra igual.
+165: I%ve never seen anything like this.
+# 166: Este Harrison vale su peso en oro.
+166: This Harrison is worth his weight in gold.
+# 167: No, no saben apreciarlo.
+167: No, they don%t know how to appreciate it.
+# 168: Paso.
+168: Forget it.
+# 169: \xadTen\xa1a hambre el condenado!
+169: He was as hungry as a horse!
+# 170: La pondr\x82 dentro...
+170: I%ll put it inside...
+@end
+
+@verbs
+# 001: Ir a
+001: Walk to
+# 002: Hablar con
+002: Talk with
+# 003: Coger
+003: Take
+# 004: Mirar
+004: Look at
+# 005: Usar
+005: Use
+# 006: Abrir
+006: Open
+# 007: Cerrar
+007: Close
+@end
+
+@room001
+# 000: Oye Harrison...
+000: Hey Harrison...
+# 001: Perdona Igor,
+001: I%m sorry Igor,
+# 002: no me molestes ahora.
+002: don%t bother me now...
+# 003: Tengo que terminar esto
+003: ...I%ve got to finish this
+# 004: para poder ir corriendo a ver a Margaret.
+004: before I can go to see Margaret again.
+@end
+
+@room013
+# 000: \xadHola nena!
+000: Hi honey!
+# 001: \xa8Me echabas de menos?
+001: Did you miss me?
+# 002: Mira que colchoneta traigo.
+002: Look at the air mattress I brought...
+# 003: \xadLa podemos compartir!
+003: ...we can share it!
+# 004: \xadCreo que por hoy ya he tenido
+004: I think I have had enough water
+# 005: bastante agua...!
+005: for today...
+# 006: Ir\x82 con el resto del grupo
+006: I%ll go with the rest of the group
+# 007: a ver si...
+007: to see if...
+# 008: \xadVamos! \xadNo seas bobita!
+008: Come on! Don%t be silly!,
+# 009: Que s\x82 que te apetece...
+009: I know that you want...
+# 010: \xadIGOR!
+010: IGOR!
+# 011: \xa8TU aqu\xa1?
+011: You here?
+# 012: \xadNo es posible!
+012: It%s not possible!
+# 013: \xadClaro que es posible,
+013: Of course it%s possible,
+# 014: saco de m\xa3sculos!
+014: idiot!...
+# 015: Cre\xa1as que acus\xa0ndome
+015: ...You thought that by telling on me
+# 016: en el examen te librar\xa1as de m\xa1, \xa8eh?
+016: in the exam you would get rid of me, right?
+# 017: Pues ahora s\xa1 que
+017: Well, now I%m gonna get rid of you
+# 018: te voy a quitar de mi camino para siempre...
+018: forever...
+# 019: \xadTe advierto que
+019: I should warn you that my hands
+# 020: mis manos pueden ser armas letales!
+020: are lethal weapons!
+# 021: \xadLetal va a ser el paliz\xa2n
+021: Lethal is the jab that I%m going
+# 022: que te voy a dar!
+022: to give you, pal!
+# 023: \xadNo te acerques que
+023: Come closer and
+# 024: no respondo!
+024: you%re history!
+# 025: \xadDeja ya de huir,
+025: Start running now,
+# 026: cobarde!
+026: coward!
+# 027: \xadNo creer\xa0s que t\xa3 me asustas,
+027: You don%t scare me,
+# 028: rata de alcantarilla!
+028: punk!
+# 029: \xadEs el hedor que vas desprendiendo
+029: Your body odor is enough to stink up
+# 030: lo que me hace retroceder!
+030: the whole island!
+# 031: \xadLleg\xa2 tu hora, enano!
+031: Your time has come, Wussy!
+# 032: \xadSab\xa1a que mi viejo boomerang
+032: I knew that my old boomerang
+# 033: no me fallar\xa1a!
+033: wouldn%t let me down!
+# 034: Dejemos a Philip dar un pase\xa1to...
+034: Let%s let Philip take a little walk...
+# 035: Creo que necesita reflexionar
+035: ...I think he needs to reflect
+# 036: sobre su vida y...
+036: on his life and...
+# 037: \xadM\xa0s tiempo para \x82l solo!
+037: ...spend sometime by himself!
+@end
+
+@room017
+# 000: \xadMenos mal que he conseguido
+000: Thank goodness, I%ve managed to get rid of
+# 001: librarme un rato del pesado de Philip!
+001: that pest Philip for a while!
+# 002: \xadEs completamente insoportable!
+002: He is unbearable!
+# 003: Ya ten\xa1a ganas de poder estar sola
+003: I wanted to swim alone
+# 004: ba\xa4\xa0ndome en la playa...
+004: in the sea...
+# 005: ...aunque...
+005: ...although...
+# 006: ...la verdad...
+006: ...the truth is...
+# 007: ...nunca cre\xa1 que lo dir\xa1a, pero...
+007: ...I never thought I would say it but...
+# 008: ...me apetecer\xa1a que Igor
+008: ...I wish that Igor
+# 009: estuviese aqu\xa1.
+009: were here.
+# 010: \xadDIABLOS!
+010: DAMN IT!
+# 011: \xadEra demasiada felicidad!
+011: It was too good to be true!
+# 012: ...por ah\xa1 viene el plasta de Philip.
+012: ...here comes that pest.
+# 013: A ver c\xa2mo demonios logro
+013: How can I manage to get rid
+# 014: deshacerme de \x82l.
+014: of him?
+@end
+
+@room023
+# 001: camino
+001: path
+# 002: farero
+002: lighthouse keeper
+# 003: \xa0rbol
+003: tree
+# 004: faro
+004: lighthouse
+# 005: mar
+005: sea
+# 201: Conduce al interior del faro.
+201: It leads to the inside of the lighthouse.
+# 202: Se ve que es un hombre que disfruta de la vida.
+202: It%s obvious that he%s a man who enjoys life.
+# 203: Est\xa0 increiblemente lleno de vida.
+203: It%s full of life.
+# 204: Parece muy antiguo.
+204: It seems very old.
+# 205: Ya se ha marchado el barco.
+205: The boat has already left.
+# 206: Est\xa0 muy oscuro,
+206: It%s very dark,
+# 207: pero distingo la luz de un barco a lo lejos.
+207: but I can see the light of a boat in the distance.
+# 208: Creo que esto te puede interesar.
+208: I think this will interest you.
+# 209: Mira chaval, eso no me interesa en absoluto.
+209: Look buddy, that doesn%t interest me at all.
+# 210: Hombre, esto puede serme \xa3til,
+210: Well, this should be great...
+# 211: para sustituir la l\xa0mpara del faro...
+211: to replace the light of the lighthouse!
+# 212: \xa8Y no me lo agradeces?
+212: And you aren%t going to thank me for it?
+# 213: Est\xa0 bien, muchacho,
+213: It%s OK, pal.
+# 214: dime qu\x82 puedo hacer por ti.
+214: Tell me what you want me to do.
+# 215: \xa8Podr\xa1as enviar un mensaje desde el faro?
+215: Can you send a message from the lighthouse?
+# 216: De acuerdo.
+216: OK...
+# 217: \xa8Qu\x82 mensaje deseas mandar?
+217: ...What message do you want to send?
+# 218: "Hijo, no tardes. Mam\xa0 te espera."
+218: "Don%t come home late. Mom is waiting for you"
+# 219: Desde luego, he mandado mensajes absurdos,
+219: OK, I%ve sent strange messages,
+# 220: pero como este creo que ninguno.
+220: but never one like this...
+# 221: No te vayas, que ahora vuelvo
+221: ...Don%t go, I%ll be back in a minute
+# 222: y te digo si he recibido alguna contestaci\xa2n,
+222: and I%ll tell you if I receive some answer,
+# 223: aunque no creo que reciba nada.
+223: but I doubt I%ll receive anything.
+# 224: Oye muchacho, es raro pero si han contestado...
+224: Listen pal, it%s strange but they%ve answered...
+# 225: ...esto parece un di\xa0logo de besugos, han dicho:
+225: It seems to be a garbled message:
+# 226: "El ni\xa4o ya no est\xa0 aqu\xa1,
+226: "The kid is not here anymore,
+# 227: hace un rato que lo dejamos en casa de su abuelo,
+227: we left him in his grandfather%s house,
+# 228: el viejo John O%Callahan."
+228: old John O%Callahan, a while ago".
+# 229: \xadGracias! Me ha sido usted de gran ayuda.
+229: Thanks!, you%ve been a great help to me.
+# 230: De nada, pibe.
+230: It%s nothing, pal.
+# 231: Buenas noches.
+231: Good evening.
+# 232: Hola chaval. \xa8Qu\x82 quieres?
+232: Hi young feller. What do you want?
+# 233: No, es demasiado tarde para hacer visitas.
+233: No, it%s too late to make a visit.
+# 234: Ya me ha ayudado bastante, no le molestar\x82 m\xa0s.
+234: No, I don%t want to bother him anymore.
+@end
+
+@room027
+# 201: \xadS\xa2plame Harrison!
+201: Whisper me the answer, Harrison!
+# 202: \xadVenga, dime algo!
+202: Come on, tell me something!
+# 203: \xadP\xa0same la primera pregunta!
+203: Give me the answer to the first question!
+# 204: Ten\x82is una hora para realizar el ejercicio.
+204: You have an hour to take the exam...
+# 205: Leedlo despacio y no os precipiteis
+205: ...read it slowly and take your time
+# 206: en contestar.
+206: answering the questions...
+# 207: Pensad lo que os jug\xa0is.
+207: ...remember one thing.
+# 208: \xadNO habr\xa0 viaje a Uikokahonia
+208: There will be NO trip for those
+# 209: para el que suspenda!
+209: who fail the exam!
+# 210: Pod\x82is empezar ya.
+210: You can start now.
+# 211: \xadSilencio!
+211: Silence!
+# 212: \xadNo quiero oir ni una mosca!
+212: I don%t want to hear a pin drop!
+# 213: \xadNo hag\xa0is ninguna tonter\xa1a!
+213: I don%t want any nonsense!
+# 214: \xadSe\xa4or Parker!
+214: Mr. Parker!
+# 215: \xadEstaba usted copiando!
+215: Are you copying!?
+# 216: \xa8Qui\x82n yo?
+216: Who me?
+# 217: S\xa1, usted...
+217: Yes, you...
+# 218: ...y es que a m\xa1 no se me escapa ni una.
+218: ...I don%t miss anything.
+# 219: Me ofende usted...
+219: You%re offending me...
+# 222: \xadPero de verdad!
+222: But really!...
+# 223: \xadsi yo...!
+223: ...if I...
+# 224: Es cierto, este tipo estaba copiando,
+224: It%s true! He was copying,
+# 225: yo tambi\x82n le he visto.
+225: I also saw him.
+# 226: Lo justo es que le eche, \xa8no?
+226: The thing to do is to throw him out, right?
+# 227: Es correcto lo que dice se\xa4or Goolash,
+227: What you say is correct Mr. Goolash.
+# 228: muchas gracias por su ayuda.
+228: Thanks a lot for your help.
+# 229: De nada se\xa4or profesor,
+229: Don%t mention it.
+# 230: acu\x82rdese de m\xa1 cuando corrija el examen.
+230: Remember me when you correct the exam.
+# 231: Me acordar\x82...
+231: I will...
+# 232: Y ahora se\xa4or Parker...
+232: ...and now Mr. Parker...
+# 233: \xadMarchese inmediatamente!
+233: LEAVE!
+# 234: \xad\xad\xadFUERA!!!
+234: OUT!!!
+# 235: No intente enga\xa4arme.
+235: Don%t try to deceive me.
+# 236: Le he visto varias veces,
+236: I%ve seen you do it many times,
+# 237: y me he callado.
+237: but have said nothing.
+@end
+
+@room032
+# 001: puerta
+001: door
+# 002: jaula
+002: cage
+# 004: camino
+004: path
+# 201: Creo que antes deber\xa1a tener un
+201: I think I should have
+# 202: buen plan.
+202: a good plan.
+# 203: Debe ser parte de
+203: It must be part of
+# 204: los b\xa0rtulos que se llevan
+204: the stuff that they%re taking
+# 205: a Uikokahonia.
+205: to Uikokahonia.
+# 206: Quiz\xa0s con este disfraz
+206: Perhaps with this costume on
+# 207: pase desapercibido dentro de la jaula.
+207: they won%t notice me in the cage...
+# 208: Y ahora... \xadA esperar!
+208: ...and now, I have to wait!
+# 209: Conduce al vest\xa1bulo de la facultad.
+209: It leads to the inside.
+# 210: Bien, creo que esta jaula
+210: Well, I think that this cage is
+# 211: es lo \xa3ltimo que falta por meter en el cami\xa2n.
+211: the last thing to be loaded onto the truck.
+# 212: \xa8Para qu\x82 querr\xa0n llevarse un mono
+212: Why would they want to take a monkey
+# 213: a una isla que los debe tener a cientos?
+213: to an island that must have hundreds of them?
+# 214: \xadMaldito viajecito!
+214: Damn trip!
+# 215: En fin, ordenar\x82 que carguen
+215: ...anyway, I%ll have someone else
+# 216: la jaula...
+216: load the cage...
+# 217: ...antes de que el cami\xa2n salga
+217: ...before the truck leaves
+# 218: hacia al aeropuerto.
+218: for the airport.
+@end
+
+@room036
+# 001: puerta
+001: door
+# 002: palanca
+002: latch
+# 003: paracaidas
+003: parachute
+# 004: caja
+004: crate
+# 005: equipaje
+005: luggage
+# 201: Conduce al vac\xa1o.
+201: It leads to my destiny.
+# 202: Debe utilizarse para abrir la puerta.
+202: It%s used to open the door.
+# 203: No est\xa0 en muy buen estado...
+203: It%s not in very good condition...
+# 204: ...pero puede ser mi \xa3nica
+204: ...but it%s probably my only chance
+# 205: posibilidad para salir de aqu\xa1.
+205: to get out of here.
+# 206: Ahora a ver qui\x82n es el guapo que salta.
+206: I%m on the verge of a nervous breakdown.
+# 207: Es antiguo
+207: It%s old,
+# 208: y no est\xa0 en muy buen estado que digamos.
+208: and it%s in lousy shape.
+# 209: Antes deber\xa1a abrir la puerta.
+209: Before, I should open the door.
+# 210: Me da muy mala espina hacer esto,
+210: I%m scared to death to do this,
+# 211: me deshar\x82 antes de todo lo que llevo.
+211: I%ll drop all my stuff first.
+# 212: Lo que m\xa0s pena me da
+212: What I hate the most is to leave
+# 213: es dejar aqu\xa1 mi boomerang...
+213: my boomerang here...
+# 214: ...despu\x82s de todo
+214: ...after all the time
+# 215: lo que hemos pasado juntos.
+215: we%ve spent together.
+# 216: \xadYa est\xa0! \xadLo decid\xa1!
+216: Well, that%s it! I%ve decided!
+# 217: No puedo dejarte as\xa1,
+217: I can%t leave you like this.
+# 218: t\xa3 lo que te mereces es...
+218: What you deserve is to...
+# 219: ...\xad\xad\xadVOLAR!!!
+219: ...FLY!!!
+# 220: Adi\xa2s viejo amigo...
+220: Good bye old friend...
+# 221: Y ahora...
+221: ...and now...
+# 222: ...basta ya de tonter\xa1as.
+222: ...enough nonsense...
+# 223: All\xa0 voy Laura.
+223: ...here I come, Laura!
+# 224: Debe contener \xa3tiles para el viaje.
+224: It probably contains stuff for the trip.
+# 225: Ah\xa1 debe haber todo tipo de trastos.
+225: There must be all kinds of junk inside that.
+# 226: Mi ropa no es la m\xa0s apropiada
+226: My clothing isn%t the most appropiate
+# 227: para una isla tropical,
+227: for a tropical island.
+# 228: ver\x82 que encuentro por aqu\xa1...
+228: Let%s see what I can find here...
+# 229: Bien, esto ya es otra cosa.
+229: Well, this is better.
+# 230: Ahora lo importante es salir del avi\xa2n
+230: It is important that I get off the plane
+# 231: antes de que aterrice...
+231: before it lands, because it will all be over,
+# 232: \xadSi me pillan en la aduana no lo cuento!
+232: if customs catches me.
+@end
+
+@room039
+# 201: No me acordaba
+201: I didn%t remember...
+# 202: que ten\xa1a esta botellita de vodka
+202: ...that I had a bottle of vodka
+# 203: en mi taquilla.
+203: in my locker...
+# 204: Aunque a lo mejor es de alguna admiradora...
+204: ...it could be from a secret admirer.
+# 205: \xadPuajj! Esto m\xa0s que vodka parece...
+205: Yuck! This vodka tastes like...
+# 206: ...parece...
+206: ...like...
+# 207: \xadPuajjjjjj!
+207: Puajjjjjj!
+# 208: \xad\xad\xadOoooooooohhh!!!
+208: Ooooooooohhh!
+# 209: \xad\xad\xadArjjjjjjjj!!!
+209: Arjjjjjjjj!
+# 210: \xad\xad\xadBLEEEE!!! \xad\xad\xadBLIIII!!! \xad\xad\xadBLEEEE!!!
+210: BLEEEE!... BLIIII!... BLEEEE!...
+@end
+
+@room040
+# 201: Jefe, creo que est\xa0n envi\xa0ndonos un mensaje.
+201: Hey boss, I think they%re sending us a message...
+# 202: Mire por los prism\xa0ticos.
+202: ...Look through the binoculars.
+# 203: \xadYo soy el que da aqu\xa1 las \xa2rdenes!
+203: I%m the one that gives you orders here!
+# 204: Mirar\x82 por los prism\xa0ticos.
+204: ...I%ll look through the binoculars.
+# 205: Es la se\xa4al, jefe.
+205: It%s the sign that we%re waiting for, boss.
+# 206: \xadYo decidir\x82 cual es la se\xa4al!
+206: I%ll decide what the damn sign is!
+# 207: Es la se\xa4al.
+207: ...Yeah, it%s the sign.
+# 208: \xa8Mando la contrase\xa4a, jefe?
+208: Do I send the password, boss?
+# 209: \xadYo dir\x82 cuando tienes que mandarla!
+209: Listen, I%ll say when you send the password!
+# 210: Env\xa1ala ahora mismo.
+210: ...Send the password now.
+@end
+
+@room042
+# 201: \xa8Te has enterado de la captura de "El Comadreja"
+201: Have you heard about the capture of the "Weasel"
+# 202: y de la recuperaci\xa2n de "El Gran Dosicua"?
+202: and the recovery of "The Great Dosicua"?
+# 203: No, no sab\xa1a nada.
+203: No, I didn%t.
+# 204: \xa8No sabes tampoco qui\x82n ha hecho posible
+204: Do you know who was responsable
+# 205: su captura?
+205: for the capture?
+# 206: \xa8Qui\x82n?
+206: Who?
+# 207: Igor Parker.
+207: Igor Parker.
+# 208: \xa8\xadCOMO!?
+208: WHAT!?
+# 209: S\xa1, Igor, ya le conoces...
+209: Yes, Igor, you already met him...
+# 210: \xa8En serio?
+210: Really?
+# 211: Te lo juro Laura,
+211: I swear, Laura.
+# 212: t\xa3 sabes que yo no miento nunca.
+212: You know I never lie...
+# 213: \xadJa! Que gracia me haces.
+213: Don%t make me laugh!
+# 214: Creeme Laura, es verdad,
+214: Believe me, Laura, it%s true,
+# 215: adem\xa0s ha salido en los peri\xa2dicos.
+215: and besides it%s in all the newspapers.
+# 216: Est\xa0 bien, te creo...
+216: OK, I believe you...
+# 217: ...pero no me imaginaba algo as\xa1 de Igor.
+217: ...I never thought Igor was capable of that.
+# 218: No me importar\xa1a que me rescatase a m\xa1.
+218: I wouldn%t mind if he rescued me...
+# 219: S\xa1...
+219: Yes...
+# 220: ...bueno...
+220: ...well...
+# 221: ...no est\xa0 mal...
+221: ...he%s not that bad...
+@end
+
+@room044
+# 201: \xa8As\xa1 que no hab\xa1as o\xa1do hablar de la recompensa
+201: So you didn%t know anything about the reward
+# 202: por recuperar "El Gran Dosicua"?
+202: for "The Great Dosicua"?
+# 203: No, no sab\xa1a nada...
+203: No, I didn%t know anything...
+# 204: ...incluso estaba pensando en donar el dinero
+204: ...I even thought about donating the money
+# 205: a alguna causa ben\x82fica.
+205: to charity.
+# 206: \xadOye!, pues aqu\xa1 tenemos una fundaci\xa2n
+206: Listen, we have a charity here to help
+# 207: de ayuda a hu\x82rfanos de la polic\xa1a.
+207: the orphans of policemen.
+# 208: Entra otra vez,
+208: Come in again,
+# 209: rellenamos los formularios y...
+209: and we will fill out the forms and...
+# 210: Esto... \xadhuy!, pero si es tard\xa1simo,
+210: Gee... it%s really late!,
+# 211: tengo que irme, hasta luego.
+211: I%ve got to run. See you later.
+@end
+
+@room047
+# 001: pasadizo
+001: secret passage
+# 002: bosque
+002: forest
+# 003: cementerio
+003: cementery
+# 004: faro
+004: lighthouse
+@end
+
+@room050
+# 001: pantano
+001: path
+# 002: flor
+002: flower
+# 003: cuervos
+003: crows
+# 004: espesura
+004: overgrowth of trees
+# 005: camino
+005: path
+# 201: Tiene un aroma muy intenso.
+201: It has a very strong smell.
+# 202: Es una flor ex\xa2tica.
+202: It looks like an exotic flower.
+# 203: Me dan mala espina estos pajarracos.
+203: Those crows really annoy me.
+# 204: Me parece que no estoy solo.
+204: It looks like I%m not alone.
+@end
+
+@room053
+# 001: pantano
+001: swamp
+# 002: bosque
+002: path
+# 003: luci\x82rnagas
+003: lightning bugs
+# 004: luci\x82rnaga con personalidad
+004: leader lightning bug
+# 005: flor
+005: flower
+# 201: Ah\xa1 no me acerco,
+201: I%m not going over there,
+# 202: parecen arenas movedizas.
+202: it looks like quicksand!
+# 203: Parece que todas siguen
+203: Looks like they%re following
+# 204: a una en concreto...
+204: something...
+# 205: ...ser\xa0 la que tiene m\xa0s personalidad.
+205: ...it must be the one with the most personality.
+# 206: Sin duda es el l\xa1der del grupo,
+206: I bet they follow their leader
+# 207: la siguen all\xa0 donde vaya.
+207: wherever it goes.
+# 208: Tiene unos colores muy ex\xa2ticos,
+208: It%s so exotic!
+# 209: nunca hab\xa1a visto una igual.
+209: I%ve never seen anything like it.
+# 210: No puedo acercarme lo suficiente.
+210: I can%t get close enough.
+# 211: Parece que ninguna
+211: It seems that none of the lightning bugs
+# 212: luci\x82rnaga est\xa0 dispuesta a acercarse.
+212: want to come close.
+# 213: A partir de ahora ser\x82 yo
+213: From now on,
+# 214: su l\xa1der.
+214: I will be their leader.
+# 215: Creo que
+215: I don%t think
+# 216: con eso no conseguir\xa1a nada.
+216: I%ll get anything with that.
+@end
+
+@room055
+# 001: camino
+001: path
+# 002: entrada al pasadizo
+002: entrance to the labyrinth
+# 201: Conduce al pasadizo.
+201: It leads to the secret passage.
+@end
+
+@room059
+# 001: camino
+001: path
+# 002: jarr\xa2n
+002: vase
+# 003: sepulturero
+003: gravedigger
+# 004: cementerio
+004: cemetery
+# 005: camino
+005: path
+# 201: Es transparente.
+201: It%s transparent.
+# 202: No creo que pensaras...
+202: Whoa...
+# 203: ..llevarte ese jarr\xa2n...
+203: ..whatcha tryin to do?...
+# 204: ...sin darme nada a cambio...
+204: ...don%t be thinkin about nabbin this...
+# 205: ...que me mole mogoll\xa2n.
+205: ...without givin me somethin too.
+# 206: Me ofende usted.
+206: You%re bothering me...
+# 207: S\xa2lo quer\xa1a observarlo m\xa0s de cerca.
+207: ...I only wanted to see it up close.
+# 208: Vale, vale, chico.
+208: It%s cool...
+# 209: Si es as\xa1 no pasa nada.
+209: ...if what you say is true...
+# 210: Pero no intentes jorobarme...
+210: ...but don%t get me steamin...
+# 211: ...o la tendremos montada.
+211: ...or we%ll have business to do.
+# 212: Est\xa0 escuchando m\xa3sica
+212: Looks like he%s listening
+# 213: y siguiendo el ritmo.
+213: to music.
+# 214: Quiz\xa0s te interese este compacto.
+214: Maybe you might be interested in this CD.
+# 215: A ver...
+215: Hand it over...
+# 216: ...pero si es...
+216: ...it%s the latest...
+# 217: \xad\xad\xadLo \xa3ltimo de T.P.L.!!!
+217: ...of T.P.L.!
+# 218: \xadGracias colega!
+218: Thanks dude!
+# 219: Si quieres ll\x82vate...
+219: Take that vase...
+# 220: ...ese jarr\xa2n del muro...
+220: ...it ain%t no problem of mine...
+# 221: ...que adem\xa0s de no ser m\xa1o...
+221: ...after all that old vase...
+# 222: ...no vale ni un duro.
+222: ...ain%t even worth a dime.
+# 223: Creo que primero deber\xa1a hablar
+223: I should speak with this nice man, first.
+# 224: con este buen hombre.
+# 225: Buenas noches, se\xa4or sepulturero.
+225: Good evening, Mr. Gravedigger.
+# 226: \xadHola Boris!
+226: Hi Boris!
+@end
+
+@room061
+# 001: tumba
+001: grave
+# 002: estatuilla
+002: statuette
+# 003: tumba
+003: grave
+# 004: camino
+004: path
+# 005: tumba
+005: grave
+# 006: tumba
+006: grave
+# 201: John O%Callahan
+201: John O%Callahan.
+# 202: 1742-1778
+202: 1742-1778
+# 203: S\xa1 tiene que estar descansado, s\xa1.
+203: He should be rested by now.
+# 204: Ser\xa0 mejor largarme r\xa0pidamente de aqu\xa1
+204: I%d better get out of here fast
+# 205: antes de que aparezca
+205: before the "Weasel" comes
+# 206: "El Comadreja" buscando su bot\xa1n.
+206: looking for his loot.
+# 208: Mary O%Hara
+208: Mary O%Hara.
+# 209: Tu esposo e hijos...
+209: Your husband and children...
+# 210: ...viven por fin en paz.
+210: ...live in peace at last.
+# 212: Chris McPherson
+212: Chris McPherson.
+# 213: 1855-1855
+213: 1855-1855
+# 214: Gracias por tu compa\xa4\xa1a.
+214: Thanks for your company.
+# 216: Fat McMan
+216: Fat McMan.
+# 217: Tuvimos que hacer horas extras
+217: We had to work overtime
+# 218: para cavar tu tumba.
+218: to dig your grave.
+# 220: \xadAnda! Pero si es "El Gran Dosicua",
+220: Wow! It%s "The Great Dosicua",
+# 221: la estatuilla robada.
+221: the stolen statuette.
+# 222: "El Comadreja" no tardar\xa0 en venir
+222: The "Weasel" will be here any minute
+# 223: a buscarla.
+223: looking for it.
+@end
+
+@room064
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room066
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room068
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room070
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room072
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room074
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room076
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room078
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room080
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room082
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room084
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room086
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room088
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room090
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room092
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room095
+# 001: pasadizo
+001: secret passage
+# 002: pasadizo
+002: secret passage
+# 003: pasadizo
+003: secret passage
+# 004: pasadizo
+004: secret passage
+# 201: Parece conducir a otra estancia
+201: It seems to lead to a room
+# 202: similar.
+202: similar to this one.
+# 203: Conduce al exterior.
+203: It leads outside.
+# 204: Est\xa0 encadenado a esa pared,
+204: He%s chained to the wall.
+# 205: debe llevar aqu\xa1 cientos de a\xa4os.
+205: He%s probably been here hundreds of years...
+# 206: Y esos harapos que tiene a sus pies
+206: ...and those rags he has on his feet
+# 207: yo dir\xa1a que son...
+207: I would say that they are...
+# 208: ...las vestimentas de un fraile.
+208: ...the robes of a friar.
+# 209: No le veo con muchas ganas
+209: He obviously doesn%t feel
+# 210: de conversaci\xa2n.
+210: like talking.
+# 211: Conduce a la puerta secreta
+211: It leads to the secret door
+# 212: de la iglesia.
+212: of the church.
+@end
+
+@room097
+# 001: puerta
+001: door
+# 002: papelera
+002: papercase
+# 003: pizarra
+003: blackboard
+# 004: mesa
+004: desk
+# 201: Hay un papel, lo coger\x82.
+201: There%s a paper, I%ll take it.
+# 202: Est\xa0 vac\xa1a.
+202: It%s empty.
+# 203: He de confesar que la F\xa1sica
+203: I must confess that physics
+# 204: no es, precisamente, mi especialidad.
+204: is not exactly my speciality.
+# 205: Es la del profesor.
+205: It%s the professor%s.
+# 206: No tengo nada que tirar.
+206: I have nothing to throw away.
+# 207: Odio las tizas.
+207: I hate chalk.
+@end
+
+@room099
+# 001: mesa
+001: desk
+# 002: bol\xa1grafo
+002: pen
+# 003: cuadro
+003: picture
+# 004: pizarra
+004: blackboard
+# 005: armario
+005: closet
+# 006: puerta
+006: door
+# 201: Es la del profesor.
+201: It%s the professor%s desk.
+# 202: El profesor de Qu\xa1mica ha debido dej\xa0rselo aqu\xa1.
+202: The chemistry professor must have left it.
+# 203: Es un tal Pasteur.
+203: It%s a so and so Pasteur.
+# 204: La verdad,
+204: To tell the truth,
+# 205: la Qu\xa1mica no es mi fuerte.
+205: chemistry is not my forte.
+# 206: Aqu\xa1 guarda el profesor de Qu\xa1mica
+206: The chemistry professor keeps his notes
+# 207: sus apuntes y dem\xa0s trastos.
+207: and other junk here.
+# 208: Est\xa0 cerrado con llave.
+208: It%s locked.
+# 209: No tengo nada que escribir.
+209: I have nothing to write.
+@end
+
+@room104
+# 001: \xa0rbol
+001: tree
+# 002: resina
+002: resin
+# 003: rosaleda
+003: rosebush
+# 004: banco
+004: bench
+# 005: camino
+005: path
+# 201: No s\x82 qu\x82 clase de \xa0rbol es,
+201: I don%t know what kind of tree it is,
+# 202: pero est\xa0 lleno de resina.
+202: but it%s covered with resin.
+# 203: Parece muy pegajosa.
+203: It%s very sticky.
+# 204: Con ese olor parece que atrae a los insectos.
+204: With a smell like that, it attracts insects.
+# 205: No debe ser muy c\xa2modo.
+205: It probably isn%t very comfortable.
+# 206: Creo que ya tengo suficiente.
+206: No, I have enough.
+@end
+
+@room106
+# 001: estatua
+001: statue
+# 002: \xa0rbol
+002: tree
+# 003: resina
+003: resin
+# 004: anciana
+004: old woman
+# 201: Es el fundador de la universidad:
+201: It%s the founder of
+# 202: Salvor Hardin.
+202: the university: Salvor Hardin.
+# 203: No s\x82 qu\x82 clase de \xa0rbol es,
+203: I don%t know what kind of tree it is,
+# 204: pero est\xa0 lleno de resina.
+204: but it%s covered with resin.
+# 205: Parece muy pegajosa.
+205: It%s very sticky.
+# 206: No la hab\xa1a visto nunca
+206: I%ve never seen her
+# 207: por el campus.
+207: on campus before.
+# 208: Podr\xa1a verme alguien y eso
+208: Podr¡a verme alguien y eso
+# 209: est\xa0 prohibid\xa1simo.
+209: est  prohibid¡simo.
+# 210: Creo que ya tengo suficiente.
+210: No, I have enough.
+# 211: Mire esto, se\xa4ora,
+211: Look here ma%am,
+# 212: creo que hemos encontrado su gatito.
+212: I think I found your kitten.
+# 213: No, \x82se no es mi gatito.
+213: No, that%s not my kitten.
+# 216: \xadGracias de todas formas, joven!
+216: Thank you anyway, young man!
+# 217: \xad\xad\xadRENATO!!!
+217: RENATO!!!
+# 218: \xadPor fin te encuentro!
+218: I have found you at last!
+# 219: Muchas gracias, joven.
+219: Thank you very much, young man.
+# 220: Ha sido usted muy amable.
+220: You have been very kind.
+# 221: En agradecimiento, voy a darle un cohete que
+221: To thank you, I am going to give you
+# 222: sobr\xa2 de las fiestas de mi pueblo.
+222: a firecracker.
+# 223: Lo llevo en alg\xa3n lugar de mi bolso.
+223: I carry it in my bag.
+# 224: Aqu\xa1 tiene, pero tenga cuidado
+224: Here you are, but be careful
+# 225: que es muy potente.
+225: because it%s very powerful.
+# 226: Gracias, se\xa4ora.
+226: Thank you, ma%am.
+# 227: Me voy corriendo a dar de comer a mi "Renato".
+227: I must hurry to feed Renato.
+# 228: El pobrecito debe estar hambriento.
+228: The poor thing must be very hungry.
+# 229: Adi\xa2s joven.
+229: Good bye young man.
+# 230: Adi\xa2s se\xa4ora.
+230: Good bye ma%am.
+@end
+
+@room109
+# 001: pasillo
+001: corridor
+# 002: puerta
+002: door
+# 003: escalera
+003: stairs
+# 004: pasillo
+004: corridor
+# 005: placa
+005: plaque
+# 006: vitrina
+006: glass case
+# 007: vitrina
+007: glass case
+# 008: Johnny
+008: Johnny
+# 201: Conduce al observatorio astron\xa2mico.
+201: It leads to the astronomy observatory.
+# 202: Est\xa0 cerrada con llave.
+202: It%s locked.
+# 203: Conduce al piso de abajo.
+203: It leads downstairs.
+# 204: Observatorio astron\xa2mico.
+204: Astronomy observatory.
+# 205: No, mejor dejarla abierta.
+205: No, I better leave it open.
+# 206: Creo que es el primer panfleto presin\xa0ptico
+206: I think it%s the first presinaptic pamphlet
+# 207: que se ha encontrado. Es valios\xa1simo.
+207: that was ever written.
+# 208: No s\x82 qu\x82 es exactamente...
+208: I don%t know what it is exactly...
+# 209: ...pero debe tratarse de alg\xa3n viejo
+209: ...but it must be some old
+# 210: instrumento astron\xa2mico.
+210: astronomical instrument.
+# 211: \xadHey Johnny! \xa8C\xa2mo va eso?
+211: Hey Johnny! How%s it going?
+# 212: \xadVenga, hombre!
+212: come on buddy!
+# 213: Que no te voy a pegar...
+213: I%m not going to hit you...
+# 214: Prefiero no abusar del d\x82bil...
+214: I prefer not to beat up on a weakling...
+# 215: ...si no es necesario.
+215: ...if I don%t have to.
+# 218: Creo que con eso s\xa2lo conseguir\xa1a
+218: I think that that would only
+# 219: asustarle a\xa3n m\xa0s.
+219: scare him more.
+# 220: Es Johnny "Tembleque", est\xa0 as\xa1
+220: He%s "Quivering" Johnny. He%s that way because
+# 221: porque de peque\xa4o todos
+221: since he was a child,
+# 222: le pegaban en la cabeza.
+222: they%ve been beating up on him.
+@end
+
+@room113
+# 001: pasillo
+001: corridor
+# 002: escalera
+002: stairs
+# 003: escalera
+003: stairs
+# 004: pasillo
+004: corridor
+# 201: Conduce al piso de arriba.
+201: It leads to the upstairs floor.
+# 202: Conduce al piso de abajo.
+202: It leads to the outside.
+# 203: Pe...pe...perdona...
+203: Ex...ex...excuse me...
+# 204: La...Laura,
+204: La...Laura,
+# 205: no te hab\xa1a visto.
+205: I didn%t seen you.
+# 206: Patoso, ten\xa1as que ser t\xa3...
+206: Clutz! It had to be you...
+# 207: Nunca me hab\xa1an descrito tan bien.
+207: I%ve never been described so well.
+# 208: Por lo menos eres gracioso...
+208: At least you%re funny...
+# 209: ...pero ahora tengo prisa, adi\xa2s.
+209: ...but now I%m in a hurry, bye bye.
+# 210: \xadQu\x82 car\xa0cter!
+210: What a character!
+@end
+
+@room116
+# 001: placa
+001: plaque
+# 002: puerta
+002: door
+# 003: l\xa0mina
+003: sketch
+# 004: pasillo
+004: door
+# 005: Srta. Sullivan
+005: Miss Barrymore
+# 202: Laboratorio.
+202: Laboratory.
+# 203: Conduce al laboratorio.
+203: It leads to the laboratory.
+# 212: Pensaba que no se iban a ir nunca...
+212: I didn%t think they were ever going to leave...
+# 213: ...pero ha merecido la pena
+213: ...but it was worth it
+# 214: estar escondido todo este tiempo...
+214: to be hidden all this time...
+# 215: \xadPara conseguir esta bonita foto!
+215: to get such a nice photo!
+# 216: \xa8Molestar a la Srta. Sullivan con lo
+216: Bother Miss Barrymore?
+# 217: hist\x82rica que se pone?
+217: She%s such an hysterical woman...
+# 218: \xadNi loco!
+218: ...I would be crazy!
+# 219: No creo que a ella le gustara mucho.
+219: I don%t think she%s going to like it.
+# 220: Es la Srta. Sullivan,
+220: She%s Miss Barrymore.
+# 221: da clase de Algebra y C\xa0lculo...
+221: She teaches algebra and calculus...
+# 222: ...es una bruja.
+222: ...she%s a witch.
+# 223: No me va.
+223: She isn%t my type.
+# 224: Creo que se trata de una de esos dibujos
+224: I think it%s one of those sketches
+# 225: de Leonardo da Vinci.
+225: by Leonardo da Vinci.
+@end
+
+@room119
+# 001: pasillo
+001: corridor
+# 002: tabl\xa2n de anuncios
+002: announcement board
+# 003: puerta
+003: door
+# 004: pasillo
+004: corridor
+# 201: No tengo ning\xa3n anuncio que poner.
+201: I don%t have any announcement to put up.
+# 203: Conduce al ba\xa4o de los chicos.
+203: It leads to the boys% bathroom.
+# 204: Pelirroja simp\xa0tica busca amigo
+204: Redhead with nice personality is looking for
+# 205: para comer juntos.
+205: an eating companion.
+# 207: Si te sobra comida...
+207: If you have food left over...
+# 208: \xadNo la tires!
+208: don%t throw it away!
+# 209: \xadD\xa0mela toda entera!
+209: give it to me!
+# 210: Nueva t\x82cnica adelgazante...
+210: New dieting technique...
+# 211: \xadComiendo hasta reventar!
+211: eat until you burst!
+@end
+
+@room122
+# 001: pasillo
+001: corridor
+# 002: puerta
+002: door
+# 003: placa
+003: plaque
+# 004: biblioteca
+004: library
+# 005: placa
+005: plaque
+# 006: Sharon y Michael
+006: Sharon and Michael
+# 201: Conduce al aula de Qu\xa1mica.
+201: It leads to the chemistry classroom.
+# 202: Aula de Qu\xa1mica.
+202: Chemistry classroom.
+# 203: Biblioteca.
+203: Library.
+# 204: Prefiero pasar de ellos.
+204: I don%t want to take part in their conversation...
+# 205: S\xa2lo saben hablar de los estudios.
+205: ...they only know how to talk about their studies.
+# 206: Son dos buenos empollones, pero no creo
+206: They%re nice nerds, but I don%t have
+# 207: que me sirvan.
+207: any use for them.
+# 208: Suelen estar siempre estudiando
+208: They always seem to be studying
+# 209: en la biblioteca.
+209: in the library.
+# 210: Se ve que han salido un rato a discutir
+210: It looks like they left to argue about
+# 211: alg\xa3n teorema de los suyos.
+211: one of their theories.
+# 212: No voy a sacar nada de estos dos
+212: I%m not going to get anything
+# 213: mendrugos.
+213: out of those two eggheads.
+@end
+
+@room128
+# 001: pasillo
+001: corridor
+# 002: orla
+002: class picture
+# 003: Lucas
+003: Lucas
+# 004: puerta
+004: door
+# 005: pasillo
+005: corridor
+# 201: Es la promoci\xa2n del 53,
+201: It%s the class picture from 1953,
+# 202: y creo que ese del centro es el decano Peeper.
+202: and I think the one in the center is Dean Peeper.
+# 203: Parece estar batiendo un record...
+203: He seems to be totally wrapped up in his game...
+# 204: ...no me har\xa0 caso hasta que termine.
+204: ...I%d better not bother him.
+# 205: Conduce al ba\xa4o de las chicas.
+205: It leads to the girls% bathroom.
+# 206: Imposible entrar si no me libro
+206: I can%t go in unless I get rid
+# 207: antes de esas pesadas.
+207: of those girls.
+# 208: Est\xa0 jugando con uno de esos videojuegos
+208: He%s playing with one of those
+# 209: de bolsillo.
+209: handheld videogames.
+# 210: Mi lema es:
+210: My slogan is:
+# 211: Respeta para que te respeten.
+211: Be good to others so that they%ll be kind to you.
+# 212: No lograr\x82 distraerle con eso.
+212: I don%t think I%ll distract him with this.
+@end
+
+@room132
+# 001: pasillo
+001: corridor
+# 002: Margaret
+002: Margaret
+# 003: bocatas
+003: sandwiches
+# 004: puerta
+004: door
+# 005: placa
+005: plaque
+# 006: pasillo
+006: corridor
+# 201: Parece que tiene buen apetito.
+201: She certainly has a healthy appetite.
+# 202: No creo que me deje.
+202: I don%t think she%ll let me.
+# 203: Tienen muy buena pinta.
+203: They look really good.
+# 204: Conduce al aula de F\xa1sica.
+204: It leads to the physics classroom.
+# 205: Aula de F\xa1sica.
+205: Physics classroom.
+# 206: Eso no me interesa.
+206: I%m not interested.
+# 207: No lo necesito para nada.
+207: I don%t need this.
+# 208: Cambiar\x82 a Laura por Margaret...
+208: I%ll change Laura%s name to Margaret...
+# 209: ...y pondr\x82 algo de mi cosecha.
+209: ...and spice it up a little bit.
+# 210: Espero que no se la coma
+210: I hope she doesn%t eat the sandwich
+# 211: sin darse cuenta.
+211: without noticing the note.
+# 212: Mmmm... \xa8Qu\x82 es esto?
+212: Mmmm, what%s this?
+# 213: Parece una nota...
+213: It looks like a note...
+# 214: Dice:
+214: It reads:
+# 215: %Querida Margaret,
+215: "My darling Margaret,
+# 216: no puedo vivir sin ti,
+216: I can%t live without you,
+# 217: te espero en el laboratorio
+217: I%ll wait for your sweet face in the laboratory
+# 218: a \xa3ltima hora%.
+218: at the end of the day".
+# 219: y es de...
+219: and it%s from...
+# 220: \xad\xad\xadPHILIP!!!
+220: PHILIP!!!
+# 221: \xadGracias Dios m\xa1o!
+221: Thank you God!
+# 222: No creo que le interese esto.
+222: I don%t think she%ll be interested in this.
+# 223: No puedo dejarle la nota tal y como est\xa0,
+223: I can%t give her the note like it is,
+# 224: se va a dar cuenta que es para Laura.
+224: or she%ll realize it%s for Laura.
+# 226: Hola Margaret.
+226: Hi Margaret.
+# 227: \xa8GROUNFCH?
+227: GROUNFCH?
+@end
+
+@room135
+# 001: pasillo
+001: corridor
+# 002: taquillas
+002: lockers
+# 003: taquilla de Philip
+003: Philip%s locker
+# 004: botellas
+004: bottles
+# 005: tabl\xa2n de anuncios
+005: announcement board
+# 006: placa
+006: plaque
+# 007: conserjer\xa1a
+007: janitor%s room
+# 201: Cada alumno tiene la suya.
+201: Each student has their own.
+# 203: No conozco la combinaci\xa2n de ninguna.
+203: I don%t know the combination to any of them.
+# 204: Ya est\xa0n cerradas.
+204: They%re all locked.
+# 205: A ciertos individuos no deber\xa1an darles taquillas.
+205: Certain creeps shouldn%t have lockers.
+# 206: Ni idea de la combinaci\xa2n.
+206: I don%t know what the combination is.
+# 207: Me llevar\x82 esta botellita de whisky.
+207: I%m gonna take this little bottle of whisky.
+# 208: Creo que de momento no necesito m\xa0s.
+208: I think I don%t need anymore right now.
+# 209: Utilizar\x82 la combinaci\xa2n
+209: I%ll use the combination
+# 210: que est\xa0 escrita en su carpeta
+210: that%s written in Philip%s folder
+# 211: para abrirla.
+211: to open it.
+# 212: Pondr\x82 aqu\xa1 esta probeta.
+212: I%ll put this flask here...
+# 213: Seguro que ese est\xa3pido
+213: ...I%m sure that idiot will
+# 214: cree que es vodka.
+214: think it%s vodka.
+# 215: Tiene toda clase de bebidas aqu\xa1 dentro.
+215: There are all kinds of liquor here.
+# 216: La \xa3ltima de la derecha
+216: I believe that the last one on the right
+# 217: pertenece al chulo asqueroso de Philip.
+217: belongs to Philip.
+# 218: Est\xa0 muy sucio,
+218: It%s very dirty,
+# 219: no logro ver ning\xa3n anuncio.
+219: I can%t make out any announcement.
+# 220: Dice:
+220: It says:
+# 221: Conserjer\xa1a.
+221: Janitor%s room.
+@end
+
+@room139
+# 001: puerta
+001: door
+# 002: puerta
+002: door
+# 003: puerta
+003: door
+# 004: secador
+004: hand dryer
+# 005: lavabos
+005: sinks
+# 006: puerta
+006: door
+# 201: No tiene nada de especial.
+201: Nothing special here.
+# 202: \xadOcupado!
+202: There%s someone in here!
+# 203: \xadUn momentito, por favor!
+203: Wait a minute, please!
+# 204: \xadYa voy!
+204: I%m leaving!
+# 205: Este funciona muy bien.
+205: This works very well.
+# 206: Hay una horquilla aqu\xa1.
+206: There%s a bobby pin here.
+# 207: Aunque me da un poco de asco, me la llevar\x82.
+207: I%ll take it with me.
+# 208: No es el momento.
+208: It%s not the right time.
+# 209: \xadVaya! Esto parece interesante...
+209: Wow!, this seems interesting...
+# 210: Ya no servir\xa0 de nada.
+210: This isn%t going to work.
+# 211: Ya no veo nada interesante.
+211: Nothing new here.
+# 212: ...ten en cuenta adem\xa0s que los animales
+212: ...keep in mind that the animals
+# 213: que viven en armon\xa1a entre nosotros
+213: that live among us
+# 214: est\xa0n totalmente indefensos.
+214: are totally defenceless.
+# 215: S\xa1, es realmente preocupante
+215: Yes, it%s really a problem.
+# 216: Debemos hacer todo lo que est\x82 en nuestras manos
+216: We should do everything we can
+# 217: para protegerlos.
+217: to protect them.
+# 218: \xa8\xa8\xa8Pero qu\x82 has hecho, INSENSATA???
+218: What have you done? How could you be so careless?
+# 219: Es cierto. \xa8C\xa2mo he podido?
+219: It%s true. How could I have been so careless?
+# 220: Perd\xa2name...
+220: I%m really sorry...
+# 221: No, si yo lo dec\xa1a porque te habr\xa0s
+221: No, I said it because you got
+# 222: puesto perdido el zapato.
+222: your shoe dirty.
+# 223: Pues es verdad, me lo limpiar\x82...
+223: Well, you%re right. I%ll clean it up...
+# 224: Acomp\xa0\xa4ame a mi cuarto.
+224: Come with me to my room.
+# 225: Perd\xa2n, me he equivocado.
+225: Excuse me. I opened the wrong door.
+@end
+
+@room140
+# 001: rejilla
+001: grate
+# 002: puerta
+002: door
+# 003: puerta
+003: door
+# 004: puerta
+004: door
+# 005: secador
+005: hand dryer
+# 006: puerta
+006: door
+# 007: grifo
+007: faucet
+# 201: Debe comunicar con el piso de abajo.
+201: It leads to the floor downstairs.
+# 202: No tiene nada de especial.
+202: It%s nothing special.
+# 204: Conduce al pasillo.
+204: It leads to the corridor.
+# 205: \xadUn segundo, por favor!
+205: Wait a minute, please!
+# 206: \xadEnseguida salgo!
+206: I%m leaving right now!
+# 207: \xadOcupado!
+207: It%s occupied!
+# 208: Est\xa0 estropeado.
+208: It doesn%t work.
+# 209: Es un grifo normal y corriente.
+209: It%s a typical faucet.
+# 210: No quiero malgastar el agua.
+210: I don%t want to waste water.
+# 211: Ya est\xa0 llena, aunque de whisky.
+211: It%s already full of whisky.
+# 212: Ya est\xa0 llena de agua.
+212: Now it%s full of water.
+# 213: Ya est\xa0.
+213: OK.
+# 214: La he llenado de agua hasta arriba.
+214: I filled it with water to the top.
+# 215: Seguro que han huido todas despavoridas.
+215: These girls must have left there.
+@end
+
+@room143
+# 001: puerta
+001: door
+# 002: Philip y Jimmy
+002: Philip and Jimmy
+# 003: carpeta
+003: Philip%s folder
+# 004: camino
+004: path
+# 201: ...no te olvides de las botellas
+201: ...don%t forget about the drinks
+# 202: para la fiesta.
+202: for the party.
+# 203: No te preocupes.
+203: Don%t worry.
+# 204: Ya sabes que en mi taquilla
+204: I always keep a bottle
+# 205: nunca falta una botellita de whisky...
+205: of whisky in my locker...
+# 206: ...as\xa1 que conseguiste que Laura Wright
+206: ...so you managed to get Laura Wright
+# 207: jugase contigo al tenis.
+207: to play tennis with you.
+# 208: S\xa1, la tengo en el bote.
+208: Yes, I have her wrapped around my little finger.
+# 209: Ya sabes que no hay t\xa1a que se me resista...
+209: You know that women find me irresistible...
+# 210: ...he o\xa1do que te has comprado
+210: ...I%ve heard you bought a Corvette.
+# 211: un Corvette.
+# 212: S\xa1, el Ferrari ten\xa1a ya varios meses
+212: Yes, the Ferrari is already nine months old
+# 213: y me gustan los coches nuevos.
+213: and I like new cars.
+# 214: Adem\xa0s, el color se hab\xa1a pasado de moda.
+214: Besides, the color is no longer vogue.
+# 215: \xa8Qu\x82 est\xa0s mirando mequetrefe?
+215: What are you looking at, buttmunch?
+# 216: \xa8Se te ha perdido algo, gusano?
+216: Have you lost something, creep?
+# 217: \xa8Alg\xa3n problema chaval\xa1n?
+217: Any problem, lad?
+# 218: \xa8No estar\xa0s espi\xa0ndonos, insecto?
+218: You%re not spying, worm, are you?
+# 219: Mejor no ensuciarme con esa basura.
+219: I%m not going to stoop down to his level.
+# 220: Creo que, de momento,
+220: I think that at the moment,
+# 221: guardar las distancias entre esa carpeta y yo
+221: maintaining some distance between that folder
+# 222: ser\xa0 beneficioso para mi salud.
+222: and myself would be better for my health.
+# 223: Creo que no ha notado
+223: I don%t think he noticed
+# 224: el cambiazo.
+224: the switch.
+# 225: Conduce al vest\xa1bulo de la facultad.
+225: It leads to the inside.
+# 226: Mejor no tentar a la suerte.
+226: Better not tempt luck.
+# 227: Ese escenario no est\xa0 disponible.
+# 228: Recuerda que est\xa0s jugando una versi\xa2n DEMO.
+@end
+
+@room147
+# 201: Me arreglar\x82 un poco para la ocasi\xa2n.
+201: I want to make myself look spiffy.
+# 202: \xadNO puedo dejar escapar esta oportunidad!
+202: I don%t want to let this opportunity go by!
+# 203: Este lazo ser\xa0 un detalle muy cuco...
+203: This bow will be a cute added touch...
+# 204: No s\x82, no s\x82...
+204: I don%t know, I don%t know...
+# 205: ...quiz\xa0s es el momento de ponerme SEXY.
+205: ...Perhaps it%s the time for a SEXY look...
+# 206: Algo picante y llamativo.
+206: ...Something hot and wilder.
+# 207: Mejor algo alegre y desenfadado.
+207: Perhaps a happy hippy look.
+# 208: La est\x82tica de los 60 es perfecta...
+208: The 60%s look is perfect...
+# 209: ...me hace realmente atractiva.
+209: ...It suits me. I%m breathtaking!
+# 210: Mmmmm, no estoy segura.
+210: Hmmmm, I don%t know...
+# 211: Tal vez demasiado agresivo...
+211: ...it could be too much...
+# 212: ...no s\x82 si va a sentirse atra\xa1do.
+212: ...I%m not sure if he would like this.
+# 213: Desde luego la pamela me sienta muy bien,
+213: The southern belle look seems great.
+# 214: pero...
+214: But...
+# 215: \xa8Le gustar\xa0 algo as\xa1?
+215: Will he like this?
+# 216: \xa8Ser\xa0 demasiado elegante?
+216: Perhaps is too elegant...
+# 217: Creo que me pondr\x82 algo atrevido y sugerente...
+217: I think I%ll try the Cher look...
+# 218: ...con clase pero TREMENDAMENTE SEXY.
+218: ...with style but very SEXY...
+# 219: \xad\xad\xadVoy a ser la bomba!!!
+219: I%ll be irresistible!!!
+# 220: Decidido.
+220: I%ve decided...
+# 221: Este modelito me entalla a la perfecci\xa2n...
+221: The "Breakfast at Tiffany%s" look is the best one.
+# 222: ...cuando me vea se va a quedar FLIPADO.
+222: ...When he sees me he%ll flip.
+# 223: No s\x82...
+223: I don%t know...
+# 224: ...creo que lo mejor ser\xa0 ir natural.
+224: ...I think I%ll go with a natural look.
+# 225: Mi personalidad no necesita adornos.
+225: My great personality makes up for everything.
+@end
+
+@room150
+# 001: instrumental
+001: laboratory instruments
+# 002: puerta
+002: door
+# 201: A ver...
+201: Let%s see...
+# 202: ...aqu\xa1 detr\xa0s hay una botella de vodka.
+202: ...back here there%s a bottle of vodka.
+# 203: Me la llevar\x82.
+203: I%ll take it with me.
+# 204: Pues es una probeta llena de...
+204: It%s a flask full of...
+# 205: ...bueno, no s\x82 lo que es
+205: ...well, I don%t know what it is but it looks
+# 206: pero tiene pinta de poner en trance a cualquiera.
+206: like it could put anybody in a trance.
+# 207: Con una probeta tengo bastante.
+207: One flask is enough.
+# 208: Hay todo tipo
+208: There are all kinds of
+# 209: de cachibaches de laboratorio.
+209: laboratory instruments.
+# 210: Bueno...
+210: Well...
+# 211: Ya les he dado las notas.
+211: ...I%ve already given them the notes...
+# 212: He conseguido la c\xa0mara fotogr\xa0fica.
+212: ...I%ve gotten the camera...
+# 213: Y es la hora.
+213: ...and it%s time.
+# 214: Me esconder\x82 por aqu\xa1.
+214: I will hide around here.
+# 215: \xa8\xadProfesor...!?
+215: Professor!?...
+# 216: \xa8\xad\xa8Profesor...?!?
+216: ...Professor!?...
+# 217: Parece que no est\xa0.
+217: It seems he%s not here...
+# 218: \xadHola pich\xa2n!
+218: Hi sweetie!,
+# 219: Hace a\xa4os que espero este momento.
+219: I%ve been waiting for this moment for a long time.
+# 220: \xa8C\xa2mo...?
+220: What?...
+# 221: T\xa3 no eres...
+221: ...you%re not...
+# 222: S\xa1, s\xa1 que soy,
+222: Yes, yes, I am,
+# 223: ven a mis brazos pimpollo...
+223: come here my little darling...
+@end
+
+@room152
+# 001: iglesia
+001: church
+# 002: residencia de estudiantes
+002: student dormitory
+# 003: parque
+003: park
+# 004: decanato
+004: administration building
+# 005: facultad
+005: faculty
+# 006: manantial
+006: spring
+@end
+
+@room156
+# 001: puerta
+001: door
+# 002: reloj de cuco
+002: cuckoo clock
+# 003: Tob\xa1as
+003: Tobias
+# 004: tablero
+004: keyrack
+# 201: Es el viejo Tob\xa1as Jennings.
+201: It%s Tobias Jennings.
+# 202: Nadie sabe tantas buenas historias
+202: No one knows as many old stories about the faculty
+# 203: sobre la facultad como \x82l.
+203: as he does.
+# 204: Conduce al pasillo.
+204: It leads to the corridor.
+# 205: No alcanzo,
+205: I can%t reach it.
+# 206: si al menos tuviera una escalera.
+206: If I only had a stepladder.
+# 207: Es un viejo reloj muy r\xa3stico.
+207: It%s a very old rustic clock.
+# 208: Ni hablar.
+208: Don%t even think about it.
+# 209: Sr. Jennings...
+209: Mr. Jennings...
+# 210: ...le traigo el proyecto de Biolog\xa1a.
+210: ...I%m bringing you the biology project.
+# 211: ...le traigo el dinero para el viaje de Biolog\xa1a.
+211: ...here%s the money for the biology trip.
+# 212: D\xa1game su nombre, por favor.
+212: Tell me your name, please.
+# 213: Igor Parker.
+213: Igor Parker.
+# 214: Espere un momento.
+214: Wait a moment...
+# 215: Lo siento, no encuentro su nombre entre
+215: ...I%m sorry, but I can%t find your name on
+# 216: los matriculados en Biolog\xa1a.
+216: the list of the students enrolled in biology.
+# 217: No puedo recog\x82rselo.
+217: I can%t take it.
+# 218: S\xa1, de acuerdo, veo que est\xa0 usted
+218: ...yes, I see you%re enrolled in biology.
+# 219: matriculado en biolog\xa1a.
+219: It%s OK.
+# 220: Deme el proyecto.
+220: Give me the project.
+# 221: Recuerde que a\xa3n no me ha tra\xa1do
+221: Remember that you still haven%t given me
+# 222: el dinero de la inscripci\xa2n.
+222: the money for the trip.
+# 223: Deme el dinero.
+223: Give me the money.
+# 224: Recuerde que a\xa3n no me ha tra\xa1do
+224: Remember that you still haven%t given me
+# 225: el proyecto de fin de semestre.
+225: the biology project.
+# 226: Bien, todo est\xa0 en regla,
+226: Good. Everything is arranged.
+# 227: tan solo le queda el requisito final.
+227: You only have one requirement left...
+# 228: \xa8Requisito? \xa8QUE requisito?
+228: Requirement?, which requirement?
+# 229: Aprobar el examen, por supuesto...
+229: To pass the exam, of course...
+# 230: \xa8\xadEXAMEN!? \xa8\xadHA DICHO EXAMEN!?
+230: EXAM!? DID YOU SAID EXAM!?
+# 234: No es lo bastante sexy para m\xa1.
+234: He%s not sexy enough for me.
+# 235: No puedo llevarme eso...
+235: I can%t take it with me...
+# 236: ...y menos con Tob\xa1as delante.
+236: ...specially with Tobias around.
+# 237: Ah\xa1 deben de estar todas las llaves
+237: All the faculty keys
+# 238: de la facultad.
+238: must be hung there.
+# 239: El tipo \x82ste no me dejar\xa1a ni tocarlo.
+239: That guy wouldn%t let me touch it.
+# 240: No creo que esto le pueda interesar.
+240: I don%t think it would interest him.
+@end
+
+@room159
+# 001: campana
+001: bell
+# 002: escaleras
+002: stairs
+# 201: Es enorme, su sonido debe escucharse
+201: It%s huge! Its sound must be heard
+# 202: a kil\xa2metros de distancia.
+202: miles away.
+# 203: Mirar\x82 dentro de la campana
+203: I%ll take a look inside the bell
+# 204: a ver qu\x82 han dejado escondido...
+204: to see what they have hidden in it...
+# 205: \xadAj\xa0! Es una nota y dice:
+205: Hey! There%s a note that reads:
+# 206: "Hijo, no tardes, mam\xa0 te espera.".
+206: "Don%t come home late. Mom is waiting for you".
+@end
+
+@room162
+# 000: Perdona el retraso Ricky,
+000: Sorry I was late, Ricky.
+# 001: tuve que esperar a que se largara el cura.
+001: I had to wait for the priest to leave.
+# 002: \xadSabes que odio esperar, zoquete!
+002: You know I don%t like to wait, stupid!
+# 003: \xadNo soporto estar rodeado de imb\x82ciles!
+003: I hate being surrounded by idiots!
+# 004: En fin, al grano:
+004: At last, to the point:
+# 005: La mercanc\xa1a est\xa0 a buen recaudo
+005: The merchandise is safe
+# 006: en el sitio previsto.
+006: where we decided to put it.
+# 007: \xa8Qu\x82 tengo que hacer, jefe?
+007: What do I have to do "Weasel"?
+# 008: Espera unos d\xa1as
+008: Wait a few days
+# 009: hasta que se enfr\xa1e el ambiente y
+009: until everything cools down and...
+# 010: env\xa1a la se\xa4al desde el sitio previsto.
+010: ...send the signal from the designated place.
+# 011: \xa8Qu\x82 se\xa4al, jefe?
+011: What signal, boss?
+# 012: \xadIdiota!, ya contaba yo con que
+012: Idiot! I knew you were going
+# 013: lo olvidar\xa1as.
+013: to forget it.
+# 014: Est\xa0 apuntada en una nota
+014: It%s written down on the note
+# 015: que he escondido en esta campana.
+015: that I%ve hidden in this bell.
+# 016: Bien jefe, ahora la cojo y...
+016: OK boss, I%ll get it now and...
+# 017: \xad\xad\xadNo!!! Eres tan cenutrio que la perder\xa1as.
+017: No! You%re such a moron that you%ll lose it.
+# 018: D\x82jala en la campana y
+018: Leave it in the bell and
+# 019: vuelve por ella en el momento preciso.
+019: get it at the right moment.
+# 020: Espero que esta vez no me falles.
+020: I hope this time you won%t let me down.
+# 021: Yo me pondr\x82 fuera de circulaci\xa2n
+021: I%m gonna go underground
+# 022: durante una temporadita.
+022: for a while.
+# 023: Tranquilo jefe, es pan comido.
+023: Don%t worry, Ricky. It%s as easy as pie.
+# 024: No parece haber nada de especial
+024: There doesn%t seem to be anything special
+# 025: en estas coordenadas.
+025: about these coordinates.
+# 026: No hay nadie en el campanario.
+026: Looks like nobody%s in the belfry.
+@end
+
+@room164
+# 001: puerta
+001: door
+# 002: telescopio
+002: telescope
+# 003: panel de mandos
+003: control panel
+# 004: estanter\xa1a
+004: bookshelf
+# 005: gr\xa0ficos
+005: graphics
+# 201: Bonito juguete, \xa8verdad?
+201: It%s a nice toy, isn%t it?
+# 202: Est\xa0 repleta de
+202: It%s full of articles and documents
+# 203: tratados y documentos sobre Astronom\xa1a.
+203: about astronomy.
+# 204: No tengo ni idea de qu\x82 significar\xa0n
+204: I don%t have any idea what
+# 205: todos esos garabatos.
+205: all those scribbles mean.
+# 206: Suerte que hice aquel curso
+206: Good thing I took that course
+# 207: para aprender a leer en los labios
+207: on how to read lips
+# 208: hace dos veranos.
+208: two summers ago.
+# 209: \xadVaya con el decano!
+209: Wow! The dean certainly...
+# 210: \xadEl s\xa1 que sabe de Astronom\xa1a!
+210: ...knows astronomy!
+# 211: Debe de ser un truco de alg\xa3n bromista.
+211: It must be a trick by some joker.
+@end
+
+@room168
+# 001: escaleras
+001: stairs
+# 002: roset\xa2n
+002: mosaic
+# 003: velas
+003: candles
+# 004: iglesia
+004: church
+# 005: pasadizo
+005: passage
+# 201: Llevan al campanario.
+201: It leads to the belfry.
+# 202: Est\xa0n todas apagadas.
+202: They%re all out.
+# 203: Est\xa0 muy oscuro.
+203: It%s very dark.
+# 204: No parece que ocurra nada.
+204: Nothing seems to be happening.
+# 205: Hola.
+205: Hi.
+# 206: Hola, no le he o\xa1do llegar.
+206: Hi!, I didn%t hear you come in.
+# 207: \xa8Qui\x82n es usted?
+207: Who are you?
+# 208: Soy Fray Anthony Mails,
+208: I%m Friar Anthony Mails,
+# 209: y vengo a traerte un regalo.
+209: and I%ve come to bring you a gift.
+# 210: \xa8A m\xa1? \xa8Por qu\x82?
+210: Me?, why?...
+# 211: Pues resulta que eres la persona 1.000.000
+211: Well it so happens that you are the one millionth
+# 212: que enciende una de esas velitas con su fe.
+212: person to light one of these candles.
+# 213: Y tenemos un obsequio especial
+213: And we have a special gift
+# 214: para esa persona:
+214: for you:
+# 215: \xadUn maravilloso pergamino del siglo XIV!
+215: a 14th century vellum!
+# 216: Aqu\xa1 lo tienes. \xadEnhorabuena!
+216: Here you are. Congratulations!
+# 217: Bueno...
+217: Good...
+# 218: ...bien...
+218: ...well...
+# 219: ...gracias, pero...
+219: ...thanks, but...
+# 220: \xadOye, mira detr\xa0s de ti!
+220: Hey, look behind you!
+# 221: Se te ha apagado la vela.
+221: Your candle has gone out.
+# 222: No s\x82, habr\xa0 sido el vient...
+222: I don%t know. It must have been the wind...
+# 223: \xa8Fray Anthony? \xa8Donde est\xa0?
+223: Friar Anthony! Where are you?...
+# 224: Pues parece que se ha marchado...
+224: ...I guess he left.
+# 225: \xadQu\x82 tipo tan extra\xa4o!
+225: What a strange guy!
+# 226: Es la \xa3ltima cerilla de la caja.
+226: It%s the last match in the box.
+# 227: \xadVaya! Hay un pasadizo.
+227: Hey ! There is a passage
+@end
+
+@room170
+# 001: p\xa3lpito
+001: pulpit
+# 002: vidriera
+002: stain glass window
+# 003: lateral
+003:  side
+# 004: puerta
+004: door
+# 201: La luz ilumina una parte de
+201: The light illuminates part
+# 202: la iglesia.
+202: of the church.
+# 203: No veo nada interesante por aqu\xa1.
+203: I don%t see anything interesting around here.
+@end
+
+@room174
+# 001: portal\xa2n
+001: entrance
+# 002: camino
+002: path
+# 003: piedra
+003: stone
+# 004: puerta
+004: door
+# 201: Mmmm... Rom\xa0nico tard\xa1o, siglo XIII.
+201: Late 13th century Romanesque church.
+# 203: Me pareci\xa2 ver un lagarto
+203: It looks like there was
+# 204: por aqu\xa1.
+204: a lizard around here.
+# 205: Apenas se nota el rastro de resina.
+205: I can barely see the resin.
+# 206: Mejor ser\xa0 dejarla abierta.
+206: I better leave it open.
+# 207: No veo a nadie dentro
+207: I don%t see anyone
+# 208: de la iglesia.
+208: inside the church.
+# 209: No se nota nada.
+209: Nothing can be noted.
+# 210: Ahora, lo mejor ser\xa0 esconderse...
+210: I think that I should hide now...
+# 211: No hay bicho que se me resista.
+211: There isn%t a creature alive that can resist me.
+# 212: \xadMe voy corriendo,
+212: I%m in a hurry!
+# 213: hay un estudiante poseso!
+213: There%s a posessed student on campus...
+# 214: \xadLa ilusi\xa2n de mi vida!,
+214: ...I%ve always wanted to perform...
+# 215: \xad\xad\xadHacer un exorcismo!!!
+215: an exorcism!
+# 216: Creo que lo primero que har\x82
+216: I think I should go to the police
+# 217: es ir a la comisar\xa1a...
+217: station first...
+# 218: \xadHay cierta recompensa esper\xa0ndome!
+218: ...I bet I get a huge reward!!
+# 219: No, no hay m\xa0s lagartos por aqu\xa1.
+219: No, no more lizards around here.
+@end
+
+@room178
+# 001: placa
+001: plaque
+# 002: puerta
+002: door
+# 003: papelera
+003: trashcan
+# 004: carretera
+004: road
+# 006: camino
+006: sidewalk
+# 201: Decanato.
+201: Administration building.
+# 202: Conduce al vest\xa1bulo del decanato.
+202: It leads to the lobby.
+# 203: Parece que hay una hamburguesa,
+203: It looks like a hamburguer.
+# 204: la coger\x82.
+204: I%ll pick it up.
+# 205: Est\xa0 vac\xa1a.
+205: There%s nothing there.
+# 206: No quiero tirar nada.
+206: I don%t want to throw anything away.
+# 207: No pasan muchos coches por aqu\xa1.
+207: Not many cars go by here.
+# 208: Nada de inter\x82s por ah\xa1.
+208: Nothing interesting there.
+@end
+
+@room179
+# 001: ventana
+001: window
+# 002: agujero
+002: hole
+# 003: canal\xa2n
+003: drain pipe
+# 004: babosa
+004: slug
+# 006: cazamariposas
+006: butterfly net
+# 007: cristales rotos
+007: broken glass
+# 008: botella
+008: bottle
+# 201: Dir\xa1a que es
+201: I think it%s the one
+# 202: la del despacho del decano.
+202: from the dean%s office.
+# 203: Parece que hay unos bichos en el extremo.
+203: There is a slug at the end of the pipe.
+# 204: Con una babosa tengo bastante.
+204: One slug is more than enough.
+# 205: \xadHey, babosa!,
+205: Hey Slug!
+# 206: \xa8te vienes a tomar unas copas?
+206: Do you wanna a drink?
+# 207: Es bastante profundo.
+207: It%s rather deep.
+# 208: Todav\xa1a no he cazado nada.
+208: I still haven%t caught anything.
+# 209: Parece que he atrapado una botella.
+209: It seems that I have caught a bottle.
+# 210: Es la botella hecha a\xa4icos.
+210: It%s a broken bottle.
+# 211: Buena caza.
+211: Good catch.
+@end
+
+@room184
+# 001: agua
+001: water
+# 003: papel
+003: note
+# 004: camino
+004: path
+# 201: Debe estar muy fr\xa1a
+201: It must be very cold
+# 202: viniendo directamente de las monta\xa4as.
+202: coming directly from the mountain.
+# 203: Creo que se le cay\xa2
+203: I%m sure that idiot Philip
+# 204: a ese est\xa3pido baboso de Philip.
+204: must have dropped it.
+@end
+
+@room188
+# 001: libros
+001: books
+# 002: libros
+002: books
+# 003: libros
+003: books
+# 004: libros
+004: books
+# 005: libros
+005: books
+# 006: libros
+006: books
+# 007: libros
+007: books
+# 008: libros
+008: books
+# 009: Harrison
+009: Harrison
+# 010: puerta
+010: door
+# 201: No se cu\xa0l de ellos me puede interesar.
+201: I don%t know which of these will be interesting.
+# 202: Todos estos son de Historia.
+202: These are about History.
+# 203: Todos estos son de F\xa1sica.
+203: These are about Physics.
+# 204: Todos estos son de Qu\xa1mica.
+204: These are about Chemistry.
+# 205: Todos estos son de Geograf\xa1a.
+205: These are about Geography.
+# 206: Todos estos son de Algebra.
+206: These are about Algebra.
+# 207: Todos estos son de Arte.
+207: These are about Art.
+# 208: Todos estos son de Astronom\xa1a.
+208: These are about Astronomy.
+# 209: Todos estos son de Filosof\xa1a.
+209: These are about Philosophy.
+# 210: %La galaxia MJ-78%
+210: %The galaxy MJ-78%.
+# 211: \xadHombre!, \x82sta es la galaxia
+211: Man! This is the galaxy
+# 212: de la que se habla en el peri\xa2dico.
+212: that they are talking about in the newspaper.
+# 213: Es un empoll\xa2n,
+213: He%s a nerd.
+# 214: se pasa la vida aqu\xa1 metido.
+214: He spends his life here.
+# 215: Toma esto,
+215: Take this.
+# 216: me lo ha dado el profesor Morrissey para ti.
+216: Professor Morrissey told me to give this to you.
+# 217: Te espero en el laboratorio a \xa3ltima hora
+217: Come to the laboratory at the end of the day
+# 218: para continuar nuestro experimento.
+218: to finish the experiment.
+# 219: Muchas gracias, Igor.
+219: Thank you very much, Igor.
+# 220: \xadHuy!, ya es la hora,
+220: Hey! It%s time,
+# 221: debo ir al laboratorio.
+221: I must go to the laboratory.
+# 222: No me interesa ninguno m\xa0s.
+222: Nothing here interests me.
+# 223: Mira el regalito que te traigo.
+223: Look at the little gift that I%ve brought you...
+# 224: \xa8Qu\x82 es?
+224: What is it?
+# 225: \xadPERO! \xa8COMO? \xa8HAS SIDO TU?
+225: BUT, HOW!? WAS IT YOU?
+# 226: Je, Je, r\xa2mpela si quieres, tengo m\xa0s copias.
+226: Ha ha, tear it up if you like, I have more copies.
+# 227: No, si lo que yo quiero es darte las gracias.
+227: No, what I want to do is to thank you.
+# 228: \xa8\xa8\xa8Qu\x82??? \xa8\xa8\xa8C\xa2mo??? Pero...
+228: What??? how??? but...
+# 229: S\xa1 hombre, me has hecho el hombre m\xa0s feliz
+229: Yes, you%ve made me the happiest man
+# 230: del mundo mundial al unirme con mi amada Margaret.
+230: in the world by fixing me up with Margaret.
+# 231: Gracias Igor, en recompensa
+231: Thanks Igor, to reward you
+# 232: te dar\x82 este interesante trabajo de biolog\xa1a.
+232: I%ll give you this biology project.
+# 233: Voy a terminar unas cosas
+233: I%m going to finish some things
+# 234: e ir\x82 corriendo a ense\xa4\xa0rsela a Margaret.
+234: and then I%m going to run and show it to Margaret.
+@end
+
+@room193
+# 001: archivador
+001: file cabinet
+# 002: secretaria
+002: secretary
+# 003: armario
+003: closet
+# 004: interfono
+004: intercom
+# 005: disfraz de mono
+005: monkey costume
+# 006: puerta
+006: door
+# 201: Ah\xa1 est\xa0n guardados todos
+201: That%s where she keeps
+# 202: los expedientes.
+202: all of the files.
+# 203: Parece estar bastante ocupada.
+203: She seems to be very busy.
+# 205: \xa8Qu\x82 demonios habr\xa0 aqu\xa1 guardado?
+205: I wonder, what does she keep here?
+# 207: Lo utiliza el decano cuando quiere algo
+207: The dean uses it when he wants something...
+# 208: o est\xa0 aburrido.
+208: ...or when he%s bored.
+# 209: \xa8Para qu\x82 lo utilizar\xa0
+209: What does she use
+# 210: la mujer esta?
+210: this for?
+# 211: Conduce al vest\xa1bulo.
+211: It leads to the lobby.
+# 212: Lo consegu\xa1.
+212: I%ve got it!
+# 213: Est\xa0 cerrado con llave.
+213: It%s locked.
+# 214: No puedo hacerlo
+214: I can%t do it
+# 215: sin que me vea la se\xa4orita Pickford.
+215: without Miss Pickford seeing me.
+# 216: No creo que me deje usarlo.
+216: I don%t think she%ll let me use it.
+# 217: Mejor ser\xa0 dejarlo abierto.
+217: I%s better if I leave it open.
+# 218: Hay un disfraz de mono dentro.
+218: There%s a monkey costume inside.
+# 219: Est\xa0 vac\xa1o.
+219: It%s empty.
+# 220: De aqu\xa1 no paso con esta t\xa1a en medio.
+220: I can%t go there with her in the way.
+# 221: Un papelito por aqu\xa1.
+221: A little paper here,
+# 222: Un papelote por all\xa0.
+222: A little paper there,
+# 223: \xadY matriculado estoy ya!
+223: and presto, I%m enrolled!
+# 224: \xa8Para qu\x82?, el decano no puede contestarme.
+224: Why? The Dean can%t answer me.
+# 225: Ya he hecho todo lo que necesitaba.
+225: I%ve done everything neccesary.
+# 226: Est\xa0 bien, me voy rodando.
+226: As you wish, I%ll go rolling.
+@end
+
+@room196
+# 001: ventana
+001: window
+# 002: decano
+002: dean
+# 003: peri\xa2dico
+003: newspaper
+# 004: interfono
+004: intercom
+# 005: libros
+005: books
+# 006: puerta
+006: door
+# 202: Bonita l\xa1nea arquitect\xa2nica.
+202: Nice architectural design.
+# 203: Seguro que no ha trabajado
+203: I%m sure he hasn%t worked
+# 204: en toda su vida.
+204: a day in his life.
+# 205: Se usa para pedir caf\x82s
+205: It%s used to order coffee
+# 206: y cosas por el estilo.
+206: and things like that.
+# 207: Son completamente nuevos,
+207: They%re completely new.
+# 208: seguro que son de adorno.
+208: I%m sure they%re only for adornment.
+# 209: Conduce al vest\xa1bulo.
+209: It leads to the lobby.
+# 210: Aunque s\x82 que usted no bebe,
+210: Although I know you don%t drink,
+# 211: le traigo este detallito, decano Peeper.
+211: I%m bringing you this little present, Dean Peeper.
+# 212: No creo que me deje usarlo.
+212: I don%t think he would let me use it.
+# 213: No creo que al decano le guste
+213: I don%t think that the dean would like
+# 214: que toquen sus libros.
+214: his books touched.
+# 215: Ya tengo el que me interesaba.
+215: I have everything that I want.
+# 216: Bien, como usted dice...
+216: Well, as you say...
+# 217: ...no bebo.
+217: ...I don%t drink...
+# 218: Pero la guardo para ofrecer a las visitas.
+218: ...But I%ll keep it for visitors.
+# 219: \xadGracias se\xa4or Parker!
+219: Thank you Mr. Parker!
+# 220: Joven...
+220: Mr. Parker,
+# 221: \xa8En su casa no hay puertas?
+221: aren%t there any doors in your house?...
+# 222: Est\xa0 descansando.
+222: He%s resting.
+# 223: No est\xa0 para mucha conversaci\xa2n.
+223: He%s not much for conversation.
+# 224: No hay nadie en secretar\xa1a
+224: There%s no one in the secretary%s office
+# 225: con quien hablar.
+225: to talk to.
+# 226: No creo que quiera una botella vac\xa1a.
+226: I don%t think he wants an empty bottle.
+# 227: Mejor ser\xa0 dejarle descansar.
+227: I think I better let him rest.
+# 228: \xadGLU! \xadGLU! \xadGLU!
+228: GLU!...GLU!...GLU!...
+# 229: \xad\xadPUUUAAAAAJJ!!
+229: ...PUUUAAAAAJJ!...
+# 230: \xad\xad\xadBUARJJJJJJJJ!!!
+230: ...BIEARJJJJJJJJ!...
+@end
+
+@room199
+# 001: placa
+001: plaque
+# 002: puerta
+002: door
+# 003: puerta
+003: door
+# 004: placa
+004: plaque
+# 005: tabl\xa2n de anuncios
+005: announcement board
+# 006: escaleras
+006: stairs
+# 008: puerta
+008: door
+# 201: Decano Bob J. Peeper.
+201: Dean Bob J. Peeper.
+# 202: Me pregunto qu\x82 sucios secretos
+202: I wonder what dirty secrets
+# 203: esconder\xa0...
+203: it%s hiding...
+# 204: Secretar\xa1a.
+204: Secretary.
+# 205: Dice:
+205: It reads:
+# 206: Viaje a la isla UIKOKAHONIA,
+206: Trip to the Island of UIKOKAHONIA,
+# 207: organizado por el departamento de Biolog\xa1a.
+207: organized by the Biology Department.
+# 208: Los alumnos matriculados en la asignatura
+208: Those students interested in going
+# 209: e interesados en ir, deber\xa0n entregar
+209: and already enrolled in the course,
+# 210: su proyecto en conserjer\xa1a,
+210: should hand in a project, as well
+# 211: y abonar la cantidad establecida.
+211: as the money for the trip, to the janitor.
+# 212: Arriba no hay nada.
+212: There%s nothing up there.
+# 213: Busco 60 personas para compartir piso,
+213: Looking for 60 people to share an apartment,
+# 214: es peque\xa4o pero bien situado.
+214: it%s small but well located.
+# 215: Hay un anuncio de publicidad de un juego:
+215: Powerful computer for sale:
+# 216: "HOLLYWOOD MONSTERS"
+216: XT-4 Mhz with CGA monitor,
+# 217: \xad\xad\xadY es de P\x82ndulo!!!
+217: 512Kb RAM,
+# 218: Tiene que ser la leche.
+218: and 8" drive.
+# 219: Habr\xa0 que comprarlo...
+219: DOS 1.0 free!
+@end
+
+@room202
+# 001: ventana
+001: window
+# 002: ventana
+002: window
+# 003: ventana
+003: window
+# 004: paloma
+004: pigeon
+# 201: No puedo pasar con esa bestia
+201: I can%t go with that beast
+# 202: en mitad de la cornisa.
+202: in the middle of the roof.
+# 203: \xadGenial! Se ha enganchado el cierre.
+203: Great! the window%s locked...
+# 204: Por aqu\xa1 no podr\x82 volver a entrar.
+204: ...I won%t be able to go in through it again.
+# 205: \xadNo soporto esas ratas con alas!
+205: I can%t stand these winged rats!
+# 206: Est\xa0 cerrada por dentro. Tendr\x82 que
+206: It%s locked from the inside. I will have
+# 207: buscar otro camino para salir de aqu\xa1.
+207: to look for another way to get out of here.
+# 208: Est\xa0 muy oscuro, pero parece un viejo desv\xa0n.
+208: It%s very dark, but it seems to be an old attic.
+# 209: Est\xa0 rota.
+209: It%s broken.
+# 210: No puedo abrirla desde fuera.
+210: I can%t open it from the outside.
+# 211: \xadPor nada de este mundo tocar\xa1a
+211: I wouldn%t touch that winged rat
+# 212: esa malvada rata con alas!
+212: for anything!
+@end
+
+@room205
+# 001: ventana
+001: window
+# 002: ba\xa3l
+002: trunk
+# 003: cazamariposas
+003: butterfly net
+# 004: trastos viejos
+004: old junk
+# 005: cuadro
+005: painting
+# 006: agujero en la pared
+006: hole in the wall
+# 007: grieta
+007: crack
+# 008: peque\xa4a grieta
+008: small crack
+# 009: clavo
+009: nail
+# 010: estante
+010: shelf
+# 201: Parece muy viejo.
+201: It seems very old.
+# 202: Est\xa0 lleno de herramientas.
+202: It%s full of tools.
+# 203: No s\x82 CUAL puedo necesitar...
+203: I don%t know which one I will need...
+# 204: Me llevar\x82 este martillo.
+204: I%ll take this hammer.
+# 205: Cambiar\x82 el martillo por este pico.
+205: I%ll take the pick instead of the hammer.
+# 206: Este barreno puede ser lo que necesito.
+206: This stick of dynamite may be what I need.
+# 207: Ya no veo nada que
+207: I don%t see anything else
+# 208: pueda necesitar.
+208: I may need.
+# 209: No parece estar bien clavado.
+209: It doesn%t seem to be well hammered in.
+# 210: Deben llevar aqu\xa1 montones de a\xa4os.
+210: They%ve probably been here for ages.
+# 211: Hay una caja de cerillas,
+211: There%s a box of matches,
+# 212: la coger\x82...
+212: I%ll take it...
+# 213: Buen boquete hizo ese petardo...
+213: This dynamite made a big hole...
+# 214: Es muy profunda,
+214: It%s very deep,
+# 215: casi atraviesa el muro.
+215: I can almost see the other room.
+# 216: Nunca se me dio bien colgar cuadros.
+216: I was never good at hanging pictures.
+# 217: Ya no hay clavo en el que golpear.
+217: Now there%s no nail to hammer.
+# 218: Ya no puedo hacer m\xa0s con \x82l.
+218: This isn%t good anymore.
+# 219: Est\xa0 rota.
+219: It%s broken.
+# 220: No pienso salir con esos monstruos ah\xa1 fuera.
+220: I can%t leave with those monsters out there.
+# 221: Ser\xa0 mejor ponerse a cubierto.
+221: I%d better get out of here.
+# 222: Parece que no explota...
+222: It didn%t seem to explode...
+# 224: \xadVaya pedo!
+224: Cool explosion!
+# 225: A primera vista parece una obra impresionista,
+225: At first glance it seems to be an Impresionistic
+# 226: influenciada por el car\xa0cter del maestro;
+226: work, influenced by the maestro%s personality;
+# 227: con matices renacentistas, y una vigorosa
+227: with touches of the Renaissance era and a lively
+# 228: concepci\xa2n global de la figura como un todo.
+228: global conception of the figure as everything.
+# 229: En resumen: \xadBasura!
+229: In summary: it%s trash!
+# 230: Est\xa0 vac\xa1o.
+230: It%s empty.
+@end
+
+@room208
+# 001: cama
+001: bed
+# 002: mesilla
+002: nightstand
+# 003: despertador
+003: alarm clock
+# 004: armario
+004: closet
+# 005: agujero en la pared
+005: hole in the wall
+# 006: discos
+006: CDs
+# 007: ventana
+007: window
+# 008: puerta
+008: door
+# 201: Bonita vista.
+201: It%s a nice view.
+# 202: Desde aqu\xa1 puedo ver
+202: From here I can see
+# 203: todo el campus.
+203: all of the campus.
+# 204: Buen invento, \xa8verdad?
+204: Nice invention, isn%t it?
+# 205: Es peque\xa4a.
+205: It%s small.
+# 206: Ya lo ordenar\x82 ma\xa4ana...
+206: I%ll clean it up tomorrow.
+# 207: \xadVaya boquete!,
+207: Wow! What a hole!
+# 208: suerte que lo tapa el armario.
+208: It%s a good thing that the closet covers it up.
+# 209: S\xa2lo me falta un disco para
+209: I only need one more record
+# 210: tener la discograf\xa1a completa
+210: to have the complete collection
+# 211: de T.P.L.
+211: of T.P.L...
+# 212: Paso de volver a salir.
+212: I%d better forget about going out again.
+# 213: Ya tengo mi favorito,
+213: I already have my favorite,
+# 214: dejar\x82 los dem\xa0s donde est\xa0n.
+214: I%ll leave the rest here.
+# 215: Por suerte mi gorro de piel
+215: Luckily, my ratskin hat
+# 216: de rata est\xa0 intacto.
+216: is still intact.
+# 217: Ah\xa1 est\xa0 mi despertador.
+217: There%s my alarm clock.
+# 218: No hay nada m\xa0s de inter\x82s ah\xa1.
+218: There%s nothing interesting here.
+# 219: S\xa2lo hay dos razones para usar la cama,
+219: There%re only two reasons to use a bed,
+# 220: y sue\xa4o no tengo.
+220: and I%m not sleepy...
+@end
+
+@room211
+# 201: Bueno Laura, vas progresando,
+201: Well Laura, you%re getting better.
+# 202: pero a\xa3n tengo que darte m\xa0s clases de tenis
+202: But I still have to give you more tennis lessons
+# 203: para hacer de ti una jugadora con nivel.
+203: to improve your game.
+# 204: Quiz\xa0s podr\xa1amos quedar ma\xa4ana y...
+204: Perhaps we can meet tomorrow and...
+# 205: No creo que pueda.
+205: I don%t think I can.
+# 206: Adem\xa0s, lo \xa3nico que quiero es
+206: Besides, all I want is
+# 207: ponerme un poco en forma para el viaje de biolog\xa1a
+207: to get myself in shape for the biology trip.
+# 208: \xa8Vas a ir t\xa3 a ese est\xa3pido viaje?
+208: Are you going on that trip?
+# 209: Por supuesto...
+209: Of course,
+# 210: No me lo perder\xa1a por nada.
+210: I wouldn%t miss it for anything.
+# 211: Es una oportunidad \xa3nica:
+211: It%s the opportunity of a lifetime!
+# 212: Exploraremos la isla...
+212: We%re going to explore the island.
+# 213: ...estudiaremos la fauna ind\xa1gena...
+213: We%re going to study indigenous fauna...
+# 214: ...y tomaremos el sol en la playa.
+214: ...and we%re going to sunbathe on the beach!
+# 215: Mmmm, bien pensado...
+215: Hmmm. Thinking about it...
+# 216: ...podr\xa1a hacer surf durante el d\xa1a
+216: ...I could go surfing during the day
+# 217: y barbacoas en la playa por la noche.
+217: and have barbecues on the beach at night.
+# 218: \xadS\xa1!, creo que ir\x82 a ese viaje contigo.
+218: Yes, I think I%ll go on the trip!
+# 219: Si cumples los REQUISITOS,
+219: If you fulfill the requirements,
+# 220: \xa8por qu\x82 no?
+220: why not?
+# 221: En fin, se ha hecho tarde.
+221: Well, it%s getting late.
+# 222: V\xa0monos, que llego tarde a mis clases.
+222: Let%s go or I%ll be late for my classes.
+# 223: No soporto ver a Laura Wright
+223: I can%t stand seeing Laura Wright
+# 224: con ese est\xa3pido baboso de Philip Goolash.
+224: with that stupid jerk Philip Goolash.
+# 225: Y encima, ahora pretende
+225: And on top of everything.
+# 226: ir con ella al viaje de biolog\xa1a.
+226: He%s going on the biology trip with Laura!
+# 227: \xadElla ser\xa0 s\xa2lo m\xa1a!
+227: I must go on to the trip
+# 228: Debo ir al viaje e impedir que ese cerdo
+228: and stop that pig from getting close
+# 229: se acerque a Laura.
+229: to Laura.
+@end
+
+@room212
+# 001: agua
+001: water
+# 003: fot\xa2grafo
+003: photographer
+# 004: c\xa0mara
+004: camera
+# 201: Viene de la monta\xa4a,
+201: It must be very cold
+# 202: tiene que estar muy fr\xa1a.
+202: coming directly from the mountain.
+# 203: Parece estar buscando algo.
+203: He must be looking for something.
+# 204: Parece una de esas c\xa0maras instant\xa0neas.
+204: It seems to be one of those instant cameras.
+# 205: Quiz\xa0s te interese esto.
+205: Perhaps this will interest you...
+# 206: No, gracias chaval;
+206: No, thanks.
+# 207: no es eso lo que busco.
+207: That%s not what I%m looking for.
+# 208: Mira amigo, creo que
+208: Look at this. I think that it
+# 209: esto te puede interesar mucho.
+209: may interest you.
+# 210: Es rojo, con rayas blancas
+210: It%s red, has white stripes
+# 211: y vuela.
+211: and it flies.
+# 212: No s\x82, d\x82jame que lo vea...
+212: I don%t know. Let me see it...
+# 213: Jo\x82, uno nunca sabe cuando
+213: You can never tell when one of these things
+# 214: va a salir zumbando un bicho de estos.
+214: will go off.
+# 215: Oye, perdona...
+215: Excuse me...
+# 216: \xa8S\xa1?
+216: Yes?
+@end
+
