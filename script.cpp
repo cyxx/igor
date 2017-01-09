@@ -159,10 +159,10 @@ bool Script::condition(bool no, char cmp, bool zero) {
 		res = (_f & k_jb) != 0;
 		break;
 	case 'g':
-		res = (_f & k_jl) == 0;
+		res = (_f & (k_jl | k_sf)) == 0;
 		break;
 	case 'l':
-		res = (_f & k_jl) != 0;
+		res = (_f & (k_jl | k_sf)) != 0;
 		break;
 	case 's':
 		res = (_f & k_sf) != 0;
