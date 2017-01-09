@@ -358,36 +358,20 @@ if (_debug) {
 			}
 		}
 		break;
-	case op_mul:
-	case op_div: {
+	case op_mul: {
 			uint16_t opL;
 			const int pos2 = operand(b, code, pos + 2, opL);
 			if (code[pos2] != t_reg) {
-				snprintf(g_err, sizeof__g_err, "invalid op_mul/op_div mask %d\n", code[pos2]);
+				snprintf(g_err, sizeof__g_err, "invalid op_mul mask %d\n", code[pos2]);
 				exit(1);
 			}
 			const int i = code[pos2 + 1];
-			switch (opcode) {
-			case op_mul:
-				if (b) {
-					const uint16_t res = _regs[i].val.b[0] * opL;
-					_regs[i].val.b[0] = res & 255;
-				} else {
-					const uint32_t res = _regs[i].val.w * opL;
-					_regs[i].val.w = res & 0xFFFF;
-				}
-				break;
-			case op_div:
-				if (opL == 0) {
-					snprintf(g_err, sizeof__g_err, "op_div by 0");
-					exit(1);
-				}
-				if (b) {
-					_regs[i].val.b[0] /= opL;
-				} else {
-					_regs[i].val.w /= opL;
-				}
-				break;
+			if (b) {
+				const uint16_t res = _regs[i].val.b[0] * opL;
+				_regs[i].val.b[0] = res & 255;
+			} else {
+				const uint32_t res = _regs[i].val.w * opL;
+				_regs[i].val.w = res & 0xFFFF;
 			}
 		}
 		break;
@@ -412,11 +396,13 @@ if (_debug) {
 					exit(1);
 				}
 				if (b) {
-					_regs[reg_ax].val.b[1] = _regs[reg_ax].val.b[0] % opL;
-					_regs[reg_ax].val.b[0] /= opL;
+					const int16_t tmp = _regs[reg_ax].val.w;
+					_regs[reg_ax].val.b[1] = tmp % opL;
+					_regs[reg_ax].val.b[0] = tmp / opL;
 				} else {
-					_regs[reg_dx].val.w = _regs[reg_ax].val.w % opL;
-					_regs[reg_ax].val.w /= opL;
+					const int32_t tmp = (_regs[reg_dx].val.w << 16) | _regs[reg_ax].val.w;
+					_regs[reg_dx].val.w = tmp % opL;
+					_regs[reg_ax].val.w = tmp / opL;
 				}
 				break;
 			}
