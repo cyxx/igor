@@ -101,7 +101,7 @@ void Game::loadState(int num) {
 	snprintf(name, sizeof(name), "igor.s%02d", num);
 	File f;
 	if (f.open(name, _savePath, "rb")) {
-		fprintf(stdout, "Loading state %d\n", num);
+		info("Loading state %d", num);
 		const int version = f.readUint32LE();
 		if (version == kSaveVersion) {
 			f.read(_mem._dataSeg, sizeof(_mem._dataSeg));
@@ -117,7 +117,7 @@ void Game::saveState(int num) {
 	snprintf(name, sizeof(name), "igor.s%02d", num);
 	File f;
 	if (f.open(name, _savePath, "wb")) {
-		fprintf(stdout, "Saving state %d\n", num);
+		info("Saving state %d", num);
 		f.writeUint32LE(kSaveVersion);
 		f.write(_mem._dataSeg, sizeof(_mem._dataSeg));
 		f.write(_mem._vga, 64000);
@@ -139,14 +139,13 @@ static void checkCRC(File &f) {
 			return;
 		}
 	}
-	snprintf(g_err, sizeof__g_err, "Unexpected CRC32 (%08x) for 'IGOR.EXE'", crc);
-	exit(1);
+	error("Unexpected CRC32 (%08x) for 'IGOR.EXE'", crc);
 }
 
 void Game::loadInit() {
 	if (!_exe._f.open("IGOR.EXE", _dataPath, "rb")) {
-		snprintf(g_err, sizeof__g_err, "Unable to open '%s'", "IGOR.EXE");
-		exit(1);
+		error("Unable to open '%s'", "IGOR.EXE");
+		return;
 	}
 	checkCRC(_exe._f);
 	_exe.parseSegmentsInfo();
@@ -154,8 +153,8 @@ void Game::loadInit() {
 	_script._segs[seg_es] = _script._segs[seg_ds] = DATA_SEG;
 	File f;
 		if (!f.open("igor.bin", _dataPath, "rb")) {
-			snprintf(g_err, sizeof__g_err, "Unable to open '%s'", "igor.bin");
-			exit(1);
+			error("Unable to open '%s'", "igor.bin");
+			return;
 		}
 		const int binOffset = 4;
 		f.seek(binOffset);
@@ -163,7 +162,7 @@ void Game::loadInit() {
 		f.seek(offset);
 	_mainPos = f.readUint32LE();
 	const int funcsCount = f.readUint16LE();
-//	fprintf(stdout, "main funcs count %d\n", funcsCount);
+	debug(DBG_GAME, "main funcs count %d", funcsCount);
 	for (int i = 0; i < funcsCount; ++i) {
 		const int seg = f.readUint16LE();
 		const int ptr = f.readUint16LE();
@@ -174,11 +173,11 @@ void Game::loadInit() {
 		}
 	}
 	const int size = f.readUint32LE();
-	fprintf(stdout, "main code size %d\n", size);
+	debug(DBG_GAME, "main code size %d", size);
 	_buffers[kCode_code] = (uint8_t *)malloc(size);
 	f.read(_buffers[kCode_code], size);
 	const int partsCount = f.readByte();
-//	fprintf(stdout, "parts count %d\n", partsCount);
+	debug(DBG_GAME, "parts count %d", partsCount);
 	for (int i = 0; i < partsCount; ++i) {
 		const int seg = f.readUint16LE();
 		const int ptr = f.readUint16LE();
@@ -256,11 +255,11 @@ void Game::loadVerbs() {
 }
 
 static void dumpPascalString(const uint8_t *str) {
-	fprintf(stdout, "dumpPascalString (%3d) ", *str);
-	for (int i = 0; i < *str; ++i) {
-		fprintf(stdout, "%c", str[i + 1]);
-	}
-	fprintf(stdout, "\n");
+	const int len = *str;
+	char buf[257];
+	memcpy(buf, str + 1, len);
+	buf[len] = 0;
+	debug(DBG_GAME, "dumpPascalString (%3d) ", *str, buf);
 }
 
 void Game::loadTexts() {
@@ -322,11 +321,11 @@ void Game::unloadPart() {
 }
 
 void Game::loadPart(int num) {
-	fprintf(stdout, "load part %d\n", num);
+	debug(DBG_GAME, "load part %d", num);
 	File f;
 	if (!f.open("igor.bin", _dataPath, "rb")) {
-		snprintf(g_err, sizeof__g_err, "Unable to open '%s'", "igor.bin");
-		exit(1);
+		error("Unable to open '%s'", "igor.bin");
+		return;
 	}
 	int binOffset = 8 + (num - 1) * 12;
 	if (1) {
@@ -344,7 +343,7 @@ void Game::loadPart(int num) {
 		_partOffsets[_partOffsetsCount++].set(seg, ptr, i * 48, kCode_room);
 		f.read(_buffers[kCode_room] + i * 48, 48);
 	}
-	fprintf(stdout, "room size %d\n", count);
+	debug(DBG_GAME, "room size %d", count);
 	if (1) {
 		f.seek(binOffset);
 		binOffset += 4;
@@ -364,7 +363,7 @@ void Game::loadPart(int num) {
 		f.read(_buffers[kCode_anim] + offset, size);
 		offset += size;
 	}
-	fprintf(stdout, "anim size %d\n", animCount);
+	debug(DBG_GAME, "anim size %d", animCount);
 	if (1) {
 		f.seek(binOffset);
 		binOffset += 4;
@@ -385,7 +384,7 @@ void Game::loadPart(int num) {
 	const int size = f.readUint32LE();
 	_buffers[kCode_code] = (uint8_t *)realloc(_buffers[kCode_code], _codeSize + size);
 	f.read(_buffers[kCode_code] + _codeSize, size);
-	fprintf(stdout, "code size %d (%d)\n", funcCount, size);
+	debug(DBG_GAME, "code size %d (%d)", funcCount, size);
 	if (_sortCodeOffsets) {
 		sortCodeOffsets(_partOffsets, _partOffsetsCount);
 	}
@@ -437,7 +436,7 @@ void Game::seekData(int seg, int ptr) {
 
 void Game::loadRoomData(int num) {
 	const int part = _mem.getPart();
-	fprintf(stdout, "room_data offset=%d part=%d cseg%02d:%04X\n", num, part, _script._callSegPtr >> 16, _script._callSegPtr & 0xFFFF);
+	debug(DBG_GAME, "room_data offset=%d part=%d cseg%02d:%04X", num, part, _script._callSegPtr >> 16, _script._callSegPtr & 0xFFFF);
 	const uint8_t *ptr = _buffers[kCode_room] + num;
 	// pal
 	int size = READ_LE_UINT16(ptr + 4);
@@ -513,7 +512,7 @@ void Game::loadRoomData(int num) {
 		const bool skipObjectNames = (size & 0x8000) != 0;
 		size &= ~0x8000;
 		if (skipObjectNames) {
-			fprintf(stderr, "WARNING: Skipping room object names\n");
+			warning("Skipping room object names");
 		} else {
 			_exe._f.read(_mem.getPtr(DATA_SEG, 0xD966), 320);
 			txtptr += 320;
@@ -533,8 +532,8 @@ void Game::loadRoomData(int num) {
 				if (len != 0) {
 					assert(index >= 0);
 					decodeRoomString(_exe._f, _roomObjectNames + index * 62, len);
-					if (_debug) {
-						fprintf(stdout, "object %03d (%04X): ", index, 0xCC62 + index * 62);
+					if (g_debugMask & DBG_GAME) {
+						debug(DBG_GAME, "object %03d (%04X): ", index, 0xCC62 + index * 62);
 						dumpPascalString(_roomObjectNames + index * 62);
 					}
 				}
@@ -560,8 +559,8 @@ void Game::loadRoomData(int num) {
 			if (len != 0) {
 				assert(index >= 0);
 				decodeRoomString(_exe._f, _globalDialogueTexts + index * 102, len);
-				if (_debug) {
-					fprintf(stdout, "dialogue %03d (%04X): ", index, 0x67A0 + index * 102);
+				if (g_debugMask & DBG_GAME) {
+					debug(DBG_GAME, "dialogue %03d (%04X): ", index, 0x67A0 + index * 102);
 					dumpPascalString(_globalDialogueTexts + index * 102);
 				}
 			}
@@ -576,7 +575,7 @@ void Game::loadRoomData(int num) {
 }
 
 void Game::loadAnimData(int num) {
-	fprintf(stdout, "anim_data offset=%d\n", num);
+	debug(DBG_GAME, "anim_data offset=%d", num);
 	const uint8_t *ptr = _buffers[kCode_anim] + num;
 
 	const int count = READ_LE_UINT16(ptr); ptr += 2;
@@ -663,8 +662,7 @@ void Game::runFuncCode(int seg, int ptr) {
 			pos = _script.executeOpcode(_buffers[kCode_code], pos);
 		}
 	} else {
-		snprintf(g_err, sizeof__g_err, "No code for cseg%02d:%04X", seg, ptr);
-		exit(1);
+		error("No code for cseg%02d:%04X", seg, ptr);
 	}
 }
 
@@ -674,7 +672,6 @@ void Game::runTrap(int num) {
 	int offset = _script.sp() + (argc - 1) * 2;
 	for (int i = 0; i < argc; ++i) {
 		argv[i] = READ_LE_UINT16(_mem._stack + offset);
-if (_debug) fprintf(stdout, "argv[%d] %d\n", i, argv[i]);
 		offset -= 2;
 	}
 	_script.enter(_codePos, (_traps[num].seg << 16) | _traps[num].ptr);
@@ -728,7 +725,7 @@ void Game::sortCodeOffsets(CodeOffset *offsets, int offsetsCount) {
 		const uint32_t addr = offsets[i].addr();
 		for (int j = 0; j < offsetsCount; ++j) {
 			if (i != j && offsets[j].addr() == addr) {
-				fprintf(stderr, "WARNING: offset %d duplicate of %d (cseg%02d:%04X)\n", j, i, offsets[i].seg, offsets[i].ptr);
+				warning("offset %d duplicate of %d (cseg%02d:%04X)", j, i, offsets[i].seg, offsets[i].ptr);
 			}
 		}
 	}
@@ -762,15 +759,13 @@ void Game::call() {
 		offset = getCodeOffset(_script._callSegPtr, _mainOffsets, _mainOffsetsCount);
 	}
 	if (!offset) {
-		snprintf(g_err, sizeof__g_err, "Unimplemented call to cseg%03d:%04X", _script._callSegPtr >> 16, _script._callSegPtr & 0xFFFF);
-		exit(1);
+		error("Unimplemented call to cseg%03d:%04X", _script._callSegPtr >> 16, _script._callSegPtr & 0xFFFF);
+		return;
 	}
-	if (_debug) {
-		fprintf(stdout, "call to cseg%03d:%04X type %d\n", _script._callSegPtr >> 16, _script._callSegPtr & 0xFFFF, offset->type);
-	}
+	debug(DBG_GAME, "call to cseg%03d:%04X type %d", _script._callSegPtr >> 16, _script._callSegPtr & 0xFFFF, offset->type);
 	switch (offset->type) {
 	case kCode_main:
-		fprintf(stdout, "change part %d (cseg%02d:%04X)\n", _mem.getPart(), _script._callSegPtr >> 16, _script._callSegPtr & 0xFFFF);
+		debug(DBG_GAME, "change part %d (cseg%02d:%04X)", _mem.getPart(), _script._callSegPtr >> 16, _script._callSegPtr & 0xFFFF);
 		if (_partNum != (int)offset->offset) {
 			unloadPart();
 			_partNum = offset->offset;
@@ -828,8 +823,8 @@ void Game::readString(int seg, int ptr) {
 		_sBuf[0] = count;
 		_exe._f.read(_sBuf + 1, count);
         }
-	if (_debug) {
-		fprintf(stdout, "Game::readString %d:%04X\n", seg, ptr);
+	if (g_debugMask & DBG_GAME) {
+		debug(DBG_GAME, "Game::readString %d:%04X", seg, ptr);
 		dumpPascalString(_sBuf);
 	}
 }
@@ -877,7 +872,7 @@ void Game::setKeyPressed(int code, int pressed) {
 }
 
 void Game::cheat_exitMaze() {
-	fprintf(stdout, "Game::cheat_exitMaze part %d\n", _mem.getPart());
+	debug(DBG_GAME, "Game::cheat_exitMaze part %d", _mem.getPart());
 	if (_mem.getPart() != 500) {
 		// exit maze
 		_mem.setPart(500);

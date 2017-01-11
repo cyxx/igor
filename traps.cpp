@@ -20,7 +20,7 @@ void Game::trap_handleOptionsMenu(int argc, int *argv) {
 
 void Game::trap_playMusic(int argc, int *argv) {
 	const int num = argv[1];
-// fprintf(stdout, "Game::trap_playMusic %d\n", num);
+	debug(DBG_TRAPS, "Game::trap_playMusic %d", num);
 	_mix.playTrack(num + 1);
 }
 
@@ -32,7 +32,7 @@ void Game::trap_getMusicState(int argc, int *argv) {
 void Game::trap_playSound(int argc, int *argv) {
 	const int num = argv[0];
 	const int type = argv[1];
-// fprintf(stdout, "Game::trap_playSound %d %d\n", type, num);
+	debug(DBG_TRAPS, "Game::trap_playSound %d %d", type, num);
 	int offset = 0;
 	switch (type) {
 	case 0: // speech
@@ -96,8 +96,7 @@ void Game::trap_setPalette_208_32(int argc, int *argv) {
 void Game::trap_checkStack(int argc, int *argv) {
 	const int size = _script._regs[reg_ax].val.w;
 	if (size > _script.sp()) {
-		snprintf(g_err, sizeof__g_err, "stack overflow %d %04x", size, _script.sp());
-		exit(1);
+		error("stack overflow %d %04x", size, _script.sp());
 	}
 }
 
@@ -116,7 +115,7 @@ void Game::trap_mulLongInt(int argc, int *argv) {
 }
 
 void Game::trap_loadString(int argc, int *argv) {
-// fprintf(stdout, "Game::trap_loadString %d:%x %d:%x\n", argv[0], argv[1], argv[2], argv[3]);
+	debug(DBG_TRAPS, "Game::trap_loadString %d:%x %d:%x", argv[0], argv[1], argv[2], argv[3]);
 	uint8_t *dst = (uint8_t *)_mem.getPtr(argv[0], argv[1]);
 	readString(argv[2], argv[3]);
 	const int count = _sBuf[0];
@@ -124,7 +123,7 @@ void Game::trap_loadString(int argc, int *argv) {
 }
 
 void Game::trap_copyString(int argc, int *argv) {
-// fprintf(stdout, "Game::trap_copyString %d:%x %d:%x count %d\n", argv[0], argv[1], argv[2], argv[3], argv[4]);
+	debug(DBG_TRAPS, "Game::trap_copyString %d:%x %d:%x count %d", argv[0], argv[1], argv[2], argv[3], argv[4]);
 	uint8_t *dst = (uint8_t *)_mem.getPtr(argv[2], argv[3]);
 	readString(argv[0], argv[1]);
 	int count = _sBuf[0];
@@ -135,7 +134,7 @@ void Game::trap_copyString(int argc, int *argv) {
 }
 
 void Game::trap_concatString(int argc, int *argv) {
-// fprintf(stdout, "Game::trap_concatString %d:%x %d:%x\n", argv[0], argv[1], argv[2], argv[3]);
+	debug(DBG_TRAPS, "Game::trap_concatString %d:%x %d:%x", argv[0], argv[1], argv[2], argv[3]);
 	uint8_t *dst = (uint8_t *)_mem.getPtr(argv[0], argv[1]);
 	readString(argv[2], argv[3]);
 	int count = _sBuf[0] + dst[0];
@@ -147,7 +146,7 @@ void Game::trap_concatString(int argc, int *argv) {
 }
 
 void Game::trap_loadBitSet(int argc, int *argv) {
-// fprintf(stdout, "Game::trap_loadBitSet seg %d %04X value %d\n", argv[0], argv[1], argv[2]);
+	debug(DBG_TRAPS, "Game::trap_loadBitSet seg %d %04X value %d", argv[0], argv[1], argv[2]);
 	uint8_t *dst = (uint8_t *)_mem.getPtr(argv[0], argv[1]);
 	for (int i = 0; i < 16; ++i) {
 		WRITE_LE_UINT16(dst + i * 2, argv[2]);
@@ -155,7 +154,7 @@ void Game::trap_loadBitSet(int argc, int *argv) {
 }
 
 void Game::trap_addBitSet(int argc, int *argv) {
-// fprintf(stdout, "Game::trap_addBitSet seg %d %04X values %d,%d\n", argv[0], argv[1], argv[2], argv[3]);
+	debug(DBG_TRAPS, "Game::trap_addBitSet seg %d %04X values %d,%d", argv[0], argv[1], argv[2], argv[3]);
 	uint8_t *dst = (uint8_t *)_mem.getPtr(argv[0], argv[1]);
 	const int b1 = argv[2] & 255;
 	const int b2 = argv[3] & 255;
@@ -171,7 +170,7 @@ void Game::trap_getBitSetOffset(int argc, int *argv) {
 	assert(b < 0x20);
 	_script._regs[reg_dx].val.w = b;
 	_script._regs[reg_ax].val.w = 1 << (value & 7);
-// fprintf(stdout, "Game::trap_getBitSetOffset %X\n", value);
+	debug(DBG_TRAPS, "Game::trap_getBitSetOffset %X", value);
 }
 
 void Game::trap_addReal(int argc, int *argv) {
@@ -208,7 +207,7 @@ void Game::trap_getRandomNumber(int argc, int *argv) {
 }
 
 void Game::trap_memcpy(int argc, int *argv) {
-// fprintf(stdout, "CALL memcpy %d:%04X %d:%04X count %d\n", argv[2], argv[3], argv[0], argv[1], argv[4]);
+	debug(DBG_TRAPS, "Game::trap_memcpy %d:%04X %d:%04X count %d", argv[2], argv[3], argv[0], argv[1], argv[4]);
 	void *dst = _mem.getPtr(argv[2], argv[3]);
 	if (argv[0] < DATA_SEG) {
 		readData(dst, argv[0], argv[1], argv[4]);
@@ -227,7 +226,7 @@ void Game::trap_memset(int argc, int *argv) {
 void Game::trap_fixVgaPtr(int argc, int *argv) {
 	_script._regs[reg_ax].val.w = argv[0];
 	_mem._vgaOffset = argv[2];
-// fprintf(stdout, "fixVgaPtr y=%d\n", _mem._vgaOffset / 320);
+	debug(DBG_TRAPS, "Game::trap_fixVgaPtr y=%d", _mem._vgaOffset / 320);
 }
 
 void Game::trap_loadActionData(int argc, int *argv) {
@@ -309,7 +308,7 @@ void Game::trap_setActionData(int argc, int *argv) {
 		readData(_mem._actionData + 0x26C5, _mem._actionSeg, 0x26C5, 0x3AFA - 0x26C5);
 		break;
 	default:
-		fprintf(stdout, "Game::trap_setActionData _mem._actionSeg %d\n", _mem._actionSeg);
+		warning("Game::trap_setActionData _mem._actionSeg %d", _mem._actionSeg);
 		break;
 	}
 }

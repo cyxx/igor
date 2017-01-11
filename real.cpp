@@ -78,8 +78,8 @@ void realOp2(char op, Reg *r) {
 		break;
 	case '/':
 		if (f2 == 0) {
-			snprintf(g_err, sizeof__g_err, "realOp2 div opR is 0.\n");
-			exit(1);
+			error("realOp2 div opR is 0");
+			break;
 		}
 		f1 /= f2;
 		break;

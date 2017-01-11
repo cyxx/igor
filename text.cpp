@@ -32,7 +32,7 @@ static uint32_t findOffset(const char *buf, const char *name) {
 	const char *p = strstr(buf, name);
 	if (p) {
 		offset = p - buf;
-		fprintf(stdout, "Found %s at 0x%X\n", name, offset);
+		debug(DBG_TEXT, "Found %s at 0x%X\n", name, offset);
 	}
 	return offset;
 }
@@ -45,11 +45,11 @@ bool TextData::load(const char *dataPath, const char *language) {
 		const int len = f.size() + 1;
 		_txtBuf = (char *)malloc(len);
 		if (!_txtBuf) {
-			fprintf(stderr, "Failed to allocate %d bytes\n", len);
+			warning("Failed to allocate %d bytes", len);
 		} else {
 			const int count = f.read(_txtBuf, len - 1);
 			if (count != len - 1) {
-				fprintf(stderr, "Failed to read %d bytes, count %d\n", len - 1, count);
+				warning("Failed to read %d bytes, count %d", len - 1, count);
 			} else {
 				_txtBuf[count] = 0;
 				_prepositionsOffset = findOffset(_txtBuf, "@prepositions");
@@ -97,7 +97,7 @@ void TextData::loadCommonText(uint32_t txtOffset, uint32_t *offsets, int count) 
 
 void TextData::loadRoomText(int room) {
 	if (_roomsOffset[room] == 0) {
-		fprintf(stdout, "No text for room %d\n", room);
+		warning("No text for room %d\n", room);
 		return;
 	}
 	memset(_roomItemsOffset, 0, sizeof(_roomItemsOffset));

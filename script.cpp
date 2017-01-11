@@ -13,7 +13,7 @@
 #include "tools/compile_igor/opcodes.h"
 #include "util.h"
 
-static const bool _debug = false;
+static const bool _disasm = false;
 
 Script::Script() {
 	memset(_regs, 0, sizeof(_regs));
@@ -65,8 +65,8 @@ int Script::assign(int b, const uint8_t *code, int pos, uint16_t value) {
 		break;
 	default:
 		if ((mask & t_seg) == 0) {
-			snprintf(g_err, sizeof__g_err, "Script::assign() invalid operand mask %d\n", mask);
-			exit(1);
+			error("Script::assign() invalid operand mask %d", mask);
+			break;
 		}
 		i = code[pos++];
 		pos = ea(code, pos, offset);
@@ -100,8 +100,8 @@ int Script::operand(int b, const uint8_t *code, int pos, uint16_t &value) {
 		break;
 	default:
 		if ((mask & t_seg) == 0) {
-			snprintf(g_err, sizeof__g_err, "Script::operand() invalid operand mask %d\n", mask);
-			exit(1);
+			error("Script::operand() invalid operand mask %d", mask);
+			break;
 		}
 		i = code[pos++];
 		pos = ea(code, pos, offset);
@@ -118,19 +118,19 @@ int Script::operand(int b, const uint8_t *code, int pos, uint16_t &value) {
 void Script::push(uint16_t value) {
 	_regs[reg_sp].val.w -= 2;
 	_mem->writeUint16(_segs[seg_ss], _regs[reg_sp].val.w, value);
-if (_debug) fprintf(stdout, "Script::push value %d offset %d\n", value, sp() );
+	debug(DBG_SCRIPT, "Script::push value %d offset %d", value, sp());
 }
 
 void Script::pop(uint16_t &value) {
 	value = _mem->readUint16(_segs[seg_ss], _regs[reg_sp].val.w);
 	_regs[reg_sp].val.w += 2;
-if (_debug) fprintf(stdout, "Script::pop value %d offset %d\n", value, sp() );
+	debug(DBG_SCRIPT, "Script::pop value %d offset %d", value, sp());
 }
 
 void Script::enter(int pos, uint32_t addr) {
 	if (_callsCount >= MAX_CALL_STACK) {
-		snprintf(g_err, sizeof__g_err, "Script::enter() calls count overflow\n");
-		exit(1);
+		error("Script::enter() calls count overflow");
+		return;
 	}
 	_regs[reg_sp].val.w -= _callLocals;
 	_calls[_callsCount].pos = pos;
@@ -171,8 +171,8 @@ bool Script::condition(bool no, char cmp, bool zero) {
 		res = false;
 		break;
 	default:
-		snprintf(g_err, sizeof__g_err, "Script::condition() unimplemented cond '%d %c %d'\n", no, cmp, zero);
-		exit(1);
+		error("Script::condition() unimplemented cond '%d %c %d'", no, cmp, zero);
+		break;
 	}
 	if (zero && !res) {
 		res = (_f & k_zf) != 0;
@@ -220,8 +220,8 @@ int Script::arith(uint16_t valL, uint16_t valR, int op) {
 		res = valL >> valR;
 		break;
 	default:
-		snprintf(g_err, sizeof__g_err, "Script::arith() unimplemented op %d\n", op);
-		exit(1);
+		error("Script::arith() unimplemented op %d", op);
+		break;
 	}
 	return res;
 }
@@ -294,10 +294,10 @@ void Script::setflags(int b, int res, uint16_t opL, uint16_t opR) {
 }
 
 int Script::executeOpcode(const uint8_t *code, int pos) {
-if (_debug) {
-	dump();
-	disasmCode(code, pos, stdout);
-}
+	if (_disasm) {
+		dump();
+		disasmCode(code, pos, stdout);
+	}
 	const int size = code[pos];
 	uint8_t opcode = code[pos + 1];
 	const int b = (opcode & 0x80) == 0;
@@ -362,8 +362,8 @@ if (_debug) {
 			uint16_t opL;
 			const int pos2 = operand(b, code, pos + 2, opL);
 			if (code[pos2] != t_reg) {
-				snprintf(g_err, sizeof__g_err, "invalid op_mul mask %d\n", code[pos2]);
-				exit(1);
+				error("invalid op_mul mask %d", code[pos2]);
+				break;
 			}
 			const int i = code[pos2 + 1];
 			if (b) {
@@ -392,8 +392,8 @@ if (_debug) {
 				break;
 			case op_div2:
 				if (opL == 0) {
-					snprintf(g_err, sizeof__g_err, "op_div2 by 0");
-					exit(1);
+					error("op_div2 by 0");
+					break;
 				}
 				if (b) {
 					const int16_t tmp = _regs[reg_ax].val.w;
@@ -414,7 +414,7 @@ if (_debug) {
 			operand(b, code, pos2, opL);
 			const int res = opL - opR;
 			setflags(b, res, opL, opR);
-if (_debug) fprintf(stdout, "op_cmp(%d,%d) _f %d byte %d\n", opL, opR, _f, b);
+			debug(DBG_SCRIPT, "op_cmp(%d,%d) _f %d byte %d", opL, opR, _f, b);
 		}
 		break;
 	case op_test: {
@@ -423,7 +423,7 @@ if (_debug) fprintf(stdout, "op_cmp(%d,%d) _f %d byte %d\n", opL, opR, _f, b);
 			operand(b, code, pos2, opL);
 			const int res = opL & opR;
 			setflags(b, res, opL, opR);
-if (_debug) fprintf(stdout, "op_test(%d,%d) _f %d\n", opL, opR, _f);
+			debug(DBG_SCRIPT, "op_test(%d,%d) _f %d", opL, opR, _f);
 		}
 		break;
 	case op_wait: {
@@ -439,8 +439,8 @@ if (_debug) fprintf(stdout, "op_test(%d,%d) _f %d\n", opL, opR, _f);
 	case op_lds: {
 			static const int segs[] = { seg_es, seg_ds };
 			if ((code[pos + 2] & t_seg) == 0) {
-				snprintf(g_err, sizeof__g_err, "invalid op_les mask %d\n", code[pos + 2]);
-				exit(1);
+				error("invalid op_les mask %d", code[pos + 2]);
+				break;
 			}
 			const int i = code[pos + 3];
 			uint16_t offset;
@@ -452,8 +452,8 @@ if (_debug) fprintf(stdout, "op_test(%d,%d) _f %d\n", opL, opR, _f);
 		break;
 	case op_lea: {
 			if ((code[pos + 2] & t_seg) == 0) {
-				snprintf(g_err, sizeof__g_err, "invalid op_lea mask %d\n", code[pos + 2]);
-				exit(1);
+				error("invalid op_lea mask %d", code[pos + 2]);
+				break;
 			}
 			uint16_t offset;
 			const int pos2 = ea(code, pos + 4, offset);
@@ -508,8 +508,8 @@ if (_debug) fprintf(stdout, "op_test(%d,%d) _f %d\n", opL, opR, _f);
 				strOp = &Script::stostr;
 				break;
 			default:
-				snprintf(g_err, sizeof__g_err, "unhandled op_str '%c'\n", code[pos + 2]);
-				exit(1);
+				error("unhandled op_str '%c'", code[pos + 2]);
+				break;
 			}
 			if (!repeat) {
 				(this->*strOp)(w);
@@ -530,8 +530,8 @@ if (_debug) fprintf(stdout, "op_test(%d,%d) _f %d\n", opL, opR, _f);
 		break;
 	case op_call2: {
 			if ((code[pos + 2] & t_seg) == 0) {
-				snprintf(g_err, sizeof__g_err, "invalid op_call2 mask %d\n", code[pos + 2]);
-				exit(1);
+				error("invalid op_call2 mask %d", code[pos + 2]);
+				break;
 			}
 			const int i = code[pos + 3];
 			uint16_t ptr;
@@ -539,7 +539,7 @@ if (_debug) fprintf(stdout, "op_test(%d,%d) _f %d\n", opL, opR, _f);
 			_callLocals = code[pos2];
 			const uint8_t *p = (const uint8_t *)_mem->getPtr(_segs[i], ptr);
 			_callSegPtr = READ_LE_UINT32(p);
-if (_debug) fprintf(stdout, "op_call2 %d:%x locals %d %d:%x\n", _segs[i], ptr, _callLocals, _callSegPtr>>16, _callSegPtr&0xFFFF);
+			debug(DBG_SCRIPT, "op_call2 %d:%x locals %d %d:%x", _segs[i], ptr, _callLocals, _callSegPtr>>16, _callSegPtr&0xFFFF);
 		}
 		break;
 	case op_wait2: {
@@ -549,8 +549,8 @@ if (_debug) fprintf(stdout, "op_call2 %d:%x locals %d %d:%x\n", _segs[i], ptr, _
 		}
 		break;
 	default:
-		snprintf(g_err, sizeof__g_err, "Script::executeOpcode() unimplemented opcode %d\n", opcode);
-		exit(1);
+		error("Script::executeOpcode() unimplemented opcode %d", opcode);
+		break;
 	}
 	return pos + 1 + size;
 }

@@ -38,7 +38,7 @@ void SegmentExecutable::parseSegmentsInfo() {
 	_startIP = READ_LE_UINT16(buf + 0x14);
 	_startCS = READ_LE_UINT16(buf + 0x16);
 	_segmentsCount = READ_LE_UINT16(buf + 0x1C);
-	fprintf(stdout, "_segmentsCount %d\n", _segmentsCount);
+	debug(DBG_SEGEXE, "_segmentsCount %d", _segmentsCount);
 	const int segmentTableOffset = READ_LE_UINT16(buf + 0x22);
 	_f.seek(segmentedExeHeaderOffset + segmentTableOffset);
 	_segments = (OverlaySegment *)calloc(_segmentsCount, sizeof(OverlaySegment));
@@ -62,6 +62,6 @@ int SegmentExecutable::readSegment(int num, uint8_t *data) {
 	assert(num >= 0 && num < _segmentsCount);
 	_f.seek(_segments[num].offset);
 	_f.read(data, _segments[num].dataSize);
-	fprintf(stdout, "readSegment num %d dataSize %d allocSize %d\n", num, _segments[num].dataSize, _segments[num].allocSize);
+	debug(DBG_SEGEXE, "readSegment num %d dataSize %d allocSize %d", num, _segments[num].dataSize, _segments[num].allocSize);
 	return _segments[num].dataSize;
 }

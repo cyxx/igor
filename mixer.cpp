@@ -79,7 +79,7 @@ struct MixerChannel_Voc : MixerChannel {
 				_sfrac.inc = (rate << Frac::kBits) / _rate;
 				const int codec = _f.readByte();
 				if (codec != 0) {
-					fprintf(stderr, "WARNING: unhandled .voc codec %d\n", codec);
+					warning("unhandled .voc codec %d", codec);
 					return 0;
 				}
 				_size -= 2;
@@ -92,7 +92,7 @@ struct MixerChannel_Voc : MixerChannel {
 			_f.seek(_fileOffset);
 			return readCode();
 		default:
-			fprintf(stderr, "WARNING: unhandled .voc code %d\n", code);
+			warning("unhandled .voc code %d", code);
 			return 0;
 		}
 		return code;
@@ -157,12 +157,12 @@ struct MixerChannel_Vorbis : MixerChannel {
 		ovcb.seek_func = VorbisFile::seekHelper;
 		ovcb.tell_func = VorbisFile::tellHelper;
 		if (ov_open_callbacks(&_f, &_ovf, 0, 0, ovcb) < 0) {
-			fprintf(stderr, "WARNING: invalid .ogg input file\n");
+			warning("invalid .ogg input file");
 			return false;
 		}
 		const vorbis_info *vi = ov_info(&_ovf, -1);
 		if (vi->rate != rate) {
-			fprintf(stderr, "WARNING: unsupported .ogg sample rate %d hz\n", (int)vi->rate);
+			warning("unsupported .ogg sample rate %d hz", (int)vi->rate);
 			return false;
 		}
 		_channels = vi->channels;

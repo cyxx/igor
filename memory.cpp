@@ -9,8 +9,6 @@
 #include "memory.h"
 #include "util.h"
 
-static const bool _debug = false;
-
 struct NativePtr {
 	uint16_t offset;
 	int size;
@@ -47,7 +45,7 @@ void Memory::setupPtrs() {
 }
 
 void *Memory::getPtr(int seg, uint16_t offset) {
-if (_debug) fprintf(stdout, "Memory::getPtr seg %d offset %04X\n", seg, offset);
+	debug(DBG_MEMORY, "Memory::getPtr seg %d offset %04X", seg, offset);
 	switch (seg) {
 	case 0xA000:
 		return (uint8_t *)_vga + _vgaOffset + offset;
@@ -107,31 +105,30 @@ if (_debug) fprintf(stdout, "Memory::getPtr seg %d offset %04X\n", seg, offset);
 			return (uint8_t *)_ptrs[seg - 256] + offset;
 		}
 	}
-	snprintf(g_err, sizeof__g_err, "Unimplemented Memory::getPtr %d 0x%X", seg, offset);
-	exit(1);
+	error("Unimplemented Memory::getPtr %d 0x%X", seg, offset);
 	return 0;
 }
 
 uint16_t Memory::readUint16(int seg, uint16_t offset) {
 	const uint8_t *p = (const uint8_t *)getPtr(seg, offset);
-if (_debug) fprintf(stdout, "Memory::readUint16 %X\n", READ_LE_UINT16(p) );
+	debug(DBG_MEMORY, "Memory::readUint16 %X", READ_LE_UINT16(p) );
 	return READ_LE_UINT16(p);
 }
 
 void Memory::writeUint16(int seg, uint16_t offset, uint16_t value) {
 	uint8_t *p = (uint8_t *)getPtr(seg, offset);
-if (_debug) fprintf(stdout, "Memory::writeUint16 %X\n", value);
+	debug(DBG_MEMORY, "Memory::writeUint16 %X", value);
 	WRITE_LE_UINT16(p, value);
 }
 
 uint8_t Memory::readByte(int seg, uint16_t offset) {
 	const uint8_t *p = (const uint8_t *)getPtr(seg, offset);
-if (_debug) fprintf(stdout, "Memory::readByte %X\n", *p);
+	debug(DBG_MEMORY, "Memory::readByte %X", *p);
 	return *p;
 }
 
 void Memory::writeByte(int seg, uint16_t offset, uint8_t value) {
 	uint8_t *p = (uint8_t *)getPtr(seg, offset);
-if (_debug) fprintf(stdout, "Memory::writeByte %X\n", value);
+	debug(DBG_MEMORY, "Memory::writeByte %X", value);
 	*p = value;
 }
