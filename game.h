@@ -39,11 +39,6 @@ struct CodeOffset {
 	}
 };
 
-struct TextOffset {
-	uint16_t seg, ptr;
-	uint32_t offset;
-};
-
 enum {
 	kTalkModeSpeechOnly = 0,
 	kTalkModeSpeechAndText = 1,
