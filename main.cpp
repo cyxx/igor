@@ -163,7 +163,7 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 	atexit(onExit);
-	const char *opts[3];
+	const char *opts[4];
 	opts[0] = (argc >= 2) ? argv[1] : ".";
 	opts[1] = (argc >= 3) ? argv[2] : 0;
 	opts[2] = (argc >= 4) ? argv[3] : ".";
