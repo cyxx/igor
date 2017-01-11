@@ -1,21 +1,22 @@
 
 #include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <zlib.h>
 #include "detection.h"
 #include "file.h"
 
 static const struct {
-	int crc;
+	uint32_t crc;
 	int version;
 	int exeType;
 	const char *label;
 } gameVersions[] = {
-	{ 0x3f35ad61, kDemo100, kOverlayExe, "Shareware v1.00" },
-	{ 0xf96e56f1, kDemo110, kOverlayExe, "Shareware v1.10" },
+	{ 0x3f35ad61, kDemo100, kOverlayExe, "English Shareware v1.00" },
+	{ 0xf96e56f1, kDemo110, kOverlayExe, "English Shareware v1.10" },
 	{ 0xaa10bf7c, kEngFloppy, kOverlayExe, "English Floppy" },
 	{ 0x4c4d83e5, kSpaCd, kSegmentExe, "Spanish CDROM" },
-	{ -1, 0, 0 }
+	{ 0, 0, 0 }
 };
 
 int detectGameVersion(const char *path) {
@@ -27,7 +28,7 @@ int detectGameVersion(const char *path) {
 		while ((count = f.read(buf, sizeof(buf))) > 0) {
 			crc = crc32(crc, buf, sizeof(buf));
 		}
-		for (int i = 0; gameVersions[i].crc != -1; ++i) {
+		for (int i = 0; gameVersions[i].crc != 0; ++i) {
 			if (gameVersions[i].crc == crc) {
 				fprintf(stdout, "Found '%s' version\n", gameVersions[i].label);
 				return gameVersions[i].version;
