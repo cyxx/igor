@@ -1,31 +1,26 @@
 
-SDL_CFLAGS := `$(MINGW_DIR)/bin/sdl-config --cflags`
-SDL_LIBS   := `$(MINGW_DIR)/bin/sdl-config --static-libs`
+SDL_CFLAGS := `sdl-config --cflags`
+SDL_LIBS   := `sdl-config --libs`
 
 CXX   := i686-w64-mingw32-g++
 STRIP := i686-w64-mingw32-strip
 
-CXXFLAGS := -O -Wall -MMD $(SDL_CFLAGS) -I$(MINGW_DIR)/include
-LDFLAGS  := -L$(MINGW_DIR)/lib
+CXXFLAGS += -O -Wall -MMD $(SDL_CFLAGS)
 
 OBJS = debug.o disasm.o file.o funcs.o game.o memory.o mixer.o real.o script.o segment_exe.o stub.o text.o traps.o
 DEPS = $(OBJS:.o=.d)
 
 all: game.exe igor.dll
 
-igor.dll: igor.so
-	$(STRIP) -o $@ $^
+igor.dll: $(OBJS)
+	$(CXX) $(LDFLAGS) -shared -o $@ $^ -static-libgcc -static-libstdc++ -Wl,-Bstatic -lvorbisidec -logg -lz
+	$(STRIP) $@
 	upx -9 $@
 
-igor.so: $(OBJS)
-	$(CXX) $(LDFLAGS) -shared -o $@ $^ -static -lvorbisidec -logg -lz
-
-game.exe: game
-	$(STRIP) -o $@ $^
+game.exe: gl_cursor.o gl_texture.o main.o
+	$(CXX) $(LDFLAGS) -o $@ $^ -static-libgcc -static-libstdc++ -lopengl32 $(SDL_LIBS)
+	$(STRIP) $@
 	upx -9 $@
-
-game: gl_cursor.o gl_texture.o main.o
-	$(CXX) $(LDFLAGS) -o $@ $^ -lopengl32 -static $(SDL_LIBS)
 
 clean:
 	rm -f *.o *.d
