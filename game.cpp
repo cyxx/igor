@@ -99,7 +99,7 @@ void Game::fixUpData() {
 void Game::loadState(int num) {
 	char name[32];
 	snprintf(name, sizeof(name), "igor.s%02d", num);
-	File f;
+	StateFile f;
 	if (f.open(name, _savePath, "rb")) {
 		info("Loading state %d", num);
 		const int version = f.readUint32LE();
@@ -115,7 +115,7 @@ void Game::loadState(int num) {
 void Game::saveState(int num) {
 	char name[32];
 	snprintf(name, sizeof(name), "igor.s%02d", num);
-	File f;
+	StateFile f;
 	if (f.open(name, _savePath, "wb")) {
 		info("Saving state %d", num);
 		f.writeUint32LE(kSaveVersion);
@@ -129,7 +129,7 @@ static const uint32_t _crc[] = {
 	0
 };
 
-static void checkCRC(File &f) {
+static void checkCRC(AssetFile &f) {
 	uint8_t buf[1024];
 	f.read(buf, sizeof(buf));
 	uint32_t crc = crc32(0, Z_NULL, 0);
@@ -143,7 +143,7 @@ static void checkCRC(File &f) {
 }
 
 void Game::loadInit() {
-	if (!_exe._f.open("IGOR.EXE", _dataPath, "rb")) {
+	if (!_exe._f.open("IGOR.EXE", _dataPath)) {
 		error("Unable to open '%s'", "IGOR.EXE");
 		return;
 	}
@@ -151,8 +151,8 @@ void Game::loadInit() {
 	_exe.parseSegmentsInfo();
 	_exe.readSegment(DATA_SEG, _mem._dataSeg);
 	_script._segs[seg_es] = _script._segs[seg_ds] = DATA_SEG;
-	File f;
-		if (!f.open("igor.bin", _dataPath, "rb")) {
+	AssetFile f;
+		if (!f.open("igor.bin", _dataPath)) {
 			error("Unable to open '%s'", "igor.bin");
 			return;
 		}
@@ -322,8 +322,8 @@ void Game::unloadPart() {
 
 void Game::loadPart(int num) {
 	debug(DBG_GAME, "load part %d", num);
-	File f;
-	if (!f.open("igor.bin", _dataPath, "rb")) {
+	AssetFile f;
+	if (!f.open("igor.bin", _dataPath)) {
 		error("Unable to open '%s'", "igor.bin");
 		return;
 	}
@@ -390,7 +390,7 @@ void Game::loadPart(int num) {
 	}
 }
 
-static void decodeRoomString(File &f, uint8_t *dst, int sz) {
+static void decodeRoomString(AssetFile &f, uint8_t *dst, int sz) {
 	*dst++ = sz;
 	for (int i = 0; i < sz; ++i) {
 		uint8_t code = f.readByte();

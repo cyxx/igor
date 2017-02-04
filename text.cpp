@@ -40,7 +40,7 @@ static uint32_t findOffset(const char *buf, const char *name) {
 bool TextData::load(const char *dataPath, const char *language) {
 	char name[32];
 	snprintf(name, sizeof(name), "igor_%s.txt", language);
-	File f;
+	AssetFile f;
 	if (f.open(name, dataPath)) {
 		const int len = f.size() + 1;
 		_txtBuf = (char *)malloc(len);

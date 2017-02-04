@@ -23,7 +23,7 @@ struct Frac {
 
 struct MixerChannel_Voc : MixerChannel {
 
-	File _f;
+	AssetFile _f;
 	uint32_t _fileOffset;
 	int _rate;
 	int _size;
@@ -99,7 +99,7 @@ struct MixerChannel_Voc : MixerChannel {
 	}
 };
 
-struct VorbisFile: File {
+struct VorbisFile: AssetFile {
 	uint32_t offset;
 
 	static size_t readHelper(void *ptr, size_t size, size_t nmemb, void *datasource) {
@@ -222,7 +222,7 @@ void Mixer::setFormat(int rate, int fmt) {
 void Mixer::playSound(int num, int type, int offset) {
 	stopSound();
 	MixerChannel *channel = new MixerChannel_Voc;
-	if (!((MixerChannel_Voc *)channel)->_f.open("IGOR.DAT", _dataPath, "rb") || !channel->load(_rate, offset)) {
+	if (!((MixerChannel_Voc *)channel)->_f.open("IGOR.DAT", _dataPath) || !channel->load(_rate, offset)) {
 		delete channel;
 		channel = 0;
 	}
@@ -246,7 +246,7 @@ void Mixer::playTrack(int num) {
 	char name[16];
 	snprintf(name, sizeof(name), "track%02d.ogg", num);
 	MixerChannel *channel = new MixerChannel_Vorbis;
-	if (!((MixerChannel_Vorbis *)channel)->_f.open(name, _dataPath, "rb") || !channel->load(_rate)) {
+	if (!((MixerChannel_Vorbis *)channel)->_f.open(name, _dataPath) || !channel->load(_rate)) {
 		delete channel;
 		channel = 0;
 	}

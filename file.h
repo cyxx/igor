@@ -7,43 +7,59 @@
 #define FILE_H__
 
 #include <stdint.h>
+#include <stdio.h>
 
-struct File_impl {
-	bool _ioErr;
-	File_impl() : _ioErr(false) {}
+struct AssetFileImpl;
 
-	virtual ~File_impl() {}
-	virtual bool open(const char *path, const char *mode) = 0;
-	virtual void close() = 0;
-	virtual uint32_t size() = 0;
-	virtual void seek(int off) = 0;
-	virtual int read(void *ptr, uint32_t len) = 0;
-	virtual int write(void *ptr, uint32_t len) = 0;
+struct AssetFile {
+	AssetFileImpl *_impl;
+
+	AssetFile();
+	~AssetFile();
+
+	bool open(const char *filename, const char *path);
+	void close();
+	int seek(int offset);
+	int size();
+	int read(void *p, int len);
+
+	uint8_t readByte() {
+		uint8_t b = 0;
+		read(&b, sizeof(b));
+		return b;
+	}
+	uint16_t readUint16LE() {
+		uint8_t lo = readByte();
+		uint8_t hi = readByte();
+		return (hi << 8) | lo;
+	}
+	uint32_t readUint32LE() {
+		uint16_t lo = readUint16LE();
+		uint16_t hi = readUint16LE();
+		return (hi << 16) | lo;
+	}
 };
 
-struct File {
-	File_impl *_impl;
+struct StateFile {
+	FILE *_fp;
 
-	File() : _impl(0) {}
-	~File();
+	StateFile();
+	~StateFile();
 
-	bool open(const char *filename, const char *path, const char *mode = "rb");
+	bool open(const char *filename, const char *path, const char *mode);
 	void close();
-	bool ioErr() const;
-	uint32_t size();
-	void seek(int off);
-	int read(void *ptr, uint32_t len);
-	uint8_t readByte();
-	uint16_t readUint16LE();
-	uint32_t readUint32LE();
-	uint16_t readUint16BE();
-	uint32_t readUint32BE();
-	int write(void *ptr, uint32_t size);
-	void writeByte(uint8_t b);
-	void writeUint16LE(uint16_t n);
-	void writeUint32LE(uint32_t n);
-	void writeUint16BE(uint16_t n);
-	void writeUint32BE(uint32_t n);
+	int read(void *p, int len);
+	int write(void *p, int size);
+
+	uint32_t readUint32LE() {
+		uint8_t buf[4];
+		read(buf, sizeof(buf));
+		return buf[0] | (buf[1] << 8) | (buf[2] << 16) | (buf[3] << 24);
+	}
+	void writeUint32LE(uint32_t n) {
+		uint8_t buf[4] = { uint8_t(n), uint8_t(n >> 8), uint8_t(n >> 16), uint8_t(n >> 24) };
+		write(buf, sizeof(buf));
+	}
 };
 
 #endif

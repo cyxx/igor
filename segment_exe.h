@@ -15,7 +15,7 @@ struct OverlaySegment {
 };
 
 struct SegmentExecutable {
-	File _f;
+	AssetFile _f;
 	int _segmentsCount;
 	OverlaySegment *_segments;
 	uint16_t _startCS, _startIP;
