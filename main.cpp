@@ -163,12 +163,13 @@ int main(int argc, char *argv[]) {
 		return 0;
 	}
 	atexit(onExit);
-	const char *opts[4];
-	opts[0] = (argc >= 2) ? argv[1] : ".";
-	opts[1] = (argc >= 3) ? argv[2] : 0;
-	opts[2] = (argc >= 4) ? argv[3] : ".";
-	opts[3] = (argc >= 5) ? argv[4] : 0;
-	if (stub->init(4, opts, g_errBuf) != 0) {
+	const char *opts[] = {
+		(argc >= 2) ? argv[1] : ".", // data directory
+		(argc >= 3) ? argv[2] : 0,   // part number
+		(argc >= 4) ? argv[3] : ".", // save directory
+		(argc >= 5) ? argv[4] : 0    // language
+	};
+	if (stub->init(sizeof(opts) / sizeof(opts[0]), opts, g_errBuf) != 0) {
 		return 1;
 	}
 	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
