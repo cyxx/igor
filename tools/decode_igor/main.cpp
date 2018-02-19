@@ -435,10 +435,15 @@ int main(int argc, char *argv[]) {
 	}
 	if (argc >= 2) {
 		_gameVersion = (GameVersion)detectGameVersion(argv[1]);
-		File f;
-		if (f.open("IGOR.FSD", argv[1])) {
-			// floppy version, non-segmented exe
-			_exeType = kOverlayExe;
+		_exeType = getExecutableType(_gameVersion);
+		if (_exeType == kUnknownExe) {
+			File f;
+			if (f.open("IGOR.FSD", argv[1])) {
+				// floppy version, non-segmented exe
+				_exeType = kOverlayExe;
+			}
+		}
+		if (_exeType == kOverlayExe) {
 			OverlayExecutable ovl_exe;
 			ovl_exe._exe.open("IGOR.EXE", argv[1]);
 			ovl_exe._dat.open("IGOR.DAT", argv[1]);
@@ -460,13 +465,14 @@ int main(int argc, char *argv[]) {
 			}
 			if (_dumpAssets) {
 				// sound
+				File f;
 				if (f.open("IGOR.FSD", argv[1])) {
 					dumpSound(f);
 				}
 			}
 			return 0;
 		}
-		_exeType = kSegmentExe;
+		assert(_exeType == kSegmentExe);
 		SegmentExecutable seg_exe("IGOR.EXE", argv[1]);
 		seg_exe.parseSegmentsInfo();
 		if (argc >= 3) {
