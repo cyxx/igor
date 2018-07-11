@@ -723,8 +723,8 @@ static int compareCodeOffset(const void *p1, const void *p2) {
 void Game::sortCodeOffsets(CodeOffset *offsets, int offsetsCount) {
 	for (int i = 0; i < offsetsCount; ++i) {
 		const uint32_t addr = offsets[i].addr();
-		for (int j = 0; j < offsetsCount; ++j) {
-			if (i != j && offsets[j].addr() == addr) {
+		for (int j = i + 1; j < offsetsCount; ++j) {
+			if (offsets[j].addr() == addr) {
 				warning("offset %d duplicate of %d (cseg%02d:%04X)", j, i, offsets[i].seg, offsets[i].ptr);
 			}
 		}
