@@ -37,9 +37,9 @@ to extract the datafiles and write a x86 decoder and interpreter.
 Only higher level functions (palette, display, inputs) have been
 rewritten (these are referred as 'traps' in the source code).
 
-Current issues and missing features :
-- blitting issues with Igor sprite
-- no ending credits (parts 91 to 97)
+Missing features :
+- original save/load screen
+- ending credits (parts 91 to 97)
 
 Contact:
 --------
