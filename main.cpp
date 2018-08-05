@@ -14,6 +14,7 @@
 #include <sys/time.h>
 #include "gl_cursor.h"
 #include "gl_texture.h"
+#include "screenshot.h"
 #include "stub.h"
 
 static const char *g_caption = "Igor: Objetivo Uikokahonia";
@@ -191,6 +192,7 @@ int main(int argc, char *argv[]) {
 	Texture tex;
 	Texture::init();
 	bool quit = false;
+	int screenshot = 1;
 	while (stub->doTick() == 0) {
 		SDL_Event ev;
 		while (SDL_PollEvent(&ev)) {
@@ -220,6 +222,13 @@ int main(int argc, char *argv[]) {
 				queueKey(stub, ev.key.keysym.sym, 1);
 				break;
 			case SDL_KEYUP:
+				if (ev.key.keysym.sym == SDLK_F10) {
+					char name[32];
+					snprintf(name, sizeof(name), "screenshot-%03d.bmp", screenshot);
+					saveBMP(name, buf.ptr, buf.palPtr, buf.w, buf.h);
+					++screenshot;
+					break;
+				}
 				queueKey(stub, ev.key.keysym.sym, 0);
 				break;
 			default:

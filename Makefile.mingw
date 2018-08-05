@@ -7,7 +7,7 @@ STRIP := i686-w64-mingw32-strip
 
 CXXFLAGS += -O -Wall -MMD $(SDL_CFLAGS)
 
-OBJS = debug.o disasm.o file.o funcs.o game.o memory.o mixer.o real.o script.o segment_exe.o stub.o text.o traps.o
+OBJS = debug.o disasm.o file.o funcs.o game.o memory.o mixer.o real.o screenshot.o script.o segment_exe.o stub.o text.o traps.o
 DEPS = $(OBJS:.o=.d)
 
 all: game.exe igor.dll
