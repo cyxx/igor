@@ -98,8 +98,8 @@ void *Memory::getPtr(int seg, uint16_t offset) {
 		assert(offset >= 0x7BD);
 		return _codeSeg014 + offset - 0x7BD;
 	case 1:
-		assert(offset >= 0x2A14);
-		return _codeSeg001 + offset - 0x2A14;
+		assert(offset >= 0x11C2);
+		return _codeSeg001 + offset - 0x11C2;
 	default:
 		if (seg >= 256) {
 			return (uint8_t *)_ptrs[seg - 256] + offset;

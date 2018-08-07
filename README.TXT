@@ -39,7 +39,6 @@ rewritten (these are referred as 'traps' in the source code).
 
 Missing features :
 - original save/load screen
-- ending credits (parts 91 to 97)
 
 Contact:
 --------

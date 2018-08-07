@@ -56,8 +56,8 @@ void Game::init(int num) {
 	if (_sortCodeOffsets) {
 		sortCodeOffsets(_mainOffsets, _mainOffsetsCount);
 	}
-	readData(_mem._fontData, 222, 0x3FC6, 9306);
-	readData(_mem._codeSeg001,   1, 0x2A14, sizeof(_mem._codeSeg001));
+	readData(_mem._fontData,   222, 0x3FC6, 9306);
+	readData(_mem._codeSeg001,   1, 0x11C2, sizeof(_mem._codeSeg001));
 	readData(_mem._codeSeg014,  14,  0x7BD, sizeof(_mem._codeSeg014));
 	readData(_mem._codeSeg024,  24, 0x1404, sizeof(_mem._codeSeg024));
 	readData(_mem._codeSeg118, 118, 0x378C, sizeof(_mem._codeSeg118));
@@ -464,7 +464,7 @@ void Game::loadRoomData(int num) {
 	size = READ_LE_UINT16(ptr + 4);
 	if (size != 0) {
 		seekData(READ_LE_UINT16(ptr), READ_LE_UINT16(ptr + 2));
-		if (_mem.getPart() / 10 == 90) {
+		if (_mem.getPart() / 100 == 9) {
 			_exe._f.read(_mem._vga, size);
 		} else if (_script._callSegPtr == ((40 << 16) | 0x0002)) {
 			_exe._f.read(_mem._vga, size);
@@ -598,7 +598,6 @@ struct Trap {
 };
 
 static const Trap _traps[] = {
-	{   1, 0x2527, &Game::trap_quitGame, "", 0 }, // part_91
 	{ 220, 0x0002, &Game::trap_setPalette_240_16, "", 0 },
 	{ 220, 0x1D48, &Game::trap_handleOptionsMenu, "", 0 },
 	{ 221, 0x00BD, &Game::trap_playMusic, "ii", 2 },

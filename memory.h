@@ -40,7 +40,7 @@ struct Memory {
 	uint8_t *_inventoryData;
 	uint8_t _dataSeg[1 << 16];
 	uint8_t _stack[16384];
-	uint8_t _codeSeg001[296];
+	uint8_t _codeSeg001[6522];
 	uint8_t _codeSeg014[28086]; // sub_014_00A7
 	uint8_t _codeSeg024[24062]; // sub_024_06E2
 	uint8_t _codeSeg118[22];
